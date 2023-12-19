@@ -91,9 +91,9 @@
                             <a href="listarPostos.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Listar</a>
                         </div>
                     </div>
+                    <a href="horarios.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Horários</a>
                     <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
-                    <a href="horarios.html" class="dropdown-item"><i class="fa fa-th me-2"></i>Horários</a>
                     <a href="button.html" class="dropdown-item">Buttons</a>
                     <a href="element.html" class="dropdown-item">Other Elements</a>
 
@@ -209,21 +209,16 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4 col-sm-12">
                     <div class="bg-secondary rounded h-100 p-4">
-                        <h6 class="mb-4">Cadastrar Ocorrência</h6>
-                        <div class="form-floating mb-3">
-                            <select class="form-select mb-3" aria-label="Default select example">
-                                <option selected>Tipo de Ocorrência</option>
-                                <option value="autoNoticia">Auto de Notícia</option>
-                                <option value="autoQueixa">Auto de Queixa</option>
-                                <option value="denuncia">Denúncia</option>
-                                <option value="autoApreensao">Auto de Apreensão</option>
-                                <option value="autoDetencao">Auto de Detenção</option>
-                            </select>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput"
-                                placeholder="belger">
-                            <label for="floatingInput">Nome do Reportante</label>
+                        <div class="row">
+                            <div class="col form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput"
+                                    placeholder="belger">
+                                <label for="floatingInput">Nome Completo</label>
+                            </div>
+                            <div class="col form-floating mb-3">
+                                <input type="date" class="form-control" id="dataNascimento">
+                                <label for="dataNascimento">Data de Nascimento</label>
+                            </div>
                         </div>
                         <fieldset class="row mb-3">
                             <legend class="col-form-label col-sm-2 pt-0">Género</legend>
@@ -244,27 +239,45 @@
                                 </div>
                             </div>
                         </fieldset>
+                        <div class="col form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput"
+                                placeholder="Ex: 005448372BA045">
+                            <label for="floatingInput">BI</label>
+                        </div>
+                        <div class="col form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput"
+                                placeholder="Kilamba A12">
+                            <label for="floatingInput">Endereço</label>
+                        </div>
                         <div class="form-floating mb-3">
                             <input type="tel" class="form-control" id="floatingPassword"
                                 placeholder="tel">
-                            <label for="floatingPassword">Contacto do Reportante</label>
+                            <label for="floatingPassword">Contacto</label>                        
                         </div>
-                            
-                        <div class="form-floating mb-3">
-                            <input type="date" class="form-control" id="dataOcorrencia">
-                            <label for="dataOcorrencia">Data da Ocorrência</label>
-                        </div>
-                        
-                        <div class="form-floating">
-                            <textarea class="form-control" placeholder="Descreva o que ocorreu"
-                                id="floatingTextarea" style="height: 150px;"></textarea>
-                            <label for="floatingTextarea">Descrição</label>
-                        </div>
-                        <div class="mb-3">
-                            <label for="formFileMultiple" class="form-label">Adicionar Ficheiros</label>
-                            <input class="form-control bg-dark" type="file" id="formFileMultiple" multiple>
-                        </div>
-                        <button type="button" class="btn btn-primary rounded-pill m-2">Cadastrar Ocorrencia</button>
+                        <div class="row">
+                            <div class="col form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput"
+                                    placeholder="Ex: Piquete">
+                                <label for="floatingInput">Cargo</label>
+                            </div>
+                            <div class="col form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput"
+                                    placeholder="Ex: RH">
+                                <label for="floatingInput">Departamento</label>
+                            </div>  
+                        </div> 
+                        <div class="row">
+                            <div class="col form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                <label for="floatingInput">Email</label>
+                            </div>
+                            <div class="col form-floating mb-4">
+                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                <label for="floatingPassword">Password</label>
+                            </div>
+                        </div>                 
+                    
+                        <button type="button" class="btn btn-primary rounded-pill m-2">Cadastrar Funcionário</button>
                     </div>
                 </div> 
             </div>
