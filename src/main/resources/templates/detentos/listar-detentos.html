@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-ao" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 
 <head>
     <meta charset="utf-8">
@@ -204,31 +205,59 @@
             </nav>
             <!-- Navbar End -->
 
-            <!-- Form Start -->
+
+            <!-- Table Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row g-4 col-sm-12">
-                    <div class="bg-secondary rounded h-100 p-4">
-                        <div class="row">
-                            <div class="col form-floating mb-3">
-                                <input type="datetime-local" class="form-control" id="stardDate">
-                                <label for="date">Data Inicio de turno</label>
-                            </div>
-                            <div class="col form-floating mb-3">
-                                <input type="datetime-local" class="form-control" id="endDate">
-                                <label for="date">Data Fim de turno</label>
+                <div class="row g-4">
+                    <div class="col-12">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Listar Ocorrências</h6>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Nome do Detento</th>
+                                            <th scope="col">Identificação do Detento</th>
+                                            <th scope="col">Endereço do Detento</th>
+                                            <th scope="col">Email do Detento</th>
+                                            <th scope="col">Contacto do Detento</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Belger Fernandes</td>
+                                            <td>005448372LA045</td>
+                                            <td>Rangel</td>
+                                            <td>belger@gmail.com</td>
+                                            <td>926226126</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Belger Fernandes</td>
+                                            <td>005448372LA045</td>
+                                            <td>Rangel</td>
+                                            <td>belger@gmail.com</td>
+                                            <td>926226126</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Belger Fernandes</td>
+                                            <td>005448372LA045</td>
+                                            <td>Rangel</td>
+                                            <td>belger@gmail.com</td>
+                                            <td>926226126</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        
-                        <div class="col form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput"
-                                placeholder="Ex: Id do Funcionário">
-                            <label for="floatingInput">Funcionário</label>
-                        </div>                      
-                        <button type="button" class="btn btn-primary rounded-pill m-2">Criar horário</button>
                     </div>
-                </div> 
+                </div>
             </div>
-            <!-- Form End -->
+            <!-- Table End -->
+
 
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">

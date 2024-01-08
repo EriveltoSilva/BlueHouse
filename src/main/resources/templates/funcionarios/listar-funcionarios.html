@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-ao" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 
 <head>
     <meta charset="utf-8">
@@ -205,32 +206,78 @@
             <!-- Navbar End -->
 
 
-            <!-- Form Start -->
+            <!-- Table Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row g-4 col-sm-12">
-                    <div class="bg-secondary rounded h-100 p-4">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput"
-                                placeholder="belger">
-                            <label for="floatingInput">Nome do Posto</label>
+                <div class="row g-4">
+                    <div class="col-12">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Listar Ocorrências</h6>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Nome Completo</th>
+                                            <th scope="col">Data de Nascimento</th>
+                                            <th scope="col">Género</th>
+                                            <th scope="col">BI</th>
+                                            <th scope="col">Endereço</th>
+                                            <th scope="col">Contacto</th>
+                                            <th scope="col">Cargo</th>
+                                            <th scope="col">Departamento</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Senha</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Cliana Malange</td>
+                                            <td>2000-12-28</td>
+                                            <td>Feminino</td>
+                                            <td>005448372MO045</td>
+                                            <td>Mártires</td>
+                                            <td>9944390352</td>
+                                            <td>Admin</td>
+                                            <td>IT</td>
+                                            <td>clia@gmail.com</td>                                           
+                                            <td>malangeOrnela</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Cliana Malange</td>
+                                            <td>2000-12-28</td>
+                                            <td>Feminino</td>
+                                            <td>005448372MO045</td>
+                                            <td>Mártires</td>
+                                            <td>9944390352</td>
+                                            <td>Admin</td>
+                                            <td>IT</td>
+                                            <td>clia@gmail.com</td>                                           
+                                            <td>malangeOrnela</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Cliana Malange</td>
+                                            <td>2000-12-28</td>
+                                            <td>Feminino</td>
+                                            <td>005448372MO045</td>
+                                            <td>Mártires</td>
+                                            <td>9944390352</td>
+                                            <td>Admin</td>
+                                            <td>IT</td>
+                                            <td>clia@gmail.com</td>                                           
+                                            <td>malangeOrnela</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput"
-                                placeholder="belger">
-                            <label for="floatingInput">Localização</label>
-                        </div>
-                        
-                        <div class="form-floating">
-                            <textarea class="form-control" placeholder="Descreva o que ocorreu"
-                                id="floatingTextarea" style="height: 150px;"></textarea>
-                            <label for="floatingTextarea">Descrição</label>
-                        </div>
-                        <button type="button" class="btn btn-primary rounded-pill m-2">Cadastrar Posto</button>
                     </div>
-                </div> 
+                </div>
             </div>
-            <!-- Form End -->
+            <!-- Table End -->
+
 
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">

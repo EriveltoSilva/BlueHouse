@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-ao" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 
 <head>
     <meta charset="utf-8">
@@ -205,57 +206,83 @@
             <!-- Navbar End -->
 
 
-            <!-- Table Start -->
+            <!-- Form Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-12">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Listar Ocorrências</h6>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Nome do Detento</th>
-                                            <th scope="col">Identificação do Detento</th>
-                                            <th scope="col">Endereço do Detento</th>
-                                            <th scope="col">Email do Detento</th>
-                                            <th scope="col">Contacto do Detento</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Belger Fernandes</td>
-                                            <td>005448372LA045</td>
-                                            <td>Rangel</td>
-                                            <td>belger@gmail.com</td>
-                                            <td>926226126</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Belger Fernandes</td>
-                                            <td>005448372LA045</td>
-                                            <td>Rangel</td>
-                                            <td>belger@gmail.com</td>
-                                            <td>926226126</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Belger Fernandes</td>
-                                            <td>005448372LA045</td>
-                                            <td>Rangel</td>
-                                            <td>belger@gmail.com</td>
-                                            <td>926226126</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                <div class="row g-4 col-sm-12">
+                    <div class="bg-secondary rounded h-100 p-4">
+                        <div class="row">
+                            <div class="col form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput"
+                                    placeholder="belger">
+                                <label for="floatingInput">Nome Completo</label>
+                            </div>
+                            <div class="col form-floating mb-3">
+                                <input type="date" class="form-control" id="dataNascimento">
+                                <label for="dataNascimento">Data de Nascimento</label>
                             </div>
                         </div>
+                        <fieldset class="row mb-3">
+                            <legend class="col-form-label col-sm-2 pt-0">Género</legend>
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios"
+                                        id="gridRadios1" value="option1" checked>
+                                    <label class="form-check-label" for="gridRadios1">
+                                        Masculino
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios"
+                                        id="gridRadios2" value="option2">
+                                    <label class="form-check-label" for="gridRadios2">
+                                        Feminino
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="col form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput"
+                                placeholder="Ex: 005448372BA045">
+                            <label for="floatingInput">BI</label>
+                        </div>
+                        <div class="col form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput"
+                                placeholder="Kilamba A12">
+                            <label for="floatingInput">Endereço</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="tel" class="form-control" id="floatingPassword"
+                                placeholder="tel">
+                            <label for="floatingPassword">Contacto</label>                        
+                        </div>
+                        <div class="row">
+                            <div class="col form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput"
+                                    placeholder="Ex: Piquete">
+                                <label for="floatingInput">Cargo</label>
+                            </div>
+                            <div class="col form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput"
+                                    placeholder="Ex: RH">
+                                <label for="floatingInput">Departamento</label>
+                            </div>  
+                        </div> 
+                        <div class="row">
+                            <div class="col form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                <label for="floatingInput">Email</label>
+                            </div>
+                            <div class="col form-floating mb-4">
+                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                <label for="floatingPassword">Password</label>
+                            </div>
+                        </div>                 
+                    
+                        <button type="button" class="btn btn-primary rounded-pill m-2">Cadastrar Funcionário</button>
                     </div>
-                </div>
+                </div> 
             </div>
-            <!-- Table End -->
+            <!-- Form End -->
 
 
             <!-- Footer Start -->

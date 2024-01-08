@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-ao" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 
 <head>
     <meta charset="utf-8">
@@ -8,7 +9,6 @@
     <meta content="" name="keywords">
     <meta content="Sistema de Gestão de Esquadra Policial do Cazenga" name="description">
 	<meta content="Belger, Cliana Manlage, Erivelto Silva, Jorge Costa, Rita Mulato" name="author">
-
     <!-- Favicon -->
     <link href="../assets/img/favicon.ico" rel="icon">
 
@@ -96,7 +96,7 @@
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
                     <a href="button.html" class="dropdown-item">Buttons</a>
                     <a href="element.html" class="dropdown-item">Other Elements</a>
-                
+
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Páginas</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -205,77 +205,20 @@
             <!-- Navbar End -->
 
 
-            <!-- Table Start -->
+            <!-- 404 Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-12">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Listar Ocorrências</h6>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Tipo de Ocorrência</th>
-                                            <th scope="col">Nome do Reportante</th>
-                                            <th scope="col">Identificação do Reportante</th>
-                                            <th scope="col">Endereço do Reportante</th>
-                                            <th scope="col">Email do Reportante</th>
-                                            <th scope="col">Contacto do Reportante</th>
-                                            <th scope="col">Nome do Acusado</th>
-                                            <th scope="col">Data da Ocorrência</th>
-                                            <th scope="col">Descrição</th>
-                                            <th scope="col">Ficheiros</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Auto de Queixa</td>
-                                            <td>Cliana Malange</td>
-                                            <td>005448372MO045</td>
-                                            <td>Mártires</td>
-                                            <td>clia@gmail.com</td>
-                                            <td>9944390352</td>
-                                            <td>Belger Fernandes</td>
-                                            <td>2023-12-01</td>
-                                            <td>Roubo a mão armada a loja da sra. Cliana</td>
-                                            <td>acta.pdf</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Auto de Queixa</td>
-                                            <td>Cliana Malange</td>
-                                            <td>005448372MO045</td>
-                                            <td>Mártires</td>
-                                            <td>clia@gmail.com</td>
-                                            <td>9944390352</td>
-                                            <td>Belger Fernandes</td>
-                                            <td>2023-12-01</td>
-                                            <td>Roubo a mão armada a loja da sra. Cliana</td>
-                                            <td>acta.pdf</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Auto de Queixa</td>
-                                            <td>Cliana Malange</td>
-                                            <td>005448372MO045</td>
-                                            <td>Mártires</td>
-                                            <td>clia@gmail.com</td>
-                                            <td>9944390352</td>
-                                            <td>Belger Fernandes</td>
-                                            <td>2023-12-01</td>
-                                            <td>Roubo a mão armada a loja da sra. Cliana</td>
-                                            <td>acta.pdf</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+                    <div class="col-md-6 text-center p-4">
+                        <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
+                        <h1 class="display-1 fw-bold">404</h1>
+                        <h1 class="mb-4">Page Not Found</h1>
+                        <p class="mb-4">We’re sorry, the page you have looked for does not exist in our website!
+                            Maybe go to our home page or try to use a search?</p>
+                        <a class="btn btn-primary rounded-pill py-3 px-5" href="">Go Back To Home</a>
                     </div>
                 </div>
             </div>
-            <!-- Table End -->
+            <!-- 404 End -->
 
 
             <!-- Footer Start -->
@@ -283,7 +226,12 @@
                 <div class="bg-secondary rounded-top p-4">
                     <div class="row">
                         <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">BlueHouse</a>, All Right Reserved. 
+                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
+                        </div>
+                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                            <br>Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
                         </div>
                     </div>
                 </div>
