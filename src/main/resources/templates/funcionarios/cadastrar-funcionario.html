@@ -1,87 +1,82 @@
 <div th:replace="fragmentos/_top"></div>
 
 <main>
-
-            <!-- Form Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row g-4 col-sm-12">
-                    <div class="bg-secondary rounded h-100 p-4">
-                        <div class="row">
-                            <div class="col form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput"
-                                    placeholder="belger">
-                                <label for="floatingInput">Nome Completo</label>
-                            </div>
-                            <div class="col form-floating mb-3">
-                                <input type="date" class="form-control" id="dataNascimento">
-                                <label for="dataNascimento">Data de Nascimento</label>
-                            </div>
-                        </div>
-                        <fieldset class="row mb-3">
-                            <legend class="col-form-label col-sm-2 pt-0">Género</legend>
-                            <div class="col-sm-10">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gridRadios"
-                                        id="gridRadios1" value="option1" checked>
-                                    <label class="form-check-label" for="gridRadios1">
-                                        Masculino
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gridRadios"
-                                        id="gridRadios2" value="option2">
-                                    <label class="form-check-label" for="gridRadios2">
-                                        Feminino
-                                    </label>
-                                </div>
-                            </div>
-                        </fieldset>
-                        <div class="col form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput"
-                                placeholder="Ex: 005448372BA045">
-                            <label for="floatingInput">BI</label>
-                        </div>
-                        <div class="col form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput"
-                                placeholder="Kilamba A12">
-                            <label for="floatingInput">Endereço</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="tel" class="form-control" id="floatingPassword"
-                                placeholder="tel">
-                            <label for="floatingPassword">Contacto</label>                        
-                        </div>
-                        <div class="row">
-                            <div class="col form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput"
-                                    placeholder="Ex: Piquete">
-                                <label for="floatingInput">Cargo</label>
-                            </div>
-                            <div class="col form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput"
-                                    placeholder="Ex: RH">
-                                <label for="floatingInput">Departamento</label>
-                            </div>  
-                        </div> 
-                        <div class="row">
-                            <div class="col form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                <label for="floatingInput">Email</label>
-                            </div>
-                            <div class="col form-floating mb-4">
-                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                                <label for="floatingPassword">Password</label>
-                            </div>
-                        </div>                 
-                    
-                        <button type="button" class="btn btn-primary rounded-pill m-2">Cadastrar Funcionário</button>
-                    </div>
-                </div> 
+    
+    <div class="container-fluid pt-4 px-4">
+        <h1>Cadastrar funcionários</h1>
+        <div class="bg-secondary text-center rounded p-4">
+            <div class="d-flex align-items-center justify-content-between mb-4 border-bottom">
+                <h3 class="mb-0 text-primary">Novos funcionário</h3>
             </div>
-            <!-- Form End -->
+
+            <div>
+                <form method="post">
+                    <div class="row justify-content-end text-start">
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="nome">Nome Completo:</label>
+                            <input type="text" name="nome" id="nome" class="form-control">
+                        </div>
+                        
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="dataNascimento">Data de Nascimento</label>
+                            <input type="date" name="dataNascimento" id="dataNascimento" class="form-control">
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="bi">Nº do BI:</label>
+                            <input type="text" name="bi" id="bi" class="form-control">
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="nome">Endereço:</label>
+                            <input type="text" name="endereco" id="endereco" class="form-control">
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="nome">Contacto:</label>
+                            <input type="tel" name="telefone" id="telefone" class="form-control">
+                        </div>
+                        
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="nome">Gênero:</label>
+                            <select name="genero" id="genero" class="form-select">
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="nome">Departamento:</label>
+                            <select name="departamento" id="departamento" class="form-select">
+                                <option value="Dep. IT">Departamento de IT</option>
+                                <option value="Dep. Financeiro">Departamento Financeiro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="nome">Cargo:</label>
+                            <select name="departamento" id="departamento" class="form-select">
+                                <option value="Piquete">Piquete</option>
+                                <option value="Patrulheiro">Patrulheiro</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" id="email" class="form-control">
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="senha">Senha:</label>
+                            <input type="password" name="senha" id="senha" class="form-control">
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
 
 
-        </main>
-
-
-        <div th:replace="fragmentos/_bottom"></div>
+<div th:replace="fragmentos/_bottom"></div>
