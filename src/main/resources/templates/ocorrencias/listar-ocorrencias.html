@@ -3,79 +3,73 @@
 <main>
 
 
-            <!-- Table Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-12">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Listar Ocorrências</h6>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Tipo de Ocorrência</th>
-                                            <th scope="col">Nome do Reportante</th>
-                                            <th scope="col">Identificação do Reportante</th>
-                                            <th scope="col">Endereço do Reportante</th>
-                                            <th scope="col">Email do Reportante</th>
-                                            <th scope="col">Contacto do Reportante</th>
-                                            <th scope="col">Nome do Acusado</th>
-                                            <th scope="col">Data da Ocorrência</th>
-                                            <th scope="col">Descrição</th>
-                                            <th scope="col">Ficheiros</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Auto de Queixa</td>
-                                            <td>Cliana Malange</td>
-                                            <td>005448372MO045</td>
-                                            <td>Mártires</td>
-                                            <td>clia@gmail.com</td>
-                                            <td>9944390352</td>
-                                            <td>Belger Fernandes</td>
-                                            <td>2023-12-01</td>
-                                            <td>Roubo a mão armada a loja da sra. Cliana</td>
-                                            <td>acta.pdf</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Auto de Queixa</td>
-                                            <td>Cliana Malange</td>
-                                            <td>005448372MO045</td>
-                                            <td>Mártires</td>
-                                            <td>clia@gmail.com</td>
-                                            <td>9944390352</td>
-                                            <td>Belger Fernandes</td>
-                                            <td>2023-12-01</td>
-                                            <td>Roubo a mão armada a loja da sra. Cliana</td>
-                                            <td>acta.pdf</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Auto de Queixa</td>
-                                            <td>Cliana Malange</td>
-                                            <td>005448372MO045</td>
-                                            <td>Mártires</td>
-                                            <td>clia@gmail.com</td>
-                                            <td>9944390352</td>
-                                            <td>Belger Fernandes</td>
-                                            <td>2023-12-01</td>
-                                            <td>Roubo a mão armada a loja da sra. Cliana</td>
-                                            <td>acta.pdf</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="container-fluid pt-4 px-4">
+        <h1>Lista de Ocorrências</h1>
+        <div class="bg-secondary text-center rounded p-4">
+            <div class="d-flex align-items-center justify-content-between mb-4 ">
+                <h3 class="mb-0  text-primary">Ocorrências</h3>
+                <a th:href="@{/ocorrencias/cadastrar}" class="btn btn-primary">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    Adicionar Ocorrências
+                </a>
             </div>
-            <!-- Table End -->
+            <div class="table-responsive">
+                <table class="table text-start align-middle table-bordered table-hover mb-0">
+                    <thead>
+                        <tr class="text-white">
+                            <th scope="col">#</th>
+                            <th scope="col">Código da Ocorrência</th>
+                            <th scope="col">Tipo de Ocorrência</th>
+                            <th scope="col">Nome do Reportante</th>
+                            <th scope="col">Nome do Acusado</th>
+                            <th scope="col">Data da Ocorrência</th>
+                            <th scope="col">Descrição</th>
+                            <th scope="col">Acções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <th>195/2024</th>
+                            <td>Auto de Queixa</td>
+                            <td>Cliana Malange</td>
+                            <td>Belger Fernandes</td>
+                            <td>2023-12-01</td>
+                            <td>Roubo a mão armada a loja da sra. Cliana</td>
+                            <td class="d-lg-inline-flex">
+                                <a title="Detalhes" href="#" class="btn btn-primary m-1"><i
+                                        class="bi bi-eye-fill"></i></a>
+                                <a title="Editar" href="#" class="btn btn-primary m-1"><i
+                                        class="bi bi-pencil-square"></i></a>
+                                <button title="Eliminar" type="button" class="btn btn-primary m-1"><i
+                                        class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <th>195/2024</th>
+                            <td>Denúncia</td>
+                            <td>Rita Mulato</td>
+                            <td>---</td>
+                            <td>2023-12-31</td>
+                            <td>Tentativa de Assassinato</td>
+                            <td class="d-lg-inline-flex">
+                                <a title="Detalhes" href="#" class="btn btn-primary m-1"><i
+                                        class="bi bi-eye-fill"></i></a>
+                                <a title="Editar" href="#" class="btn btn-primary m-1"><i
+                                        class="bi bi-pencil-square"></i></a>
+                                <button title="Eliminar" type="button" class="btn btn-primary m-1"><i
+                                        class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
-        </main>
+    
+</main>
 
 
-        <div th:replace="fragmentos/_bottom"></div>
+<div th:replace="fragmentos/_bottom"></div>
