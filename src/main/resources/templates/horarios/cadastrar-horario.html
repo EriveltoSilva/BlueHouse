@@ -1,0 +1,34 @@
+<div th:replace="fragmentos/_top"></div>
+
+<main>
+
+            <!-- Form Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4 col-sm-12">
+                    <div class="bg-secondary rounded h-100 p-4">
+                        <div class="row">
+                            <div class="col form-floating mb-3">
+                                <input type="datetime-local" class="form-control" id="stardDate">
+                                <label for="date">Data Inicio de turno</label>
+                            </div>
+                            <div class="col form-floating mb-3">
+                                <input type="datetime-local" class="form-control" id="endDate">
+                                <label for="date">Data Fim de turno</label>
+                            </div>
+                        </div>
+                        
+                        <div class="col form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput"
+                                placeholder="Ex: Id do Funcionário">
+                            <label for="floatingInput">Funcionário</label>
+                        </div>                      
+                        <button type="button" class="btn btn-primary rounded-pill m-2">Criar horário</button>
+                    </div>
+                </div> 
+            </div>
+            <!-- Form End -->
+
+        </main>
+
+
+        <div th:replace="fragmentos/_bottom"></div>
