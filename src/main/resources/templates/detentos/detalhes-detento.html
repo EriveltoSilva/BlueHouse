@@ -2,10 +2,10 @@
 
 <main>
     <div class="container-fluid pt-4 px-4">
-        <h1>Cadastrar Detento</h1>
+        <h1>Edição de Detento - XXX </h1>
         <div class="bg-secondary text-center rounded p-4">
             <div class="d-flex align-items-center justify-content-between mb-4 border-bottom">
-                <h3 class="mb-0 text-primary">Novo detento*</h3>
+                <h3 class="mb-0 text-primary">Dados do detento </h3>
             </div>
 
             <div>
@@ -13,28 +13,28 @@
                     <div class="row justify-content-end text-start">
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="nome">Nome:</label>
-                            <input type="text" name="nome" id="nome" class="form-control">
+                            <input type="text" name="nome" id="nome" class="form-control" value="Erivelto Silva">
                         </div>
                         
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="bi">Nº do BI:</label>
-                            <input type="text" name="bi" id="bi" class="form-control">
+                            <input type="text" name="bi" id="bi" class="form-control" value="0054121LA040">
                         </div>
                         
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="dataNascimento">Data de Nascimento</label>
-                            <input type="date" name="dataNascimento" id="dataNascimento" class="form-control">
+                            <input type="date" name="dataNascimento" id="dataNascimento" class="form-control" value="20010118">
                         </div>
 
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="nome">Endereço:</label>
-                            <input type="text" name="endereco" id="endereco" class="form-control">
+                            <input type="text" name="endereco" id="endereco" class="form-control" value="Angola, Luanda, Rangel">
                         </div>
                         
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="nome">Gênero:</label>
                             <select name="genero" id="genero" class="form-select">
-                                <option value="MASCULINO">Masculino</option>
+                                <option value="MASCULINO" selected>Masculino</option>
                                 <option value="FEMENINO">Femenino</option>
                             </select>
                         </div>
@@ -58,35 +58,26 @@
                             <label for="altura">Altura(cm):</label>
                             <input type="number" name="altura" id="altura" class="form-control">
                         </div>
+
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="email">Email:</label>
-                            <input type="email" name="email" id="email" class="form-control">
+                            <input type="email" name="email" id="email" class="form-control" value="eriveltoclenio@gmail.com">
                         </div>
+                        
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="telefone">Contacto:</label>
-                            <input type="tel" name="telefone" id="telefone" class="form-control">
+                            <input type="tel" name="telefone" id="telefone" class="form-control" value="+244940811141">
                         </div>
                         
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-3">
                             <label for="telefone">Observação(pontos particulares):</label>
-                            <textarea name="observacao" id="observacao" cols="30" rows="10" class="form-control" placeholder="Descreva algum ponto incomum, único ou que se destaque no detento."></textarea>
-                        </div>
-
-                        
-                        <div class="col-12 mt-3 text-center">
-                            <button type="submit" class="btn btn-primary w-50"> 
-                                <i class="bi bi-floppy-fill"></i>
-                                Salvar Registro
-                            </button>
-                        </div>
-                        
+                            <textarea name="observacao" id="observacao" cols="30" rows="10" class="form-control" placeholder="Descreva algum ponto incomum" value="Hello World!"></textarea>
+                        </div>.
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
 </main>
-
 
 <div th:replace="fragmentos/_bottom"></div>

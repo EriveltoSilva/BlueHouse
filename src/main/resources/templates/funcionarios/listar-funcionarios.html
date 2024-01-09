@@ -4,7 +4,7 @@
     <div class="container-fluid pt-4 px-4">
         <h1>Lista de Funcionários</h1>
         <div class="bg-secondary text-center rounded p-4">
-            <div class="d-flex align-items-center justify-content-between mb-4 border-bottom">
+            <div class="d-flex align-items-center justify-content-between mb-4 ">
                 <h3 class="mb-0  text-primary">Funcionários</h3>
                 <a th:href="@{/funcionarios/cadastrar}" class="btn btn-primary">
                     <i class="bi bi-plus-circle-fill"></i>
@@ -17,11 +17,7 @@
                         <tr class="text-white">
                             <th scope="col">#</th>
                             <th scope="col">Nome Completo</th>
-                            <th scope="col">Data de Nascimento</th>
-                            <th scope="col">Género</th>
                             <th scope="col">BI</th>
-                            <th scope="col">Endereço</th>
-                            <th scope="col">Contacto</th>
                             <th scope="col">Cargo</th>
                             <th scope="col">Departamento</th>
                             <th scope="col">Email</th>
@@ -32,35 +28,27 @@
                         <tr>
                             <td scope="row">1</td>
                             <td>Cliana Malange</td>
-                            <td>2000-12-28</td>
-                            <td>Feminino</td>
                             <td>005448372MO045</td>
-                            <td>Mártires</td>
-                            <td>9944390352</td>
                             <td>Admin</td>
                             <td>IT</td>
                             <td>clia@gmail.com</td>
                             <td class="d-lg-inline-flex">
+                                <a title="Detalhes" href="#" class="btn btn-primary m-1"><i class="bi bi-eye-fill"></i></a>
                                 <a title="Editar" href="#" class="btn btn-primary m-1" ><i class="bi bi-pencil-square"></i></a>
                                 <button title="Eliminar" type="button" class="btn btn-primary m-1"><i class="bi bi-trash"></i></button>
-                                <button title="Cancelar" type="button" class="btn btn-primary m-1"><i class="bi bi-x-square"></i></button>
                             </td>
                         </tr>
                         <tr>
                             <td scope="row">2</td>
                             <td>Rita Mulato</td>
-                            <td>2001-11-7</td>
-                            <td>Feminino</td>
                             <td>005242548LA045</td>
-                            <td>Kilamba</td>
-                            <td>946034120</td>
                             <td>Admin</td>
                             <td>IT</td>
                             <td>ritaamandio@gmail.com</td>
                             <td class="d-lg-inline-flex">
+                                <a title="Detalhes" type="button" class="btn btn-primary m-1"><i class="bi bi-eye-fill"></i></a>
                                 <a title="Editar" href="#" class="btn btn-primary m-1" ><i class="bi bi-pencil-square"></i></a>
                                 <button title="Eliminar" type="button" class="btn btn-primary m-1"><i class="bi bi-trash"></i></button>
-                                <button title="Cancelar" type="button" class="btn btn-primary m-1"><i class="bi bi-x-square"></i></button>
                             </td>
                         </tr>
                     </tbody>
