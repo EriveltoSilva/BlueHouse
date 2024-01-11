@@ -1,0 +1,123 @@
+<div th:replace="fragmentos/_top"></div>
+
+<main>
+
+    <div class="container-fluid pt-4 px-4">
+        <h1>Registrar ocorrência</h1>
+        <div class="bg-secondary text-center rounded p-4">
+            <div class="d-flex align-items-center justify-content-between mb-4 border-bottom">
+                <h3 class="mb-0 text-primary">Nova ocorrência</h3>
+            </div>
+
+            <div>
+                <form method="post">
+                    <div class="row justify-content-end text-start">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-3">
+                            <label for="tipoOcorrencia">Tipo de Ocorrência</label>
+                            <select name="genero" id="genero" class="form-select">
+                                <option value="denuncia" selected>Denúncia</option>
+                                <option value="autoNoticia">Auto de Notícia</option>
+                                <option value="autoQueixa">Auto de Queixa</option>
+                                <option value="autoApreensao">Auto de Apreensão</option>
+                                <option value="autoDetencao">Auto de Detenção</option>
+                            </select>
+                        </div>
+
+                        
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-3">
+                            <fieldset class="row w-100">
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-2 mt-3">
+                                    <label for="nomeReportante">Nome do Reportante:</label>
+                                    <input type="text" name="nomeReportante" id="nomeReportante" class="form-control">
+                                </div>
+
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-2 mt-3">
+                                    <label for="biReportante">B.I do Reportante:</label>
+                                    <input type="text" name="biReportante" id="biReportante" class="form-control">
+                                </div>
+
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-2 mt-3">
+                                    <label for="enderecoReportante">Ender. do Reportante:</label>
+                                    <input type="text" name="enderecoReportante" id="enderecoReportante" class="form-control">
+                                </div>
+
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-2  mt-3">
+                                    <label for="emailReportante">Email do Reportante:</label>
+                                    <input type="email" name="emailReportante" id="emailReportante" class="form-control">
+                                </div>
+
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-2 mt-3">
+                                    <label for="telefoneReportante">Contactodo Reportante:</label>
+                                    <input type="tel" name="telefoneReportante" id="telefoneReportante" class="form-control">
+                                </div>
+
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-2 mt-3">
+                                    <label for="dataNascReportante">D. Nasc. Reportante</label>
+                                    <input type="date" name="dataNascReportante" id="dataNascReportante" class="form-control">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-3">
+                            <fieldset class="row w-100">
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-2 mt-3">
+                                    <label for="nomeReportante">Nome do Acusado:</label>
+                                    <input type="text" name="nomeAcusado" id="nomeAcusado" class="form-control">
+                                </div>
+
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-2 mt-3">
+                                    <label for="biAcusado">B.I do Acusado:</label>
+                                    <input type="text" name="biAcusado" id="biAcusado" class="form-control">
+                                </div>
+
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-2 mt-3">
+                                    <label for="enderecoAcusado">Ender. do Acusado:</label>
+                                    <input type="text" name="enderecoAcusado" id="enderecoAcusado" class="form-control">
+                                </div>
+
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-2  mt-3">
+                                    <label for="emailAcusado">Email do Acusado:</label>
+                                    <input type="email" name="emailAcusado" id="emailAcusado" class="form-control">
+                                </div>
+
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-2 mt-3">
+                                    <label for="telefoneAcusado">Contactodo Acusado:</label>
+                                    <input type="tel" name="telefoneAcusado" id="telefoneAcusado" class="form-control">
+                                </div>
+
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-2 mt-3">
+                                    <label for="dataNascAcusado">D. Nasc. Acusado</label>
+                                    <input type="date" name="dataNascAcusado" id="dataNascAcusado" class="form-control">
+                                </div>
+                            </fieldset>
+                        </div>
+                        
+                        <div class="form-floating mt-3">
+                            <textarea class="form-control" placeholder="Descreva o que ocorreu" id="floatingTextarea"
+                                style="height: 150px;"></textarea>
+                            <label for="floatingTextarea">Descrição</label>
+                        </div>
+
+                        <div class="my-3">
+                            <label for="formFileMultiple" class="form-label">Adicionar Ficheiros</label>
+                            <input class="form-control bg-dark" type="file" id="formFileMultiple" multiple>
+                        </div>
+
+                        <div class="col-12 mt-3 text-center">
+                            <button type="submit" class="btn btn-primary w-50">
+                                <i class="bi bi-floppy-fill"></i>
+                                Salvar Registro
+                            </button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+<div th:replace="fragmentos/_bottom"></div>
