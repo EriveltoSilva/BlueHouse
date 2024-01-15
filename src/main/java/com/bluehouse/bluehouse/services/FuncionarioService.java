@@ -29,14 +29,14 @@ public class FuncionarioService {
         return funcionarioRepository.save(novoFuncionario);
     }
 
-    public Optional<FuncionarioModel> obteFuncionarioModel(UUID id)
+    public Optional<FuncionarioModel> obterFuncionarioModel(UUID id)
     {
         return funcionarioRepository.findById(id);
     }
 
     public FuncionarioModel eliminar( UUID id ) 
     {
-        Optional<FuncionarioModel> eliminarFuncionario = obteFuncionarioModel(id);
+        Optional<FuncionarioModel> eliminarFuncionario = obterFuncionarioModel(id);
         if ( eliminarFuncionario.isEmpty() )
             return eliminarFuncionario.orElse(null);
         funcionarioRepository.deleteById(id);

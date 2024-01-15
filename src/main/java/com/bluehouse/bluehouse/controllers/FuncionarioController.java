@@ -44,7 +44,7 @@ public class FuncionarioController {
 
     @GetMapping("/editar/{id}")
     public String editarFuncionarioForm(@PathVariable("id") UUID id, Model model) {
-        Optional<FuncionarioModel> funcionario = funcionarioService.obteFuncionarioModel(id);
+        Optional<FuncionarioModel> funcionario = funcionarioService.obterFuncionarioModel(id);
         
         if (funcionario.isPresent()) {
             model.addAttribute("funcionario", funcionario.get());
@@ -55,18 +55,18 @@ public class FuncionarioController {
         }
     }
 
+    @GetMapping("/detalhes/{id}")
+    public String detalhesFuncionario(@PathVariable("id") UUID id, Model model) {
+        Optional<FuncionarioModel> funcionario = funcionarioService.obterFuncionarioModel(id);
+        model.addAttribute("funcionario", funcionario.orElse(new FuncionarioModel())); // Usando orElse para evitar null
+        return "funcionarios/detalhes-funcionario";
+    }
+
     @PostMapping("/editar/{id}")
     public String editarFuncionarios(@PathVariable("id") UUID id, FuncionarioModel editFuncionarioModel ) {
 
         funcionarioService.editar(editFuncionarioModel);
         return "redirect:/funcionarios/listar";
-    }
-
-    @GetMapping("/obter/{id}")
-    public String obterFuncionario(@PathVariable("id") UUID id, Model model) {
-        Optional<FuncionarioModel> funcionario = funcionarioService.obteFuncionarioModel(id);
-        model.addAttribute("funcionario", funcionario.orElse(new FuncionarioModel())); // Usando orElse para evitar null
-        return "funcionarios/editar-funcionario";
     }
 
     @DeleteMapping("/eliminar/{id}")

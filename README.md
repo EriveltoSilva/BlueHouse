@@ -19,7 +19,7 @@
 <ul>
     <ol>Login</ol>
     <ol>Logout</ol>
-    <ol>Detalhes</ol>
+    <ol>Detalhes - Feito</ol>
     <ol>Eliminar nos cruds</ol>
     <ol>Refazer Forms de ocorrências</ol>
     <ol>Implementrar CRUD de Ocorrências</ol>

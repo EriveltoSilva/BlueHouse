@@ -3,7 +3,7 @@
 <main>
     
     <div class="container-fluid pt-4 px-4">
-        <h1>Editar Funcionario <span th:text="${funcionario.nomeCompleto}"></span> </h1>
+        <h1>Detalhes do Funcionario</span> </h1>
         <div class="bg-secondary text-center rounded p-4">
             <div class="d-flex align-items-center justify-content-between mb-4 border-bottom">
                 <h3 class="mb-0 text-primary">Dados do Funcionário</h3>
@@ -14,66 +14,66 @@
                     <div class="row justify-content-end text-start">
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="nomeCompleto">Nome Completo:</label>
-                            <input type="text" name="nomeCompleto" id="nomeCompleto" class="form-control" th:value="${funcionario.nomeCompleto}">
+                            <input type="text" name="nomeCompleto" id="nomeCompleto" class="form-control" th:value="${funcionario.nomeCompleto}" readonly>
                         </div>
                         
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="dataNascimento">Data de Nascimento</label>
-                            <input type="date" name="dataNascimento" id="dataNascimento" class="form-control" th:value="${#dates.format(funcionario.dataNascimento, 'yyyy-MM-dd')}">
+                            <input type="date" name="dataNascimento" id="dataNascimento" class="form-control" th:value="${#dates.format(funcionario.dataNascimento, 'yyyy-MM-dd')}" readonly>
                         </div>
 
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="bi">Nº do BI:</label>
-                            <input type="text" name="bi" id="bi" class="form-control" th:value="${funcionario.bi}">
+                            <input type="text" name="bi" id="bi" class="form-control" th:value="${funcionario.bi}" readonly>
                         </div>
 
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="endereco">Endereço:</label>
-                            <input type="text" name="endereco" id="endereco" class="form-control" th:value="${funcionario.endereco}">
+                            <input type="text" name="endereco" id="endereco" class="form-control" th:value="${funcionario.endereco}" readonly>
                         </div>
 
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="contacto">Contacto:</label>
-                            <input type="tel" name="contacto" id="contacto" class="form-control" th:value="${funcionario.Contacto}">
+                            <input type="tel" name="contacto" id="contacto" class="form-control" th:value="${funcionario.Contacto}" readonly>
                         </div>
                         
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="genero">Gênero:</label>
-                            <select name="genero" id="genero" class="form-select">
-                                <option value="M" th:selected="${funcionario.genero == 'M'}">Masculino</option>
-                                <option value="F" th:selected="${funcionario.genero == 'F'}">Feminino</option>
+                            <select name="genero" id="genero" class="form-select" disabled>
+                                <option value="M" th:selected="${funcionario.genero == 'M'}">Masculino</option >
+                                <option value="F" th:selected="${funcionario.genero == 'F'}">Feminino</option >
                             </select>
                         </div>
                         
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="departamento">Departamento:</label>
-                            <select name="departamento" id="departamento" class="form-select">
-                                <option value="Dep. IT" th:selected="${funcionario.departamento == 'Dep. IT'}">Departamento de IT</option>
-                                <option value="Dep. Financeiro" th:selected="${funcionario.departamento == 'Dep. Financeiro'}">Departamento Financeiro</option>
+                            <select name="departamento" id="departamento" class="form-select" disabled>
+                                <option value="Dep. IT" th:selected="${funcionario.departamento == 'Dep. IT'}">Departamento de IT</option >
+                                <option value="Dep. Financeiro" th:selected="${funcionario.departamento == 'Dep. Financeiro'}">Departamento Financeiro</option >
                             </select>
                         </div>
                         
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="cargo">Cargo:</label>
-                            <select name="cargo" id="cargo" class="form-select">
-                                <option value="Piquete" th:selected="${funcionario.cargo == 'Piquete'}">Piquete</option>
-                                <option value="Patrulheiro" th:selected="${funcionario.cargo == 'Patrulheiro'}">Patrulheiro</option>
+                            <select name="cargo" id="cargo" class="form-select" disabled>
+                                <option value="Piquete" th:selected="${funcionario.cargo == 'Piquete'}">Piquete</option >
+                                <option value="Patrulheiro" th:selected="${funcionario.cargo == 'Patrulheiro'}">Patrulheiro</option >
                             </select>
                         </div>
 
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="email">Email:</label>
-                            <input type="email" name="email" id="email" class="form-control" th:value="${funcionario.email}">
+                            <input type="email" name="email" id="email" class="form-control" th:value="${funcionario.email}" readonly>
                         </div>
 
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="senha">Senha:</label>
-                            <input type="password" name="senha" id="senha" class="form-control" value="">
+                            <input type="password" name="senha" id="senha" class="form-control" th:value="${funcionario.senha}" readonly>
                         </div>
                         <div class="col-12 mt-3 text-center">
                             <button type="submit" class="btn btn-primary w-50"> 
                                 <i class="bi bi-floppy-fill"></i>
-                                Guardar alterações
+                                Sair
                             </button>
                         </div>
                     </div>
