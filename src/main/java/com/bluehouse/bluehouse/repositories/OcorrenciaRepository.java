@@ -4,8 +4,8 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.bluehouse.bluehouse.entities.Ocorrencia;
+import com.bluehouse.bluehouse.models.OcorrenciaModel;
 
-public interface OcorrenciaRepository extends JpaRepository<Ocorrencia, UUID>{
+public interface OcorrenciaRepository extends JpaRepository<OcorrenciaModel, UUID>{
     
 }

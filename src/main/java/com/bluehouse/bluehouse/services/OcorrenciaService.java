@@ -4,13 +4,13 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
-import com.bluehouse.bluehouse.entities.Ocorrencia;
+import com.bluehouse.bluehouse.models.OcorrenciaModel;
 
 @Service
-public class OcorrenciaService extends AbstractService<Ocorrencia, UUID> {
+public class OcorrenciaService extends AbstractService<OcorrenciaModel, UUID> {
     @Override
-    public Ocorrencia editar(UUID id, Ocorrencia entidade) {
-        entidade.setIdOcorrencia(id);
+    public OcorrenciaModel editar(UUID id, OcorrenciaModel entidade) {
+        //entidade.setIdOcorrencia(id);
         return super.editar(id, entidade); 
     }
 }

@@ -4,13 +4,13 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
-import com.bluehouse.bluehouse.entities.Relatorio;
+import com.bluehouse.bluehouse.models.RelatorioModel;
 
 @Service
-public class RelatorioService extends AbstractService<Relatorio, UUID> {
+public class RelatorioService extends AbstractService<RelatorioModel, UUID> {
     @Override
-    public Relatorio editar(UUID id, Relatorio entidade) {
-        entidade.setIdRelatorio(id);
+    public RelatorioModel editar(UUID id, RelatorioModel entidade) {
+        //entidade.setIdRelatorio(id);
         return super.editar(id, entidade); 
     }
 }
