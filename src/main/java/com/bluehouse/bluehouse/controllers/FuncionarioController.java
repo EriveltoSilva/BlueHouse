@@ -3,10 +3,8 @@ package com.bluehouse.bluehouse.controllers;
 import com.bluehouse.bluehouse.models.FuncionarioModel;
 import com.bluehouse.bluehouse.services.FuncionarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+
 
 @Controller
 @RequestMapping("/funcionarios")
@@ -54,6 +53,13 @@ public class FuncionarioController {
             return "redirect:/funcionarios/listar";
         }
     }
+    
+    @PostMapping("/editar/{id}")
+    public String editarFuncionarios(@PathVariable("id") UUID id, FuncionarioModel editFuncionarioModel ) {
+
+        funcionarioService.editar(editFuncionarioModel);
+        return "redirect:/funcionarios/listar";
+    }
 
     @GetMapping("/detalhes/{id}")
     public String detalhesFuncionario(@PathVariable("id") UUID id, Model model) {
@@ -62,21 +68,9 @@ public class FuncionarioController {
         return "funcionarios/detalhes-funcionario";
     }
 
-    @PostMapping("/editar/{id}")
-    public String editarFuncionarios(@PathVariable("id") UUID id, FuncionarioModel editFuncionarioModel ) {
-
-        funcionarioService.editar(editFuncionarioModel);
+    @GetMapping("/eliminar/{id}")
+    public String eliminarFuncionario(@PathVariable("id") UUID id) {
+        funcionarioService.eliminar(id);
         return "redirect:/funcionarios/listar";
-    }
-
-    @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<String> eliminarFuncionario(@PathVariable("id") UUID id) {
-        FuncionarioModel funcionario = funcionarioService.eliminar(id);
-
-        if (funcionario != null) {
-            return ResponseEntity.ok("Funcionário excluído com sucesso");
-        } else {
-            return ResponseEntity.notFound().build();
-        }
     }
 }

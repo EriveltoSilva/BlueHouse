@@ -1,16 +1,15 @@
 package com.bluehouse.bluehouse.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bluehouse.bluehouse.models.DetentoModel;
+import com.bluehouse.bluehouse.models.FuncionarioModel;
 import com.bluehouse.bluehouse.services.DetentoService;
 
 import java.util.List;
@@ -60,24 +59,19 @@ public class DetentoController {
     public String editarFuncionarios(@PathVariable("id") UUID id, DetentoModel editDetentoModel ) {
 
         detentoService.editar(editDetentoModel);
-        return "redirect:/funcionarios/listar";
+        return "redirect:/detentos/listar";
     }
 
-    @GetMapping("/obter/{id}")
-    public String obterFuncionario(@PathVariable("id") UUID id, Model model) {
+    @GetMapping("/detalhes/{id}")
+    public String detalhesDetentoForm(@PathVariable("id") UUID id, Model model) {
         Optional<DetentoModel> detento = detentoService.obterDetentoModel(id);
-        model.addAttribute("detento", detento.orElse(new DetentoModel()));  // Usando orElse para evitar null
-        return "detentos/editar-detento";
+        model.addAttribute("detento", detento.orElse(new DetentoModel()));
+        return "detentos/detalhes-detento";
     }
 
-    @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<String> eliminarFuncionario(@PathVariable("id") UUID id) {
-        DetentoModel detento = detentoService.eliminar(id);
-
-        if (detento != null) {
-            return ResponseEntity.ok("Detento excluído com sucesso");
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    @GetMapping("/eliminar/{id}")
+    public String eliminarDetento(@PathVariable("id") UUID id) {
+        detentoService.eliminar(id);
+        return "redirect:/detentos/listar";
     }
 }

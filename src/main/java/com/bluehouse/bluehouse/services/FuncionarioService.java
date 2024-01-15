@@ -34,12 +34,8 @@ public class FuncionarioService {
         return funcionarioRepository.findById(id);
     }
 
-    public FuncionarioModel eliminar( UUID id ) 
+    public void eliminar( UUID id ) 
     {
-        Optional<FuncionarioModel> eliminarFuncionario = obterFuncionarioModel(id);
-        if ( eliminarFuncionario.isEmpty() )
-            return eliminarFuncionario.orElse(null);
-        funcionarioRepository.deleteById(id);
-        return eliminarFuncionario.get();
+        funcionarioRepository.deleteById(id);;
     }
 }

@@ -2,6 +2,7 @@ package com.bluehouse.bluehouse.repositories;
 
 import com.bluehouse.bluehouse.models.FuncionarioModel;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;

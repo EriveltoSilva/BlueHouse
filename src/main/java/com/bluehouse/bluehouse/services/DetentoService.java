@@ -33,12 +33,8 @@ public class DetentoService{
         return detentoRepository.findById(id);
     }
 
-    public DetentoModel eliminar( UUID id ) 
+    public void eliminar( UUID id ) 
     {
-        Optional<DetentoModel> eliminarDetento = obterDetentoModel(id);
-        if ( eliminarDetento.isEmpty() )
-            return eliminarDetento.orElse(null);
-            detentoRepository.deleteById(id);
-        return eliminarDetento.get();
+        detentoRepository.deleteById(id);;
     }
 }

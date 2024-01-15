@@ -38,7 +38,8 @@
                             <td class="d-lg-inline-flex">
                                 <a title="Detalhes"  th:href="@{'/funcionarios/detalhes/' + ${funcionario.id}}" class="btn btn-primary m-1"><i class="bi bi-eye-fill"></i></a>
                                 <a title="Editar" th:href="@{'/funcionarios/editar/' + ${funcionario.id}}" class="btn btn-primary m-1" ><i class="bi bi-pencil-square"></i></a>
-                                <button title="Eliminar"  th:href="@{'/funcionarios/eliminar/' + ${funcionario.id}}"  type="submit" class="btn btn-primary m-1"><i class="bi bi-trash"></i></button>
+                                <!--<button title="Eliminar"  th:href="@{'/funcionarios/eliminar/' + ${funcionario.id}}"  type="submit" class="btn btn-primary m-1"><i class="bi bi-trash"></i></button>-->
+                                <a title="Eliminar" th:href="@{'/funcionarios/eliminar/' + ${funcionario.id}}" class="btn btn-primary m-1" onclick="return confirm('Tem certeza de que deseja excluir?');"><i class="bi bi-trash"></i></a>
                             </td>
                         </tr>
                     </tbody>
