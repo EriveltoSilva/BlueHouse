@@ -1,0 +1,53 @@
+<div th:replace="fragmentos/_top"></div>
+
+<main>
+    <div class="container-fluid pt-4 px-4">
+        <h1>Lista de Funcionários</h1>
+        <div class="bg-secondary text-center rounded p-4">
+            <div class="d-flex align-items-center justify-content-between mb-4 ">
+                <h3 class="mb-0  text-primary">Funcionários</h3>
+                <a th:href="@{/funcionarios/cadastrar}" class="btn btn-primary">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    Adicionar Funcionário
+                </a>
+            </div>
+            <div class="table-responsive">
+                <table class="table text-start align-middle table-bordered table-hover mb-0">
+                    <thead>
+                        <tr class="text-white">
+                            <th scope="col">#</th>
+                            <th scope="col">Nome Completo</th>
+                            <th scope="col">BI</th>
+                            <th scope="col">Cargo</th>
+                            <th scope="col">Departamento</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Acções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:if="${funcionarios.empty}">
+                            <td colspan="3">Não existem pacientes.</td>
+                        </tr>
+                        <tr th:each="funcionario : ${funcionarios}">
+                            <td scope="row">#</span></td>
+                            <td><span th:text="${funcionario.nomeCompleto}"></span></td>
+                            <td><span th:text="${funcionario.bi}"></span></td>
+                            <td><span th:text="${funcionario.cargo}"></span></td>
+                            <td><span th:text="${funcionario.departamento}"></span></td>
+                            <td><span th:text="${funcionario.email}"></span></td>
+                            <td class="d-lg-inline-flex">
+                                <a title="Detalhes" href="#" class="btn btn-primary m-1"><i class="bi bi-eye-fill"></i></a>
+                                <a title="Editar" href="#" class="btn btn-primary m-1" ><i class="bi bi-pencil-square"></i></a>
+                                <button title="Eliminar" type="button" class="btn btn-primary m-1"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+<div th:replace="fragmentos/_bottom"></div>
