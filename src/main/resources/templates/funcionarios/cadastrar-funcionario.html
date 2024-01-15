@@ -10,11 +10,11 @@
             </div>
 
             <div>
-                <form method="post">
+                <form th:action="@{/funcionarios/cadastrar}"  method="post">
                     <div class="row justify-content-end text-start">
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
-                            <label for="nome">Nome Completo:</label>
-                            <input type="text" name="nome" id="nome" class="form-control">
+                            <label for="nomeCompleto">Nome Completo:</label>
+                            <input type="text" name="nomeCompleto" id="nomeCompleto" class="form-control">
                         </div>
                         
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
@@ -33,8 +33,8 @@
                         </div>
 
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
-                            <label for="telefone">Contacto:</label>
-                            <input type="tel" name="telefone" id="telefone" class="form-control">
+                            <label for="contacto">Contacto:</label>
+                            <input type="tel" name="contacto" id="contacto" class="form-control">
                         </div>
                         
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
@@ -47,7 +47,7 @@
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="departamento">Departamento:</label>
                             <select name="departamento" id="departamento" class="form-select">
-                                <option value="Dep. IT">Departamento de IT</option>
+                                <option value="Dep. IT" selected>Departamento de IT</option>
                                 <option value="Dep. Financeiro">Departamento Financeiro</option>
                             </select>
                         </div>
@@ -55,7 +55,7 @@
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="cargo">Cargo:</label>
                             <select name="cargo" id="cargo" class="form-select">
-                                <option value="Piquete">Piquete</option>
+                                <option value="Piquete" selected>Piquete</option>
                                 <option value="Patrulheiro">Patrulheiro</option>
                             </select>
                         </div>
