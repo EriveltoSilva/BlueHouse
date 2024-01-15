@@ -4,8 +4,8 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.bluehouse.bluehouse.entities.Detento;
+import com.bluehouse.bluehouse.models.DetentoModel;
 
-public interface DetentoRepository extends JpaRepository<Detento, UUID>{
+public interface DetentoRepository extends JpaRepository<DetentoModel, UUID>{
     
 }

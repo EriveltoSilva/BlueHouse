@@ -4,26 +4,36 @@
 
             <!-- Form Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row g-4 col-sm-12">
-                    <div class="bg-secondary rounded h-100 p-4">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput"
-                                placeholder="belger">
-                            <label for="floatingInput">Nome do Posto</label>
-                        </div>
-                    
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput"
-                                placeholder="belger">
-                            <label for="floatingInput">Localização</label>
-                        </div>
-                        
-                        <div class="form-floating">
-                            <textarea class="form-control" placeholder="Descreva o que ocorreu"
-                                id="floatingTextarea" style="height: 150px;"></textarea>
-                            <label for="floatingTextarea">Descrição</label>
-                        </div>
-                        <button type="button" class="btn btn-primary rounded-pill m-2">Cadastrar Posto</button>
+                <h1>Cadastrar Posto Policial</h1>
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4 border-bottom">
+                        <h3 class="mb-0 text-primary">Novos Postos</h3>
+                    </div>
+                    <div>
+                        <form th:action="@{/postos/cadastrar}"  method="post">
+                            <div class="row justify-content-end text-start">
+                                <div class="col-4 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                    <label for="nomePosto">Nome do Posto:</label>
+                                    <input type="text" name="nomePosto" id="nomePosto" class="form-control">                                
+                                </div>
+                            
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                    <label for="localizacao">Localização</label>
+                                    <input type="text" name="localizacao" id="localizacao" class="form-control">
+                                </div>
+                                
+                                <div class="col-12 mt-3 ">
+                                    <label for="descricao">Descrição</label>
+                                    <textarea class="form-control" name="descricao" id="descricao" placeholder="Descreva o que ocorreu" style="height: 150px;"></textarea>
+                                </div>
+                                <div class="col-12 mt-3 text-center">
+                                    <button type="submit" class="btn btn-primary w-50"> 
+                                        <i class="bi bi-floppy-fill"></i>
+                                        Salvar Posto
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div> 
             </div>

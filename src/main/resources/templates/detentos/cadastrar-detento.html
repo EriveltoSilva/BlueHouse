@@ -9,11 +9,11 @@
             </div>
 
             <div>
-                <form method="post">
+                <form th:action="@{/detentos/cadastrar}" method="post">
                     <div class="row justify-content-end text-start">
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
-                            <label for="nome">Nome:</label>
-                            <input type="text" name="nome" id="nome" class="form-control">
+                            <label for="nomeCompleto">Nome:</label>
+                            <input type="text" name="nomeCompleto" id="nomeCompleto" class="form-control">
                         </div>
                         
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
@@ -40,8 +40,8 @@
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="genero">Gênero:</label>
                             <select name="genero" id="genero" class="form-select">
-                                <option value="MASCULINO">Masculino</option>
-                                <option value="FEMENINO">Femenino</option>
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
                             </select>
                         </div>
 
@@ -69,12 +69,12 @@
                             <input type="email" name="email" id="email" class="form-control">
                         </div>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
-                            <label for="telefone">Contacto:</label>
-                            <input type="tel" name="telefone" id="telefone" class="form-control">
+                            <label for="contacto">Contacto:</label>
+                            <input type="tel" name="contacto" id="contacto" class="form-control">
                         </div>
                         
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
-                            <label for="telefone">Observação(pontos particulares):</label>
+                            <label for="observacao">Observação(pontos particulares):</label>
                             <textarea name="observacao" id="observacao" cols="30" rows="10" class="form-control" placeholder="Descreva algum ponto incomum, único ou que se destaque no detento."></textarea>
                         </div>
 
