@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,19 +29,22 @@ public class FuncionarioController {
 
     /* Rotas Simples - Retorno de Páginas */
     @GetMapping("/cadastrar")
-    public String formCadastrarFuncionario() {
+    public String formCadastrarFuncionario(Model model) {
+        model.addAttribute("funcionario", new FuncionarioModel());
         return "funcionarios/cadastrar-funcionario";
     }
 
     @PostMapping("/cadastrar")
-    public String cadastrarFuncionario(@Valid FuncionarioModel funcionario, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
-            // Se houver erros de validação, retornar para o formulário com as mensagens de erro
+    public String cadastrarFuncionario(@Valid @ModelAttribute ("funcionario") FuncionarioModel funcionario, BindingResult bResult, Model model) {
+        if(bResult.hasErrors())
+        {
+            model.addAttribute("funcionario", funcionario);
             return "funcionarios/cadastrar-funcionario";
         }
-
-        funcionarioService.criar(funcionario);
-        return "redirect:/funcionarios/listar";
+        else {
+            funcionarioService.criar(funcionario);
+            return "redirect:/funcionarios/listar";
+        }
     }
 
     @GetMapping("/listar")

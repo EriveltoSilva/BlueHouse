@@ -20,7 +20,7 @@
     <ol>Login</ol>
     <ol>Logout</ol>
     <ol>Detalhes - Feito</ol>
-    <ol>Eliminar nos cruds</ol>
+    <ol>Eliminar nos cruds - Feito</ol>
     <ol>Refazer Forms de ocorrências</ol>
     <ol>Implementrar CRUD de Ocorrências</ol>
     <ol>Mensagens de aviso, erro, sucesso</ol>

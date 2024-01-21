@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -29,6 +30,7 @@ public class PessoaModel implements Serializable {
     @GeneratedValue
     private UUID id;
     
+    @Size(min=4, max=20)
     @NotBlank(message = "O nome não pode estar em branco")
     private String nomeCompleto;
 
@@ -41,6 +43,7 @@ public class PessoaModel implements Serializable {
     @Pattern(regexp = "\\d{12}", message = "O BI deve conter 12 dígitos")
     private String bi;
 
+    @Size(min=4, max=30)
     @NotBlank(message = "O endereço não pode estar em branco")
     private String endereco;
 
@@ -50,5 +53,4 @@ public class PessoaModel implements Serializable {
 
     @NotBlank(message = "O género não pode estar em branco")
     private String genero;
-
 }

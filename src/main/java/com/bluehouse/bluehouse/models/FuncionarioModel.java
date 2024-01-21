@@ -25,9 +25,9 @@ public class FuncionarioModel  extends PessoaModel{
     private String departamento;
 
     @Email(message = "O email deve ser válido")
-    @NotBlank(message = "O email não pode estar em branco")
+    @NotBlank
     private String email;
 
-    @Size(min = 6, message = "A senha deve ter pelo menos 6 caracteres")
+    @Size(min = 6, max = 15, message = "A senha deve ter pelo menos 6 caracteres")
     private String senha;
 }

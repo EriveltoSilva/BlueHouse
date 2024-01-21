@@ -10,32 +10,37 @@
             </div>
 
             <div>
-                <form th:action="@{/funcionarios/cadastrar}"  method="post">
+                <form th:action="@{/funcionarios/cadastrar}" th:object="${funcionario}"  method="post">
                     
                     <div class="row justify-content-end text-start">
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="nomeCompleto">Nome Completo:</label>
-                            <input type="text" name="nomeCompleto" id="nomeCompleto" class="form-control">
+                            <input type="text" name="nomeCompleto" id="nomeCompleto" class="form-control" th:field="*{nomeCompleto}"/>
+                            <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('nomeCompleto')}" th:errors="*{nomeCompleto}" th:text="*{nomeCompleto}"></span>
                         </div>
                         
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="dataNascimento">Data de Nascimento</label>
-                            <input type="date" name="dataNascimento" id="dataNascimento" class="form-control">
+                            <input type="date" name="dataNascimento" id="dataNascimento" class="form-control" th:field="*{dataNascimento}">
+                            <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}"></span>
                         </div>
 
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="bi">Nº do BI:</label>
                             <input type="text" name="bi" id="bi" class="form-control">
+                            <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('bi')}" th:errors="*{bi}"></span>
                         </div>
 
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="endereco">Endereço:</label>
                             <input type="text" name="endereco" id="endereco" class="form-control">
+                            <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('endereco')}" th:errors="*{endereco}"></span>
                         </div>
 
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="contacto">Contacto:</label>
-                            <input type="tel" name="contacto" id="contacto" class="form-control">
+                            <input type="tel" name="contacto" id="contacto" class="form-control" pattern="[0-9]+" title="Apenas números são permitidos">
+                            <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('contacto')}" th:errors="*{contacto}"></span>
                         </div>
                         
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
@@ -44,6 +49,7 @@
                                 <option value="M">Masculino</option>
                                 <option value="F">Femenino</option>
                             </select>
+                            <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></span>
                         </div>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="departamento">Departamento:</label>
@@ -51,6 +57,7 @@
                                 <option value="Dep. IT" selected>Departamento de IT</option>
                                 <option value="Dep. Financeiro">Departamento Financeiro</option>
                             </select>
+                            <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('departamento')}" th:errors="*{departamento}"></span>
                         </div>
                         
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
@@ -59,16 +66,19 @@
                                 <option value="Piquete" selected>Piquete</option>
                                 <option value="Patrulheiro">Patrulheiro</option>
                             </select>
+                            <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('cargo')}" th:errors="*{cargo}"></span>
                         </div>
 
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="email">Email:</label>
                             <input type="email" name="email" id="email" class="form-control">
+                            <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
                         </div>
 
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="senha">Senha:</label>
                             <input type="password" name="senha" id="senha" class="form-control">
+                            <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"></span>
                         </div>
                         <div class="col-12 mt-3 text-center">
                             <button type="submit" class="btn btn-primary w-50"> 
