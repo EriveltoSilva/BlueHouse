@@ -66,6 +66,14 @@
                                 <option value="Piquete" selected>Piquete</option>
                                 <option value="Patrulheiro">Patrulheiro</option>
                             </select>
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                <label for="role">Tipo de Usuário:</label>
+                                    <select name="role" id="role" class="form-select">
+                                        <option value="USER" selected>Usuário Normal</option>
+                                        <option value="ADMIN">Administrador</option>
+                                    </select>
+                                <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></span>
+                            </div>
                             <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('cargo')}" th:errors="*{cargo}"></span>
                         </div>
 

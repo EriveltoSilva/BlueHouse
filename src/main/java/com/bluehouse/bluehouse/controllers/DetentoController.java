@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bluehouse.bluehouse.models.DetentoModel;
-import com.bluehouse.bluehouse.models.FuncionarioModel;
 import com.bluehouse.bluehouse.services.DetentoService;
 
 import java.util.List;

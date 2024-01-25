@@ -18,9 +18,7 @@ public class DetentoModel  extends PessoaModel {
     private String nacionalidade;
     private String raca;
     private String estadoCivil;
-
-    @Min(1)
-    @Max(5/2)
+    
     private String altura;
     private String email;
     private String observacao;

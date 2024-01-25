@@ -69,6 +69,7 @@
                             Dashboards</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="#" class="dropdown-item">Funcionários</a>
+                            <a href="#" class="dropdown-item">Medidas Disciplinares</a>
                             <a href="#" class="dropdown-item">Detentos</a>
                             <a href="#" class="dropdown-item">Ocorrências</a>
                             <a href="#" class="dropdown-item">Postos</a>
@@ -84,6 +85,16 @@
                         <div class="dropdown-menu bg-transparent border-0">
                             <a th:href="@{/funcionarios/cadastrar}" class="dropdown-item">Cadastrar</a>
                             <a th:href="@{/funcionarios/listar}" class="dropdown-item">Listar</a>
+                        </div>
+                    </div>
+
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="bi bi-people-fill"></i>
+                            Ger.Medidas Disciplinares</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a th:href="@{/medidasDisciplinares/registrar}" class="dropdown-item">Cadastrar</a>
+                            <a th:href="@{/medidasDisciplinares/listar}" class="dropdown-item">Listar</a>
                         </div>
                     </div>
 

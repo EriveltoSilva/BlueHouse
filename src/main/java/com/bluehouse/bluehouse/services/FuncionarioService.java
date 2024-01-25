@@ -5,6 +5,10 @@ import com.bluehouse.bluehouse.repositories.FuncionarioRepository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,11 +17,13 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class FuncionarioService {
+public class FuncionarioService implements UserDetailsService{
+    
     @Autowired
-    private FuncionarioRepository funcionarioRepository;
+    private final FuncionarioRepository funcionarioRepository;
 
     public FuncionarioModel criar(FuncionarioModel novoFuncionario) {
+        novoFuncionario.setPassword(new BCryptPasswordEncoder().encode(novoFuncionario.getPassword()));
         return funcionarioRepository.save(novoFuncionario);
     }
 
@@ -38,4 +44,17 @@ public class FuncionarioService {
     {
         funcionarioRepository.deleteById(id);;
     }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        UserDetails user = funcionarioRepository.findByEmail(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("Usuário não encontrado: " + username);
+        }
+        return user;
+    }
+
+    /*public List<FuncionarioModel> obterTodosFuncionariosExcetoAdmin() {
+        return funcionarioRepository.findByRoleNot("admin");
+    }*/
 }
