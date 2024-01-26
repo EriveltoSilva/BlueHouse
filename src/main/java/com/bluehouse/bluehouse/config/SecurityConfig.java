@@ -34,9 +34,16 @@ public class SecurityConfig {
                                 .requestMatchers("/").hasAnyAuthority("admin", "user")
                                 .requestMatchers("/funcionarios/**").hasAnyAuthority("admin")
                                 .requestMatchers("/medidasDisciplinares/**").hasAnyAuthority("admin")
-                                .anyRequest().authenticated())
-                                .userDetailsService(funcionarioService)
-                                .build();
+                                .anyRequest().authenticated()
+                )
+                .userDetailsService(funcionarioService)
+                .logout(logout -> logout
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/autenticacao/login")
+                    .invalidateHttpSession(true)
+                    .deleteCookies("JSESSIONID")
+                )
+                .build();
     }
     
     @Bean
