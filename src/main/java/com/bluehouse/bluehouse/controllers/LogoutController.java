@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class LogoutController {
+    
     @GetMapping("/logout")
     public String logout() {
         return "redirect:/autenticacao/login";

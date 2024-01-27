@@ -5,6 +5,8 @@ import com.bluehouse.bluehouse.repositories.FuncionarioRepository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -51,6 +53,7 @@ public class FuncionarioService implements UserDetailsService{
         if (user == null) {
             throw new UsernameNotFoundException("Usuário não encontrado: " + username);
         }
+        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities()));
         return user;
     }
 
