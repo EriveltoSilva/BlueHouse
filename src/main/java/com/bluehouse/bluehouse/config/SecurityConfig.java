@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.header.writers.CacheControlHeadersWriter;
 
 import com.bluehouse.bluehouse.services.FuncionarioService;
 
@@ -34,6 +35,11 @@ public class SecurityConfig {
                                 .requestMatchers("/").hasAnyAuthority("admin", "user")
                                 .requestMatchers("/funcionarios/**").hasAnyAuthority("admin")
                                 .requestMatchers("/medidasDisciplinares/**").hasAnyAuthority("admin")
+                                .requestMatchers("/ocorrencias/**").hasAnyAuthority("admin", "user")
+                                .requestMatchers("/postos/**").hasAnyAuthority("admin", "user")
+                                .requestMatchers("/horarios/**").hasAnyAuthority("admin", "user")
+                                .requestMatchers("/detentos/**").hasAnyAuthority("admin", "user")
+                                .requestMatchers("/relatorios/**").hasAnyAuthority("admin", "user")
                                 .anyRequest().authenticated()
                 )
                 .userDetailsService(funcionarioService)
@@ -41,7 +47,13 @@ public class SecurityConfig {
                     .logoutUrl("/logout")
                     .logoutSuccessUrl("/autenticacao/login")
                     .invalidateHttpSession(true)
+                    .clearAuthentication(true)
                     .deleteCookies("JSESSIONID")
+                    .addLogoutHandler((request, response, authentication) -> {
+                        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+                        response.setHeader("Pragma", "no-cache");
+                        response.setHeader("Expires", "0");
+                    })
                 )
                 .build();
     }
