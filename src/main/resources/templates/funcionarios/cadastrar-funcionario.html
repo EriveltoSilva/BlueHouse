@@ -3,10 +3,10 @@
 <main>
     
     <div class="container-fluid pt-4 px-4">
-        <h1>Cadastrar funcionários</h1>
-        <div class="bg-secondary text-center rounded p-4">
+        <h1 class="text-bg-secondary">Cadastrar funcionário</h1>
+        <div class="shadow p-3 mb-5 bg-white rounded text-center">
             <div class="d-flex align-items-center justify-content-between mb-4 border-bottom">
-                <h3 class="mb-0 text-primary">Novos funcionário</h3>
+                <h3 class="mb-0 text-bg-secondary">Novo funcionário</h3>
             </div>
 
             <div>
@@ -15,7 +15,7 @@
                     <div class="row justify-content-end text-start">
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="nomeCompleto">Nome Completo:</label>
-                            <input type="text" name="nomeCompleto" id="nomeCompleto" class="form-control" th:field="*{nomeCompleto}"/>
+                            <input type="text" name="nomeCompleto" id="nomeCompleto" class="form-control" th:field="*{nomeCompleto}" placeholder="Digite o teu nome"/>
                             <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('nomeCompleto')}" th:errors="*{nomeCompleto}" th:text="*{nomeCompleto}"></span>
                         </div>
                         
@@ -27,19 +27,19 @@
 
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="bi">Nº do BI:</label>
-                            <input type="text" name="bi" id="bi" class="form-control">
+                            <input type="text" name="bi" id="bi" class="form-control" placeholder="Digite o numero do bilhete">
                             <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('bi')}" th:errors="*{bi}"></span>
                         </div>
 
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="endereco">Endereço:</label>
-                            <input type="text" name="endereco" id="endereco" class="form-control">
+                            <input type="text" name="endereco" id="endereco" class="form-control" placeholder="Digite o teu endereço">
                             <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('endereco')}" th:errors="*{endereco}"></span>
                         </div>
 
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="contacto">Contacto:</label>
-                            <input type="tel" name="contacto" id="contacto" class="form-control" pattern="[0-9]+" title="Apenas números são permitidos">
+                            <input type="tel" name="contacto" id="contacto" class="form-control" placeholder="Digite o teu numero de telefone" pattern="[0-9]+" title="Apenas números são permitidos">
                             <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('contacto')}" th:errors="*{contacto}"></span>
                         </div>
                         
@@ -66,33 +66,35 @@
                                 <option value="Piquete" selected>Piquete</option>
                                 <option value="Patrulheiro">Patrulheiro</option>
                             </select>
-                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
-                                <label for="role">Tipo de Usuário:</label>
-                                    <select name="role" id="role" class="form-select">
-                                        <option value="USER" selected>Usuário Normal</option>
-                                        <option value="ADMIN">Administrador</option>
-                                    </select>
-                                <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></span>
-                            </div>
                             <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('cargo')}" th:errors="*{cargo}"></span>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-3">
+                            <label for="role">Tipo de Usuário:</label>
+                                <select name="role" id="role" class="form-select">
+                                    <option value="USER" selected>Usuário Normal</option>
+                                    <option value="ADMIN">Administrador</option>
+                                </select>
+                            <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></span>
                         </div>
 
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="email">Email:</label>
-                            <input type="email" name="email" id="email" class="form-control">
+                            <input type="email" name="email" id="email" class="form-control" placeholder="Digite o teu email">
                             <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
                         </div>
 
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="senha">Senha:</label>
-                            <input type="password" name="senha" id="senha" class="form-control">
+                            <input type="password" name="senha" id="senha" class="form-control" placeholder="Digite a tua senha">
                             <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"></span>
                         </div>
-                        <div class="col-12 mt-3 text-center">
-                            <button type="submit" class="btn btn-primary w-50"> 
-                                <i class="bi bi-floppy-fill"></i>
-                                Salvar Registro
-                            </button>
+                        <div class="col-12 mt-lg-4 mb-lg-4 text-center">
+                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-floppy-fill"></i>
+                                    Cadastrar Funcionário</button>
+                                    <a th:href="@{/funcionarios/listar}" class="btn btn-danger">Cancelar Cadastro</a>
+                            </div>
                         </div>
                         
                     </div>

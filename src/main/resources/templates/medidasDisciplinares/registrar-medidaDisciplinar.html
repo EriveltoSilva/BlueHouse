@@ -3,10 +3,10 @@
 <main>
     
     <div class="container-fluid pt-4 px-4">
-        <h1>Registrar Medidas Disciplinares</h1>
-        <div class="bg-secondary text-center rounded p-4">
+        <h1 class="text-bg-secondary">Registrar Medidas Disciplinares</h1>
+        <div class="shadow p-3 mb-5 bg-white rounded text-center">
             <div class="d-flex align-items-center justify-content-between mb-4 border-bottom">
-                <h3 class="mb-0 text-primary">Novos funcionário</h3>
+                <h3 class="mb-0 text-bg-secondary">Novos funcionário</h3>
             </div>
 
             <div>
@@ -40,22 +40,24 @@
                             <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('dataInicio')}" th:errors="*{dataInicio}"></span>
                         </div>
 
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-3">
                             <label for="dataTermino">Data da Fim:</label>
                             <input type="date" name="dataTermino" id="dataTermino" class="form-control" th:field="*{dataTermino}">
                             <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('dataTermino')}" th:errors="*{dataTermino}"></span>
                         </div>
 
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-3">
                             <label for="observacoes">Notas:</label>
                             <textarea name="observacoes" id="observacoes" cols="30" rows="10" class="form-control" placeholder="Adiciona uma nota"></textarea>
                         </div>
                         
-                        <div class="col-12 mt-3 text-center">
-                            <button type="submit" class="btn btn-primary w-50"> 
-                                <i class="bi bi-floppy-fill"></i>
-                                Salvar Registro
-                            </button>
+                        <div class="col-12 mt-lg-4 mb-lg-4 text-center">
+                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-floppy-fill"></i>
+                                    Cadastrar Medida</button>
+                                    <a th:href="@{/funcionarios/listar}" class="btn btn-danger">Cancelar Cadastro</a>
+                            </div>
                         </div>
                         
                     </div>

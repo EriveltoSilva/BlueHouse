@@ -4,33 +4,35 @@
 
             <!-- Form Start -->
             <div class="container-fluid pt-4 px-4">
-                <h1>Cadastrar Posto Policial</h1>
-                <div class="bg-secondary text-center rounded p-4">
+                <h1 class="text-bg-secondary">Cadastrar Posto Policial</h1>
+                <div class="shadow p-3 mb-5 bg-white rounded text-center">
                     <div class="d-flex align-items-center justify-content-between mb-4 border-bottom">
-                        <h3 class="mb-0 text-primary">Novos Postos</h3>
+                        <h3 class="mb-0 text-bg-secondary">Novos Postos</h3>
                     </div>
                     <div>
                         <form th:action="@{/postos/cadastrar}"  method="post">
                             <div class="row justify-content-end text-start">
                                 <div class="col-4 col-sm-6 col-md-6 col-lg-6 mt-3">
                                     <label for="nomePosto">Nome do Posto:</label>
-                                    <input type="text" name="nomePosto" id="nomePosto" class="form-control">                                
+                                    <input type="text" name="nomePosto" id="nomePosto" class="form-control" placeholder="Digite o nome do posto">                                
                                 </div>
                             
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                                     <label for="localizacao">Localização</label>
-                                    <input type="text" name="localizacao" id="localizacao" class="form-control">
+                                    <input type="text" name="localizacao" id="localizacao" class="form-control" placeholder="Digite a localização do Posto">
                                 </div>
                                 
                                 <div class="col-12 mt-3 ">
                                     <label for="descricao">Descrição</label>
                                     <textarea class="form-control" name="descricao" id="descricao" placeholder="Descreva o que ocorreu" style="height: 150px;"></textarea>
                                 </div>
-                                <div class="col-12 mt-3 text-center">
-                                    <button type="submit" class="btn btn-primary w-50"> 
-                                        <i class="bi bi-floppy-fill"></i>
-                                        Salvar Posto
-                                    </button>
+                                <div class="col-12 mt-lg-4 mb-lg-4 text-center">
+                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="bi bi-floppy-fill"></i>
+                                            Cadastrar Posto</button>
+                                            <a th:href="@{/funcionarios/listar}" class="btn btn-danger">Cancelar Cadastro</a>
+                                    </div>
                                 </div>
                             </div>
                         </form>

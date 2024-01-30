@@ -60,8 +60,8 @@
 
 
     // Chart Global Color
-    Chart.defaults.color = "#6C7293";
-    Chart.defaults.borderColor = "#000000";
+    Chart.defaults.color = "#ffff";
+    Chart.defaults.borderColor = "#ffff";
 
 
     // Worldwide Sales Chart

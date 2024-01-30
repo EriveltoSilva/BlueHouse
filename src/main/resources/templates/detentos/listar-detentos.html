@@ -2,10 +2,10 @@
 
 <main>
     <div class="container-fluid pt-4 px-4">
-        <h1>Lista de Detentos</h1>
-        <div class="bg-secondary text-center rounded p-4">
+        <h1 class="text-bg-secondary">Lista de Detentos</h1>
+        <div class="shadow p-3 mb-5 bg-white rounded text-center">
             <div class="d-flex align-items-center justify-content-between mb-4 ">
-                <h3 class="mb-0  text-primary">Detentos</h3>
+                <h3 class="mb-0 text-bg-secondary">Detentos</h3>
                 <a th:href="@{/detentos/cadastrar}" class="btn btn-primary">
                     <i class="bi bi-plus-circle-fill"></i>
                     Cadastrar Detento
@@ -14,7 +14,7 @@
             <div class="table-responsive">
                 <table class="table text-start  table-bordered table-hover mb-0">
                     <thead>
-                        <tr class="text-white">
+                        <tr class="text-bg-secondary">
                             <th scope="col">#</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Endereco</th>

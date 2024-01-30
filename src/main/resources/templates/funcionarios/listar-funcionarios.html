@@ -2,10 +2,10 @@
 
 <main>
     <div class="container-fluid pt-4 px-4">
-        <h1>Lista de Funcionários</h1>
-        <div class="bg-secondary text-center rounded p-4">
+        <h1 class="text-bg-secondary">Lista de Funcionários</h1>
+        <div class="shadow p-3 mb-5 bg-white rounded text-center">
             <div class="d-flex align-items-center justify-content-between mb-4 ">
-                <h3 class="mb-0  text-primary">Funcionários</h3>
+                <h3 class="mb-0  text-bg-secondary">Funcionários</h3>
                 <a th:href="@{/funcionarios/cadastrar}" class="btn btn-primary">
                     <i class="bi bi-plus-circle-fill"></i>
                     Adicionar Funcionário
@@ -14,7 +14,7 @@
             <div class="table-responsive">
                 <table class="table text-start align-middle table-bordered table-hover mb-0">
                     <thead>
-                        <tr class="text-white">
+                        <tr class="text-bg-secondary">
                             <th scope="col">#</th>
                             <th scope="col">Nome Completo</th>
                             <th scope="col">BI</th>
@@ -35,7 +35,7 @@
                             <td><span th:text="${funcionario.cargo}"></span></td>
                             <td><span th:text="${funcionario.departamento}"></span></td>
                             <td><span th:text="${funcionario.email}"></span></td>
-                            <td class="d-lg-inline-flex">
+                            <td >
                                 <a title="Detalhes"  th:href="@{'/funcionarios/detalhes/' + ${funcionario.id}}" class="btn btn-primary m-1"><i class="bi bi-eye-fill"></i></a>
                                 <a title="Editar" th:href="@{'/funcionarios/editar/' + ${funcionario.id}}" class="btn btn-primary m-1" ><i class="bi bi-pencil-square"></i></a>
                                 <!--<button title="Eliminar"  th:href="@{'/funcionarios/eliminar/' + ${funcionario.id}}"  type="submit" class="btn btn-primary m-1"><i class="bi bi-trash"></i></button>-->

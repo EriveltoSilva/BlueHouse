@@ -2,10 +2,10 @@
 
 <main>
     <div class="container-fluid pt-4 px-4">
-        <h1>Lista de Medidas Disciplinares dos Funcionários</h1>
-        <div class="bg-secondary text-center rounded p-4">
+        <h1 class="text-bg-secondary">Lista de Medidas Disciplinares dos Funcionários</h1>
+        <div class="shadow p-3 mb-5 bg-white rounded text-center">
             <div class="d-flex align-items-center justify-content-between mb-4 ">
-                <h3 class="mb-0  text-primary">Medidas Disciplinares</h3>
+                <h3 class="mb-0 text-bg-secondary">Medidas Disciplinares</h3>
                 <a th:href="@{/medidasDisciplinares/registrar}" class="btn btn-primary">
                     <i class="bi bi-plus-circle-fill"></i>
                     Adicionar Medidas Disciplinares
@@ -14,7 +14,7 @@
             <div class="table-responsive">
                 <table class="table text-start align-middle table-bordered table-hover mb-0">
                     <thead>
-                        <tr class="text-white">
+                        <tr class="text-bg-secondary">
                             <th scope="col">#</th>
                             <th scope="col">Nome Completo</th>
                             <th scope="col">Data de Inicio</th>

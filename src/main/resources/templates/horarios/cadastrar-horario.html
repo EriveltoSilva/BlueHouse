@@ -4,8 +4,12 @@
 
             <!-- Form Start -->
             <div class="container-fluid pt-4 px-4">
+                <h1 class="text-bg-secondary">Cadastrar funcionário</h1>
                 <div class="row g-4 col-sm-12">
-                    <div class="bg-secondary rounded h-100 p-4">
+                    <div class="shadow p-3 mb-5 bg-white rounded p-4">
+                        <div class="d-flex align-items-center justify-content-between mb-4 border-bottom">
+                            <h3 class="mb-0 text-bg-secondary">Novo funcionário</h3>
+                        </div>
                         <div class="row">
                             <div class="col form-floating mb-3">
                                 <input type="datetime-local" class="form-control" id="stardDate">
@@ -22,7 +26,14 @@
                                 placeholder="Ex: Id do Funcionário">
                             <label for="floatingInput">Funcionário</label>
                         </div>                      
-                        <button type="button" class="btn btn-primary rounded-pill m-2">Criar horário</button>
+                        <div class="col-12 mt-lg-4 mb-lg-4 text-center">
+                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-floppy-fill"></i>
+                                    Cadastrar Horario</button>
+                                    <a th:href="@{/horarios/listar}" class="btn btn-danger">Cancelar Cadastro</a>
+                            </div>
+                        </div>
                     </div>
                 </div> 
             </div>
