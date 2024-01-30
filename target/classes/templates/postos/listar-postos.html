@@ -1,0 +1,47 @@
+<div th:replace="fragmentos/_top"></div>
+
+<main>
+
+    <!-- Table Start -->
+    <div class="container-fluid pt-4 px-4">
+        <h1 class="text-bg-secondary">Lista de Postos</h1>
+        <div class="shadow p-3 mb-5 bg-white rounded text-center">
+            <div class="d-flex align-items-center justify-content-between mb-4 ">
+                <h3 class="mb-0 text-bg-secondary">Postos Policiais</h3>
+                <a th:href="@{/postos/cadastrar}" class="btn btn-primary">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    Adicionar Posto
+                </a>
+            </div>
+            <div class="table-responsive">
+                <table  class="table text-start align-middle table-bordered table-hover mb-0">
+                    <thead>
+                        <tr class="text-bg-secondary">
+                            <th scope="col">#</th>
+                                    <th scope="col">Nome do Posto</th>
+                                    <th scope="col">Localização</th>
+                                    <th scope="col">Descrição</th>
+                                </tr>
+                     </thead>
+                    <tbody>
+                        <tr th:if="${postos.empty}">
+                            <td colspan="3">Não existem postos nesta esquadra.</td>
+                        </tr>
+                        <tr th:each="posto : ${postos}">
+                            <th scope="row">1</th>
+                            <td><span th:text="${posto.nomePosto}"></span></td>
+                            <td><span th:text="${posto.localizacao}"></span></td>
+                            <td><span th:text="${posto.descricao}"></span></td>
+                        </tr>
+                    </tbody>
+                </table>       
+            </div>
+        </div>
+    </div>
+    <!-- Table End -->
+
+
+</main>
+
+
+<div th:replace="fragmentos/_bottom"></div>

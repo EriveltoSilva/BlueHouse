@@ -1,0 +1,100 @@
+<div th:replace="fragmentos/_top"></div>
+
+<main>
+    <div class="container-fluid pt-4 px-4">
+        <h1 class="text-bg-secondary">Detalhes de Detento <span th:text="${detento.nomeCompleto}"></span></h1>
+        <div class="shadow p-3 mb-5 bg-white rounded text-center">
+            <div class="d-flex align-items-center justify-content-between mb-4 border-bottom">
+                <h3 class="mb-0 text-bg-secondary">Dados do detento </h3>
+            </div>
+
+            <div>
+                <form th:action="@{'/detentos/detalhes/' + ${detento.id}}" method="get">
+                    <div class="row justify-content-end text-start">
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="nome">Nome:</label>
+                            <input type="text" name="nome" id="nome" class="form-control"  th:value="${detento.nomeCompleto}" readonly>
+                        </div>
+                        
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="bi">Nº do BI:</label>
+                            <input type="text" name="bi" id="bi" class="form-control"  th:value="${detento.bi}" readonly>
+                        </div>
+                        
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="dataNascimento">Data de Nascimento</label>
+                            <input type="date" name="dataNascimento" id="dataNascimento" class="form-control" th:value="${#dates.format(detento.dataNascimento, 'yyyy-MM-dd')}" readonly>
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="nacionalidade">Nacionalidade:</label>
+                            <input type="text" name="nacionalidade" id="nacionalidade" class="form-control"  th:value="${detento.nacionalidade}" readonly>
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="endereco">Endereço:</label>
+                            <input type="text" name="endereco" id="endereco" class="form-control"  th:value="${detento.endereco}" readonly>
+                        </div>
+                        
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="nome">Gênero:</label>
+                            <select name="genero" id="genero" class="form-select" disabled>
+                                <option value="MASCULINO" selected>Masculino</option>
+                                <option value="FEMENINO">Femenino</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="raca">Raça:</label>
+                            <select name="raca" id="raca" class="form-select" disabled>
+                                <option value="NEGRA" selected>Negra</option>
+                                <option value="BRANCA">Branca</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="estadoCivil">Estado Civil:</label>
+                            <select name="estadoCivil" id="estadoCivil" class="form-select" disabled>
+                                <option value="SOLTEIRO" selected>Solteiro</option>
+                                <option value="CASADO">Casado</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="altura">Altura(cm):</label>
+                            <input type="number" name="altura" id="altura" class="form-control"  th:value="${detento.altura}" readonly>
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" id="email" class="form-control" th:value="${detento.email}" readonly>
+                        </div>
+                        
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="contacto">Contacto:</label>
+                            <input type="tel" name="contacto" id="contacto" class="form-control"   th:value="${detento.contacto}" readonly>
+                        </div>
+                        
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="telefone">Observação(pontos particulares):</label>
+                            <textarea name="observacao" id="observacao" cols="30" rows="10" class="form-control"  th:value="${detento.observacao}" readonly></textarea>
+                        </div>
+
+                        
+                        <div class="col-12 mt-lg-4 mb-lg-4 text-center">
+                            <a th:href="@{/funcionarios/listar}" class="btn btn-primary w-50">
+                                <i class="bi bi-floppy-fill"></i>
+                                Sair
+                            </a>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+<div th:replace="fragmentos/_bottom"></div>
