@@ -2,5 +2,211 @@
 
 <main>
     <h1 class="text-bg-secondary">Novo Relatório</h1>
+    
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4 border-bottom">
+            <h3 class="mb-0 text-primary">Detalhes da Solicitação</h3>
+            <div class="col-6" id="alertBox">
+                {% include 'partials/_alerts.html' %}
+            </div>
+        </div>
+        <div class="row text-start">
+            <div class="col-lg-3 col-md-6 col-12">
+                <label for="requisitante">Requisitante</label>
+                <input type="text" name="requisitante" id="" class="form-control"
+                    value="{{requisition.requested_by.get_full_name}}" disabled>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-12">
+                <label for="function">Função</label>
+                <input type="text" name="function" id="" class="form-control"
+                    value="{{requisition.requested_by.employee.function}}" disabled>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-12">
+                <label for="codigo">Código</label>
+                <input type="text" name="codigo" id="" class="form-control" value="{{requisition.code}}" disabled>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-12">
+                <label for="estado">Estado</label>
+                <input type="text" name="estado" id="" class="form-control" value="{{requisition.get_status}}" disabled>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-12">
+                <label for="created_at">Data de Criação</label>
+                <input type="text" name="created_at" class="form-control"
+                    value="{{requisition.created_at|date:'d-m-Y'}}" disabled>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4 border-bottom">
+            <h3 class="mb-0 text-primary">Requisição</h3>
+        </div>
+
+        <div>
+            <form action="{% url 'add-req-item' requisition.id %}" method="post">
+                {% csrf_token %}
+                <div class="row justify-content-end text-start">
+                    
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+                        <label for="material_name">Nome do Material:</label>
+                        <div class="dropdown my-search-box">
+                            <input name="name" value="" class="form-control dropdown-toggle " id="productName"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="icon">
+                                <i class="bi bi-chevron-down"></i>
+                            </div>
+                            <ul class="dropdown-menu my-content-box w-100" aria-labelledby="productName">
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+                        <label for="center_cost">Código</label>
+                        <input type="text" name="code" id="code" class="form-control">
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+                        <label for="detail">Detalhes do Material</label>
+                        <textarea name="detail" id="detail" cols="30" rows="1" class="form-control"></textarea>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+                        <label for="center_cost">Custo de Centro</label>
+                        <select name="center_cost" id="center_cost" class="form-select">
+                            {% for center_cost in center_costs %}
+                                <option value="{{center_cost.value}}">{{center_cost.value}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+                        <label for="approximated_value">Preço</label>
+                        <input type="number" name="price" id="price" class="form-control">
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+                        <label for="quantity">Quantidade</label>
+                        <input type="number" name="quantity" id="quantity" class="form-control">
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+                        <label for="" class="w-100" style="visibility: hidden;">Adicionar</label>
+                        <button type="submit" class="btn btn-primary w-100 " id="btnAddItens">
+                            <i class="bi bi-plus"></i>
+                            Adicionar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Items da requisição -->
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h3 class="mb-0 text-primary">Items da requisição</h3>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr class="text-white">
+                        <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Código</th>
+                        <th scope="col">Detalhes</th>
+                        <th scope="col">C.de Centro</th>
+                        <th scope="col">Preço</th>
+                        <th scope="col">Quat.</th>
+                        <th scope="col">Acções</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if items %}
+                    {% for item in items %}
+                    <tr>
+                        <td><input class="form-check-input" type="checkbox"></td>
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.product.code }}</td>
+                        <td>{{ item.product.detail }}</td>
+                        <td>{{ item.product.center_cost }}</td>
+                        <td>{{ item.product.price }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>
+                            <a href="{% url 'delete-req-item' item.id %}" class="btn btn-danger">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="7"><span>Nenhum Item inserido!</span></td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Items da requisição End -->
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h3 class="mb-0 text-primary">Resumo</h3>
+        </div>
+        <div class="row justify-content-between">
+            <div class="col-12 col-sm-12 col-md-4 col-lg-2">
+                <strong>Nº de Itens:</strong><span id="numItems" class="text-primary">{{requisition.get_total_items}} unid</span>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-2">
+                <strong>Quant. Materiais:</strong><span id="quantMaterial" class="text-primary">{{requisition.get_total_materials}}</span>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-2">
+                <strong>Total:</strong><span id="totalMaterial" class="text-primary">{{requisition.get_total_value}}Kz</span>
+            </div>
+        </div>
+
+        
+        <div class="d-flex justify-content-end mt-3">
+            <a href="{% url 'config-material-req' requisition.id %}" class="btn btn-outline-light mx-2">
+                <i class="bi bi-gear"></i>
+                Mais
+            </a>
+            <div class="btn-group mx-2" role="group">
+                <a href="{% url 'ask-verification-material-req' requisition.id %}" class="btn btn-outline-success">
+                    <i class="bi bi-send-plus-fill"></i>
+                    Solicitar Verificação
+                </a>
+                <a href="{% url 'send-notification-material-req' requisition.id %}" class="btn btn-outline-success">
+                    <i class="bi bi-send-plus-fill"></i>
+                    Enviar Pedido
+                </a>
+            </div>
+            
+            {% if requisition.status == "EDITING" %}
+            <a href="{% url 'delete-material-req' requisition.id %}" class="btn btn-outline-danger mx-2">
+                <i class="bi bi-trash"></i>Eliminar Requisição
+            </a>
+            {% endif%}
+            <!-- <a href="{% url 'ask-verification-material-req' requisition.id %}" class="btn btn-success mx-2">
+                Solicitar Verificação
+            </a> -->
+            <!-- <a href="" class="btn btn-light mx-2">Cancelar</a> -->
+        </div>
+    </div>
+</div>
+
 </main>
 <div th:replace="fragmentos/_bottom"></div>
