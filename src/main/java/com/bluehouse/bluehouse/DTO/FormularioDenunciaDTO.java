@@ -5,6 +5,7 @@ import lombok.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.UUID;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -15,6 +16,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @ToString
 public class FormularioDenunciaDTO {
 
+    private UUID id;
     //Atributos do Reportante
     private String nomeCompleto;
     @DateTimeFormat(pattern = "yyyy-MM-dd")

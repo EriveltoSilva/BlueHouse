@@ -31,8 +31,8 @@ public class DenunciaController {
     public String cadastrarOcorrencia(Model model) {
         FormularioDenunciaDTO form = new FormularioDenunciaDTO();
         form.setTipoOcorrencia("DENUNCIA");
-        form.setNomeCompleto("Erivelto Silva");
-        model.addAttribute("formulario",form);
+        // form.setNomeCompleto("Erivelto Silva");
+        model.addAttribute("formulario", form);
         return "ocorrencias/denuncia/cadastrar-denuncia";
     }
 
@@ -44,35 +44,44 @@ public class DenunciaController {
         if (denunciaOptional.isPresent()) {
             DenunciaModel denunciaModel = denunciaOptional.get();
             form.setNomeCompleto(denunciaModel.getReportante().getNomeCompleto());
-            form.setDataNascimento(denunciaModel.getReportante().getDataNascimento().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            form.setDataNascimento(denunciaModel.getReportante().getDataNascimento().toInstant()
+                    .atZone(ZoneId.systemDefault()).toLocalDate());
             form.setBi(denunciaModel.getReportante().getBi());
             form.setEndereco(denunciaModel.getReportante().getEndereco());
             form.setContacto(denunciaModel.getReportante().getContacto());
             form.setGenero(denunciaModel.getReportante().getGenero());
 
-        //     // Configurar os atributos da Denúncia
-            form.setDataDenuncia(denunciaModel.getDataDenuncia().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-            form.setDataOcorrido(denunciaModel.getDataOcorrido().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            // // Configurar os atributos da Denúncia
+            form.setDataDenuncia(
+                    denunciaModel.getDataDenuncia().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            form.setDataOcorrido(
+                    denunciaModel.getDataOcorrido().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
             form.setHoraOcorrido(denunciaModel.getHoraOcorrido());
             form.setTipoOcorrencia(denunciaModel.getTipoOcorrencia());
             form.setDescricao(denunciaModel.getDescricao());
-        model.addAttribute("formDenuncia", form); // Usando orElse para evitar null
-    }
-    
+            model.addAttribute("formDenuncia", form); // Usando orElse para evitar null
+        }
+
         // return "redirect:/ocorrencias/listar";
         return "ocorrencias/denuncia/detalhes-denuncia";
     }
 
     @PostMapping("/ocorrencias/denuncia/cadastrar")
     public String processarFormulario(@ModelAttribute("formulario") FormularioDenunciaDTO formulario) {
-        ReportanteModel reportante = new ReportanteModel();
-        reportante.setNomeCompleto(formulario.getNomeCompleto());
-        reportante.setBi(formulario.getBi());
-        reportante.setContacto(formulario.getContacto());
-        reportante.setDataNascimento(Date.valueOf(formulario.getDataNascimento()));
-        reportante.setEndereco(formulario.getEndereco());
-        reportante.setGenero(formulario.getGenero());
-        
+        ReportanteModel reportante;
+        if (formulario.getId() == null) {
+            reportante = new ReportanteModel();
+            reportante.setNomeCompleto(formulario.getNomeCompleto());
+            reportante.setBi(formulario.getBi());
+            reportante.setContacto(formulario.getContacto());
+            reportante.setDataNascimento(Date.valueOf(formulario.getDataNascimento()));
+            reportante.setEndereco(formulario.getEndereco());
+            reportante.setGenero(formulario.getGenero());
+        } else {
+            Optional<ReportanteModel> reportanteOptional = reportanteService.obterReportanteModel(formulario.getId());
+            reportante = (reportanteOptional.isPresent()) ? reportanteOptional.get() : new ReportanteModel();
+        }
+
         DenunciaModel denuncia = new DenunciaModel();
         denuncia.setDataDenuncia(Date.valueOf(formulario.getDataDenuncia()));
         denuncia.setDataOcorrido(Date.valueOf(formulario.getDataOcorrido()));
@@ -85,10 +94,6 @@ public class DenunciaController {
 
         reportanteService.criar(reportante);
         denunciaService.criar(denuncia);
-
         return "redirect:/ocorrencias/listar";
     }
-
-
-
 }
