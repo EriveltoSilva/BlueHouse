@@ -29,10 +29,25 @@
                             <div class="tab-pane fade show active" id="nav-dados-reportante" role="tabpanel"
                                 aria-labelledby="nav-dados-reportante-tab">
                                 <div class="row text-start">
+                                    <input type="text"  th:field="*{id}" id="id" class="d-none">
+
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                                         <label for="nomeCompleto">Nome Completo:</label>
-                                        <input type="text" th:field="*{nomeCompleto}" id="nomeCompleto" class="form-control">
+                                        <div class="dropdown my-search-box">
+                                            <input type="text" th:field="*{nomeCompleto}" class="form-control dropdown-toggle " id="nomeCompleto"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                            <div class="icon">
+                                                <i class="bi bi-chevron-down"></i>
+                                            </div>
+                                            <ul class="dropdown-menu my-content-box w-100" aria-labelledby="nomeCompleto">
+                                            </ul>
+                                        </div>
                                     </div>
+
+                                    <!-- <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                        <label for="nomeCompleto">Nome Completo:</label>
+                                        <input type="text" th:field="*{nomeCompleto}" id="nomeCompleto" class="form-control">
+                                    </div> -->
 
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                                         <label for="bi">Nº do Bilhete:</label>
@@ -137,4 +152,5 @@
 </main>
 
 
+<script th:src="@{/assets/js/auto-search.js}"></script>
 <div th:replace="fragmentos/_bottom"></div>
