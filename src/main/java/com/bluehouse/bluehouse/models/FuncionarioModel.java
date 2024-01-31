@@ -13,7 +13,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -22,7 +21,6 @@ import lombok.*;
 
 @Setter
 @Getter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -91,4 +89,9 @@ public class FuncionarioModel extends PessoaModel implements UserDetails{
     public boolean isEnabled() {
         return true;
     }
+    @Override
+    public String toString() {
+        return getNomeCompleto();
+    }
+
 }

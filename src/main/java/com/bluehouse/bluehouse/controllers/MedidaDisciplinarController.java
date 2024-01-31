@@ -8,6 +8,7 @@ import com.bluehouse.bluehouse.services.MedidaDisciplinarService;
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,13 +43,14 @@ public class MedidaDisciplinarController {
     }
 
     @PostMapping("/registrar")
-    public String cadastrarMedidaDisciplinar(@Valid @ModelAttribute ("medidaDisciplinar") MedidaDisciplinarModel medidaDisciplinar, BindingResult bResult, Model model) {
+    public String cadastrarMedidaDisciplinar(@Valid @ModelAttribute ("medidaDisciplinar") MedidaDisciplinarModel medidaDisciplinar, BindingResult bResult, Model model, Authentication authentication) {
         if(bResult.hasErrors())
         {
             model.addAttribute("medidaDisciplinar", medidaDisciplinar);
             return "medidasDisciplinares/registrar-medidaDisciplinar";
         }
         else {
+            medidaDisciplinar.setAdminAplicador((FuncionarioModel)authentication.getPrincipal());
             medidaDisciplinarService.criar(medidaDisciplinar);
             return "redirect:/medidasDisciplinares/listar";
         }
