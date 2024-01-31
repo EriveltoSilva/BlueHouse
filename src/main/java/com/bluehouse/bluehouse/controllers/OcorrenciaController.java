@@ -1,9 +1,8 @@
 package com.bluehouse.bluehouse.controllers;
 
-import java.util.List;
-
-import com.bluehouse.bluehouse.models.ocorrencias.DenunciaModel;
 import com.bluehouse.bluehouse.services.ocorrencias.DenunciaService;
+import com.bluehouse.bluehouse.services.ocorrencias.QueixaService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,11 +14,14 @@ public class OcorrenciaController {
 
     @Autowired
     private DenunciaService denunciaService;
+    
+    @Autowired
+    private QueixaService queixaService;
 
     @GetMapping("/ocorrencias/listar")
     public String listarOcorrencias(Model model) {
-        List<DenunciaModel> denuncias = denunciaService.listar();
-        model.addAttribute("denuncias", denuncias);
+        model.addAttribute("denuncias", denunciaService.listar());
+        model.addAttribute("queixas", queixaService.listar());
         return "ocorrencias/listar-ocorrencias";
     }
 }

@@ -34,28 +34,3 @@ public class HorarioModel implements Serializable {
     @OneToMany(mappedBy = "horario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TurnoModel> turnos = new ArrayList<TurnoModel>();
 }
-
-/*
-    @NotBlank(message = "O motivo não pode estar em branco")
-    private String motivo;
-
-    @NotNull(message = "A data da aplicação da medida não pode estar em branco")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dataAplicacao;
-
-    @ManyToOne
-    @JoinColumn(name = "admin_id")
-    private FuncionarioModel adminAplicador;
-
-    @ManyToOne
-    @JoinColumn(name = "funcionario")
-    private FuncionarioModel funcionario;
-
-    @NotNull(message = "A data da aplicação da medida não pode estar em branco")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dataInicio;
-
-    @NotNull(message = "A data da aplicação da medida não pode estar em branco")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dataTermino;
-*/
