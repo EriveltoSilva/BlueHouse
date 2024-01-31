@@ -15,6 +15,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -35,11 +36,12 @@ public class FuncionarioModel extends PessoaModel implements UserDetails{
     @NotBlank(message = "O departamento não pode estar em branco")
     private String departamento;
 
-    @Email(message = "O email deve ser válido")
+    @Pattern(regexp = "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", message = "O email deve conter '@' e '.'.")
     @NotBlank
     private String email;
 
     @Size(min = 6, message = "A senha deve ter pelo menos 6 caracteres")
+    @Pattern(regexp = "^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?~\\/-]).*$", message = "A senha deve conter pelo menos uma letra maiúscula e um caracter especial.")
     private String senha;
 
     @Column(nullable = false)
