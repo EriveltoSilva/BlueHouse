@@ -31,14 +31,41 @@ public class DenunciaController {
     public String cadastrarOcorrencia(Model model) {
         FormularioDenunciaDTO form = new FormularioDenunciaDTO();
         form.setTipoOcorrencia("DENUNCIA");
-        // form.setNomeCompleto("Erivelto Silva");
         model.addAttribute("formulario", form);
         return "ocorrencias/denuncia/cadastrar-denuncia";
     }
 
+
+    @GetMapping("/ocorrencias/denuncia/editar/{id}")
+    public String editarDenunciaForm(@PathVariable("id") UUID id, Model model) {
+        Optional<DenunciaModel> denunciaOptional = denunciaService.obterDenunciaModel(id);
+        FormularioDenunciaDTO form = new FormularioDenunciaDTO();
+        if (denunciaOptional.isPresent()) {
+            DenunciaModel denunciaModel = denunciaOptional.get();
+            form.setId(denunciaModel.getId());
+            form.setNomeCompleto(denunciaModel.getReportante().getNomeCompleto());
+            form.setDataNascimento(denunciaModel.getReportante().getDataNascimento().toInstant()
+                    .atZone(ZoneId.systemDefault()).toLocalDate());
+            form.setBi(denunciaModel.getReportante().getBi());
+            form.setEndereco(denunciaModel.getReportante().getEndereco());
+            form.setContacto(denunciaModel.getReportante().getContacto());
+            form.setGenero(denunciaModel.getReportante().getGenero());
+
+            // // Configurar os atributos da Denúncia
+            form.setDataDenuncia(
+                    denunciaModel.getDataDenuncia().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            form.setDataOcorrido(
+                    denunciaModel.getDataOcorrido().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            form.setHoraOcorrido(denunciaModel.getHoraOcorrido());
+            form.setTipoOcorrencia(denunciaModel.getTipoOcorrencia());
+            form.setDescricao(denunciaModel.getDescricao());
+            model.addAttribute("formDenuncia", form); // Usando orElse para evitar null
+        }
+        return "ocorrencias/denuncia/editar-denuncia";
+    }
+
     @GetMapping("ocorrencias/denuncia/detalhes/{id}")
-    public String detalhesDenuncia(@PathVariable("id") UUID id, Model model) {
-        System.out.println("Entrei");
+    public String detalhesDenuncia(@PathVariable("id") UUID id, Model model) {System.out.println("Entrei");
         Optional<DenunciaModel> denunciaOptional = denunciaService.obterDenunciaModel(id);
         FormularioDenunciaDTO form = new FormularioDenunciaDTO();
         if (denunciaOptional.isPresent()) {
@@ -94,6 +121,21 @@ public class DenunciaController {
 
         reportanteService.criar(reportante);
         denunciaService.criar(denuncia);
+        return "redirect:/ocorrencias/listar";
+    }
+
+    @PostMapping("/ocorrencias/denuncia/editar")
+    public String editarDenuncia(@ModelAttribute("formDenuncia") FormularioDenunciaDTO formDenuncia) {
+        Optional<DenunciaModel> denunciaOptional = denunciaService.obterDenunciaModel(formDenuncia.getId());
+        if(!denunciaOptional.isPresent())
+            return "redirect:/";
+
+        DenunciaModel denuncia  = denunciaOptional.get();
+        denuncia.setDataDenuncia(Date.valueOf(formDenuncia.getDataDenuncia()));
+        denuncia.setDataOcorrido(Date.valueOf(formDenuncia.getDataOcorrido()));
+        denuncia.setHoraOcorrido(formDenuncia.getHoraOcorrido());
+        denuncia.setDescricao(formDenuncia.getDescricao());
+        denunciaService.editar(denuncia);
         return "redirect:/ocorrencias/listar";
     }
 }
