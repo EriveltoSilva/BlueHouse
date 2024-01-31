@@ -87,7 +87,7 @@
 
                                     <div class="col-12 mt-3">
                                         <label for="descricao">Descrição</label>
-                                        <textarea th:value="${formDenuncia.descricao}" class="form-control" style="height: 150px;"
+                                        <textarea th:field="*{formDenuncia.descricao}" class="form-control" style="height: 150px;"
                                             placeholder="Descreva o ocorrido" id="descricao" readonly></textarea>
                                     </div> 
 
