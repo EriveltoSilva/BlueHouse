@@ -19,7 +19,6 @@ import java.util.UUID;
 @Setter
 @ToString
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "pessoa")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class PessoaModel implements Serializable {
@@ -41,14 +40,10 @@ public class PessoaModel implements Serializable {
     private Date dataNascimento;
 
     @NotBlank(message = "O BI não pode estar em branco")
-<<<<<<< HEAD
     @Pattern(regexp = "\\d{14}", message = "O BI deve conter 14 dígitos")
-=======
-    // @Pattern(regexp = "\\d{12}", message = "O BI deve conter 12 dígitos")
->>>>>>> ecb73c1af86481e8b0c365ed72b73d3c6456b7b9
     private String bi;
 
-    @Size(min=4)
+    @Size(min=4, max=30)
     @NotBlank(message = "O endereço não pode estar em branco")
     private String endereco;
 
