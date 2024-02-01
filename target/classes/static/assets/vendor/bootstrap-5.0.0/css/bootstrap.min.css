@@ -4,6 +4,7 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
 :root {
     --text-light:#fff;
     --text-primary:#1B7BE9;
@@ -55,9 +56,9 @@ body {
     /* color: #6C7293; */
     /* background-color: #000; */
     color: #6C7293;
-    background-color: #000;
-    -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+    background-image: url(../../../img/bg-desktop-light.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 hr {
@@ -237,7 +238,7 @@ sup {
 }
 
 a {
-    color: #1B7BE9;
+    color: #112D5E;
     text-decoration: none
 }
 
@@ -2239,10 +2240,10 @@ progress {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #6C7293;
-    background-color: #000;
+    color: #cccccc;
+    background-color: #112D5E;
     background-clip: padding-box;
-    border: 1px solid #000;
+    border: 1px solid #112D5E ;
     appearance: none;
     border-radius: 5px;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
@@ -2431,12 +2432,12 @@ textarea.form-control-lg {
     font-weight: 400;
     line-height: 1.5;
     color: #6C7293;
-    background-color: #000;
+    background-color: #112D5E;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right .75rem center;
     background-size: 16px 12px;
-    border: 1px solid #000;
+    border: 1px solid #112D5E;
     border-radius: 5px;
     appearance: none
 }
@@ -3087,8 +3088,8 @@ fieldset:disabled .btn {
 
 .btn-primary {
     color: #fff;
-    background-color: #1B7BE9;
-    border-color: #1B7BE9
+    background-color: #112D5E;
+    border-color: #112D5E;
 }
 
 .btn-primary:hover {
@@ -4333,7 +4334,7 @@ fieldset:disabled .btn {
 .nav-link {
     display: block;
     padding: .5rem 1rem;
-    color: #1B7BE9;
+    color: #112D5E;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out
 }
 
@@ -8293,6 +8294,10 @@ fieldset:disabled .btn {
     word-break: break-word !important
 }
 
+.text-bg-secondary {
+    color: #112D5E !important;
+}
+
 .text-primary {
     color: #1B7BE9 !important
 }
@@ -8354,7 +8359,7 @@ fieldset:disabled .btn {
 }
 
 .bg-secondary {
-    background-color: #191C24 !important
+    background-color: #112D5E !important
 }
 
 .bg-success {
