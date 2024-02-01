@@ -34,17 +34,23 @@
                                     <th scope="col">Descrição</th>
                                 </tr>
                      </thead>
-                    <tbody>
-                        <tr th:if="${postos.empty}">
-                            <td colspan="3">Não existem postos nesta esquadra.</td>
-                        </tr>
+                    
+                        <tbody>
+                            <tr th:if="${postos.empty}">
+                                <td colspan="3">Não existem postos nesta esquadra.</td>
+                            </tr>
+                            
+                        
                         <tr th:each="posto : ${postos}">
                             <th scope="row">1</th>
                             <td><span th:text="${posto.nomePosto}"></span></td>
                             <td><span th:text="${posto.localizacao}"></span></td>
                             <td><span th:text="${posto.descricao}"></span></td>
+                        
                         </tr>
-                    </tbody>
+                        
+                    </tbody> 
+                
                 </table>       
             </div>
         </div>
