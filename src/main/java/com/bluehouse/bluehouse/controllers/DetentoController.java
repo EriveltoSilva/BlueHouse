@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bluehouse.bluehouse.models.DetentoModel;
 import com.bluehouse.bluehouse.models.FuncionarioModel;
@@ -35,14 +36,16 @@ public class DetentoController {
     }
 
     @PostMapping("/cadastrar")
-    public String cadastrarDetento(@Valid @ModelAttribute ("detento")DetentoModel detento, BindingResult bResult, Model model) {
+    public String cadastrarDetento(@Valid @ModelAttribute ("detento")DetentoModel detento, BindingResult bResult, Model model, RedirectAttributes redirectAttributes) {
         if(bResult.hasErrors())
         {
             model.addAttribute("detento", detento);
+            redirectAttributes.addFlashAttribute("mensagemErro", "Erro ao cadastrar detento");
             return "detentos/cadastrar-detento";
         }
         else {
             detentoService.criar(detento);
+            redirectAttributes.addFlashAttribute("mensagemSucesso", "Detento cadastrado com sucesso");
             return "redirect:/detentos/listar";
         }
     }
@@ -68,8 +71,7 @@ public class DetentoController {
     }
 
     @PostMapping("/editar/{id}")
-    public String editarFuncionarios(@PathVariable("id") UUID id, DetentoModel editDetentoModel ) {
-
+    public String editarDetentos(@PathVariable("id") UUID id, DetentoModel editDetentoModel ) {
         detentoService.editar(editDetentoModel);
         return "redirect:/detentos/listar";
     }
