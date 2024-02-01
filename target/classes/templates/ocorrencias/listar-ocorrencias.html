@@ -8,7 +8,7 @@
     </div>
     <div class="container-fluid pt-4 px-4">
         <div class="shadow p-3 mb-5 bg-white rounded text-center">
-            <div class="d-flex align-items-center justify-content-between mb-4 ">
+            <div class="d-flex align-items-center justify-content-between mb-4">
                 <h3 class="mb-0 text-bg-secondary">Denúncias Feitas</h3>
                 <a th:href="@{/ocorrencias/denuncia/cadastrar}" class="btn btn-primary">
                     <i class="bi bi-plus-circle-fill"></i>
@@ -30,7 +30,7 @@
                     </thead>
                     <tbody>
                         <tr th:if="${denuncias.empty}">
-                            <td colspan="3">Não existem denuncias no sistema.</td>
+                            <td colspan="7">Não existem denuncias no sistema.</td>
                         </tr>
                         <tr th:each="denuncia : ${denuncias}">
                             <td scope="row">#</span></td>
@@ -83,7 +83,7 @@
                     </thead>
                     <tbody>
                         <tr th:if="${queixas.empty}">
-                            <td colspan="3">Não existem queixas no sistema.</td>
+                            <td colspan="7">Não existem queixas no sistema.</td>
                         </tr>
                         <tr th:each="queixa : ${queixas}">
                             <td scope="row">#</span></td>
@@ -136,7 +136,7 @@
                     </thead>
                     <tbody>
                         <tr th:if="${autoNoticias.empty}">
-                            <td colspan="3">Não existem Auto de Noticias no sistema.</td>
+                            <td colspan="7">Não existem Auto de Noticias no sistema.</td>
                         </tr>
                         <tr th:each="autoNoticia : ${autoNoticias}">
                             <td scope="row">#</span></td>

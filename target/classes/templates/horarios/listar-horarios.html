@@ -3,18 +3,17 @@
 <main>
     <h1 class="text-bg-secondary">Horário do mês actual</h1>
     <!-- Table Start -->
-    
     <div class="container-fluid pt-4 px-4">
         <div class="shadow p-3 mb-5 bg-white rounded text-center">
-            <div class="d-flex align-items-center justify-content-between mb-4 border-bottom">
-                <h3 class="mb-0  text-primary">Horarios</h3>
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <h3 class="mb-0 text-bg-secondary">Horarios</h3>
                 <a th:href="@{/horarios/cadastrar}" class="btn btn-primary">
                     <i class="bi bi-plus-circle-fill"></i>
                     Adicionar Horario
                 </a>
             </div>
             <div class="table-responsive">
-                <table class="table">
+                <table class="table text-start align-middle table-bordered table-hover mb-0">
                     <thead>
                         <tr>
                             <th scope="col">Nome Completo</th>
@@ -27,7 +26,7 @@
                     </thead>
                     <tbody>
                         <tr th:if="${turnos.empty}">
-                            <td colspan="3">Não existem horários no sistema.</td>
+                            <td colspan="6">Não existem horários no sistema.</td>
                         </tr>
                         <tr th:each="turno : ${turnos}">
                             <td><span th:text="${turno.funcionario.nomeCompleto}"></span></td>
@@ -35,7 +34,7 @@
                             <td><span th:text="${turno.horaInicio}"></span></td>
                             <td><span th:text="${turno.horaFim}"></span></td>
                             <td><span th:text="${turno.area}"></span></td>
-                            <td class="d-lg-inline-flex">
+                            <td>
                                 <!-- <a title="Detalhes"  th:href="@{'/horarios/detalhes/' + ${turno.horario.id}}" class="btn btn-primary m-1"><i class="bi bi-eye-fill"></i></a> -->
                                 <a title="Editar" th:href="@{'/horarios/editar/' + ${turno.id}}" class="btn btn-primary m-1" ><i class="bi bi-pencil-square"></i></a>
                                 <!--<button title="Eliminar"  th:href="@{'/horarios/eliminar/' + ${turno.id}}"  type="submit" class="btn btn-primary m-1"><i class="bi bi-trash"></i></button>-->
@@ -47,10 +46,7 @@
             </div>
         </div>
     </div>
-    <!-- Table End -->
-
-
-    
+    <!-- Table End -->    
 </main>
 
 
