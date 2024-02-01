@@ -143,7 +143,7 @@ public class HorarioController {
         horarioService.criar(horario);
         turnoService.criar(turno);
         // return "redirect:/horarios/editar/" + horario.getId();
-        return "redirect:/horarios/cadastrar";
+        return "redirect:/horarios/listar";
     }
 
     @GetMapping("/horarios/listar")
