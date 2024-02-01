@@ -31,7 +31,7 @@ public class DetentoController {
     @PostMapping("/cadastrar")
     public String cadastrarDetento(DetentoModel detento) {
         detentoService.criar(detento);
-        return "redirect:/detento/listar";
+        return "redirect:/detentos/listar";
     }
 
     @GetMapping("/listar")
