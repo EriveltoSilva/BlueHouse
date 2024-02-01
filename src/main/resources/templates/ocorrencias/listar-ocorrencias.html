@@ -20,7 +20,6 @@
                     <thead>
                         <tr class="text-bg-secondary">
                             <th scope="col">#</th>
-                            <th scope="col">Código</th>
                             <th scope="col">Nome do Reportante</th>
                             <th scope="col">Nº BI</th>
                             <th scope="col">Data da Ocorrência</th>
@@ -34,11 +33,10 @@
                         </tr>
                         <tr th:each="denuncia : ${denuncias}">
                             <td scope="row">#</span></td>
-                            <td scope="row">COD</span></td>
                             <td><span th:text="${denuncia.reportante.nomeCompleto}"></span></td>
                             <td><span th:text="${denuncia.reportante.bi}"></span></td>
-                            <td><span th:text="${denuncia.dataOcorrido}"></span></td>
-                            <td><span th:text="${denuncia.dataDenuncia}"></span></td>
+                            <td><span th:text="${#dates.format(denuncia.dataOcorrido, 'yyyy-MM-dd')}"></span></td>
+                            <td><span th:text="${#dates.format(denuncia.dataDenuncia, 'yyyy-MM-dd')}"></span></td>
                             <td>
                                 <a title="Detalhes" th:href="@{'/ocorrencias/denuncia/detalhes/' + ${denuncia.id}}"
                                     class="btn btn-primary m-1"><i class="bi bi-eye-fill"></i></a>
@@ -51,7 +49,6 @@
                                         class="bi bi-trash"></i></a>
                             </td>
                         </tr>
-
                     </tbody>
                 </table>
             </div>
@@ -73,7 +70,6 @@
                     <thead>
                         <tr class="text-bg-secondary">
                             <th scope="col">#</th>
-                            <th scope="col">Código</th>
                             <th scope="col">Nome do Reportante</th>
                             <th scope="col">Nº BI</th>
                             <th scope="col">Data da Ocorrência</th>
@@ -87,11 +83,12 @@
                         </tr>
                         <tr th:each="queixa : ${queixas}">
                             <td scope="row">#</span></td>
-                            <td scope="row">COD</span></td>
                             <td><span th:text="${queixa.reportante.nomeCompleto}"></span></td>
                             <td><span th:text="${queixa.reportante.bi}"></span></td>
-                            <td><span th:text="${queixa.dataOcorrido}"></span></td>
-                            <td><span th:text="${queixa.dataQueixa}"></span></td>
+                            <td><span th:text="${#dates.format(queixa.dataOcorrido, 'yyyy-MM-dd')}"></span></td>
+
+                            <td><span th:text="${#dates.format(queixa.dataQueixa, 'yyyy-MM-dd')}"></span></td>
+
                             <td>
                                 <a title="Detalhes" th:href="@{'/ocorrencias/queixa/detalhes/' + ${queixa.id}}"
                                     class="btn btn-primary m-1"><i class="bi bi-eye-fill"></i></a>
@@ -126,7 +123,6 @@
                     <thead>
                         <tr class="text-bg-secondary">
                             <th scope="col">#</th>
-                            <th scope="col">Código</th>
                             <th scope="col">Nome do Funcionário</th>
                             <th scope="col">Nº BI</th>
                             <th scope="col">Data da Ocorrência</th>
@@ -140,11 +136,11 @@
                         </tr>
                         <tr th:each="autoNoticia : ${autoNoticias}">
                             <td scope="row">#</span></td>
-                            <td scope="row">COD</span></td>
                             <td><span th:text="${autoNoticia.funcionario.nomeCompleto}"></span></td>
                             <td><span th:text="${autoNoticia.funcionario.bi}"></span></td>
-                            <td><span th:text="${autoNoticia.dataOcorrido}"></span></td>
-                            <td><span th:text="${autoNoticia.dataReporte}"></span></td>
+                            <td><span th:text="${#dates.format(autoNoticia.dataOcorrido, 'yyyy-MM-dd')}"></span></td>
+                            <td><span th:text="${#dates.format(autoNoticia.dataReporte, 'yyyy-MM-dd')}"></span></td>
+
                             <td>
                                 <a title="Detalhes"
                                     th:href="@{'/ocorrencias/auto-noticia/detalhes/' + ${autoNoticia.id}}"
