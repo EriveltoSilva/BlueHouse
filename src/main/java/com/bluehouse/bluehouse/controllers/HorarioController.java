@@ -117,6 +117,7 @@ public class HorarioController {
         return "redirect:/horarios/listar";
     }
 
+
     @PostMapping("/horarios/cadastrar")
     public String processarCadastroHorario(@ModelAttribute("formulario") FormularioHorarioDTO formulario, BindingResult bResult, Model model) 
     {
@@ -124,35 +125,36 @@ public class HorarioController {
             model.addAttribute("formulario", formulario);
             return "horarios/cadastrar-horario";
         }
-        else{
-            Optional<FuncionarioModel> funcionariOptional = funcionarioService
+        Optional<FuncionarioModel> funcionariOptional = funcionarioService
                 .obterFuncionarioModel(formulario.getIdFuncionario());
-            if (!funcionariOptional.isPresent())
-                return "redirect:/";
-            FuncionarioModel funcionario = funcionariOptional.get();
+        if (!funcionariOptional.isPresent())
+            return "redirect:/";
+        FuncionarioModel funcionario = funcionariOptional.get();
 
-            List<HorarioModel> possiveisHorarios = horarioService.obterHorariosParaOMesEmCurso(
-                    formulario.getDataTurno().getYear(), formulario.getDataTurno().getMonthValue());
-            HorarioModel horario;
-            if (!possiveisHorarios.isEmpty())
-                horario = possiveisHorarios.get(0);
-            else {
-                horario = new HorarioModel();
-                horario.setDataTurno(Date.valueOf(formulario.getDataTurno()));
-            }
-            TurnoModel turno = new TurnoModel();
-            turno.setDataTurno(Date.valueOf(formulario.getDataTurno()));
-            turno.setArea(formulario.getArea());
-            turno.setFuncionario(funcionario);
-            turno.setHoraInicio(formulario.getHoraInicio());
-            turno.setHoraFim(formulario.getHoraFim());
-
-            horarioService.criar(horario);
-            turnoService.criar(turno);
+        List<HorarioModel> possiveisHorarios = horarioService.obterHorariosParaOMesEmCurso(
+                formulario.getDataTurno().getYear(), formulario.getDataTurno().getMonthValue());
+        HorarioModel horario;
+        if (!possiveisHorarios.isEmpty())
+            horario = possiveisHorarios.get(0);
+        else {
+            horario = new HorarioModel();
+            horario.setDataTurno(Date.valueOf(formulario.getDataTurno()));
         }
-        // return "redirect:/horarios/editar/" + horario.getId();
+        TurnoModel turno = new TurnoModel();
+        turno.setDataTurno(Date.valueOf(formulario.getDataTurno()));
+        turno.setArea(formulario.getArea());
+        turno.setFuncionario(funcionario);
+        turno.setHoraInicio(formulario.getHoraInicio());
+        turno.setHoraFim(formulario.getHoraFim());
+
+        turno.setHorario(horario);
+        horario.getTurnos().add(turno);
+
+        horarioService.criar(horario);
+        turnoService.criar(turno);
         return "redirect:/horarios/listar";
     }
+    
 
     @GetMapping("/horarios/listar")
     public String listarHorariosPorDia(Model model) {
