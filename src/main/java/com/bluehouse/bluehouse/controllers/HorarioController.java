@@ -49,19 +49,26 @@ public class HorarioController {
     }
 
     @GetMapping("/horarios/eliminar/{id}")
-    public String eliminarTurno(@PathVariable("id") UUID id, Model model) {
+    public String eliminarTurno(@PathVariable("id") UUID id, Model model, RedirectAttributes redirectAttributes) {
         Optional<TurnoModel> turnoOptional = turnoService.obterTurnoModel(id);
         if (!turnoOptional.isPresent())
+        {
+            redirectAttributes.addFlashAttribute("mensagemErro", "Este turno não existe");
             return "redirect:/";
+        }
         turnoService.eliminar(turnoOptional.get().getId());
+        redirectAttributes.addFlashAttribute("mensagemSuccsso", "Turno eliminado");
         return "redirect:/horarios/listar";
     }
 
     @GetMapping("/horarios/editar/{id}")
-    public String editarHorario(@PathVariable("id") UUID id, Model model) {
+    public String editarHorario(@PathVariable("id") UUID id, Model model, RedirectAttributes redirectAttributes) {
         Optional<TurnoModel> turnoOptional = turnoService.obterTurnoModel(id);
         if (!turnoOptional.isPresent())
+        {
+            redirectAttributes.addFlashAttribute("mensagemErro", "Este turno não existe");
             return "redirect:/";
+        }
         TurnoModel turno = turnoOptional.get();
 
         FormularioHorarioDTO formulario= new FormularioHorarioDTO();
@@ -83,7 +90,10 @@ public class HorarioController {
         Optional<FuncionarioModel> funcionariOptional = funcionarioService
                 .obterFuncionarioModel(formulario.getIdFuncionario());
         if (!funcionariOptional.isPresent())
-            return "redirect:/";
+            {
+                redirectAttributes.addFlashAttribute("mensagemErro", "Este funcionario não existe");
+                return "redirect:/";
+            }
         FuncionarioModel funcionario = funcionariOptional.get();
 
         List<HorarioModel> possiveisHorarios = horarioService.obterHorariosParaOMesEmCurso(
@@ -102,7 +112,10 @@ public class HorarioController {
         else{
             Optional<TurnoModel> turnoOptional = turnoService.obterTurnoModel(formulario.getIdTurno());
             if (!turnoOptional.isPresent())
+            {
+                redirectAttributes.addFlashAttribute("mensagemErro", "Este turno não existe");
                 return "redirect:/";
+            }
             turno = turnoOptional.get();
         }
             
@@ -116,6 +129,7 @@ public class HorarioController {
         horarioService.editar(horario);
         turnoService.editar(turno);
         redirectAttributes.addFlashAttribute("mensagemSucesso", "Edição registrada com sucesso");
+        
         
         return "redirect:/horarios/listar";
     }
@@ -131,7 +145,10 @@ public class HorarioController {
         Optional<FuncionarioModel> funcionariOptional = funcionarioService
                 .obterFuncionarioModel(formulario.getIdFuncionario());
         if (!funcionariOptional.isPresent())
+        {
+            redirectAttributes.addFlashAttribute("mensagemErro", "Este funcionario não existe");
             return "redirect:/";
+        }
         FuncionarioModel funcionario = funcionariOptional.get();
 
         List<HorarioModel> possiveisHorarios = horarioService.obterHorariosParaOMesEmCurso(

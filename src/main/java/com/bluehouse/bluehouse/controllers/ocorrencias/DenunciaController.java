@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class DenunciaController {
@@ -37,7 +38,7 @@ public class DenunciaController {
 
 
     @GetMapping("/ocorrencias/denuncia/editar/{id}")
-    public String editarDenunciaForm(@PathVariable("id") UUID id, Model model) {
+    public String editarDenunciaForm(@PathVariable("id") UUID id, Model model, RedirectAttributes redirectAttributes) {
         Optional<DenunciaModel> denunciaOptional = denunciaService.obterDenunciaModel(id);
         FormularioDenunciaDTO form = new FormularioDenunciaDTO();
         if (denunciaOptional.isPresent()) {
@@ -65,7 +66,8 @@ public class DenunciaController {
     }
 
     @GetMapping("ocorrencias/denuncia/detalhes/{id}")
-    public String detalhesDenuncia(@PathVariable("id") UUID id, Model model) {System.out.println("Entrei");
+    public String detalhesDenuncia(@PathVariable("id") UUID id, Model model, RedirectAttributes redirectAttributes) {
+        
         Optional<DenunciaModel> denunciaOptional = denunciaService.obterDenunciaModel(id);
         FormularioDenunciaDTO form = new FormularioDenunciaDTO();
         if (denunciaOptional.isPresent()) {
@@ -94,7 +96,7 @@ public class DenunciaController {
     }
 
     @PostMapping("/ocorrencias/denuncia/cadastrar")
-    public String processarFormulario(@ModelAttribute("formulario") FormularioDenunciaDTO formulario) {
+    public String processarFormulario(@ModelAttribute("formulario") FormularioDenunciaDTO formulario, RedirectAttributes redirectAttributes) {
         ReportanteModel reportante;
         if (formulario.getId() == null) {
             reportante = new ReportanteModel();
@@ -121,14 +123,19 @@ public class DenunciaController {
 
         reportanteService.criar(reportante);
         denunciaService.criar(denuncia);
+        redirectAttributes.addFlashAttribute("mensagemSucesso", "Denúncia registrada com sucesso");
+
         return "redirect:/ocorrencias/listar";
     }
 
     @PostMapping("/ocorrencias/denuncia/editar")
-    public String editarDenuncia(@ModelAttribute("formDenuncia") FormularioDenunciaDTO formDenuncia) {
+    public String editarDenuncia(@ModelAttribute("formDenuncia") FormularioDenunciaDTO formDenuncia, RedirectAttributes redirectAttributes) {
         Optional<DenunciaModel> denunciaOptional = denunciaService.obterDenunciaModel(formDenuncia.getId());
         if(!denunciaOptional.isPresent())
+        {
+            redirectAttributes.addFlashAttribute("mensagemErro", "Este denuncia não existe");
             return "redirect:/";
+        }
 
         DenunciaModel denuncia  = denunciaOptional.get();
         denuncia.setDataDenuncia(Date.valueOf(formDenuncia.getDataDenuncia()));
@@ -136,6 +143,8 @@ public class DenunciaController {
         denuncia.setHoraOcorrido(formDenuncia.getHoraOcorrido());
         denuncia.setDescricao(formDenuncia.getDescricao());
         denunciaService.editar(denuncia);
+        redirectAttributes.addFlashAttribute("mensagemSucesso", "Denúncia editada com sucesso");
+
         return "redirect:/ocorrencias/listar";
     }
 }

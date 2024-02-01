@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.Date;
 import java.time.ZoneId;
@@ -92,7 +93,7 @@ public class QueixaController {
     }
 
     @PostMapping("/ocorrencias/queixa/cadastrar")
-    public String processarFormulario(@ModelAttribute("formulario") FormularioQueixaDTO formulario) {
+    public String processarFormulario(@ModelAttribute("formulario") FormularioQueixaDTO formulario, RedirectAttributes redirectAttributes) {
         ReportanteModel reportante;
         if (formulario.getId() == null) {
             reportante = new ReportanteModel();
@@ -119,14 +120,19 @@ public class QueixaController {
 
         reportanteService.criar(reportante);
         queixaService.criar(queixa);
+        redirectAttributes.addFlashAttribute("mensagemSucesso", "Queixa registrada com sucesso");
+
         return "redirect:/ocorrencias/listar";
     }
 
     @PostMapping("/ocorrencias/queixa/editar")
-    public String editarQueixa(@ModelAttribute("formQueixa") FormularioQueixaDTO formQueixa) {
+    public String editarQueixa(@ModelAttribute("formQueixa") FormularioQueixaDTO formQueixa, RedirectAttributes redirectAttributes) {
         Optional<QueixaModel> queixaOptional = queixaService.obterQueixaModel(formQueixa.getId());
         if(!queixaOptional.isPresent())
+        {
+            redirectAttributes.addFlashAttribute("mensagemErro", "Esta queixa não existe");
             return "redirect:/";
+        }
 
         QueixaModel queixa  = queixaOptional.get();
         queixa.setDataQueixa(Date.valueOf(formQueixa.getDataQueixa()));
@@ -134,6 +140,8 @@ public class QueixaController {
         queixa.setHoraOcorrido(formQueixa.getHoraOcorrido());
         queixa.setDescricao(formQueixa.getDescricao());
         queixaService.editar(queixa);
+        redirectAttributes.addFlashAttribute("mensagemSucesso", "Queixa editada com sucesso");
+
         return "redirect:/ocorrencias/listar";
     }
 }

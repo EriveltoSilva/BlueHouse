@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.Date;
 import java.time.ZoneId;
@@ -34,7 +35,7 @@ public class AutoNoticiaController {
     }
 
     @GetMapping("/ocorrencias/auto-noticia/editar/{id}")
-    public String editarAutoNoticiaForm(@PathVariable("id") UUID id, Model model) {
+    public String editarAutoNoticiaForm(@PathVariable("id") UUID id, Model model, RedirectAttributes redirectAttributes) {
         Optional<AutoNoticiaModel> autoNoticiaOptional = autoNoticiaService.obterAutoNoticiaModel(id);
         FormularioAutoNoticiaDTO form = new FormularioAutoNoticiaDTO();
         if (autoNoticiaOptional.isPresent()) {
@@ -57,7 +58,7 @@ public class AutoNoticiaController {
         return "ocorrencias/auto-noticia/editar-auto-noticia";
     }
 
-    @GetMapping("ocorrencias/auto-noticia/detalhes/{id}")
+    @GetMapping("/ocorrencias/auto-noticia/detalhes/{id}")
     public String detalhesDenuncia(@PathVariable("id") UUID id, Model model) {
         Optional<AutoNoticiaModel> autoNoticiaOptional = autoNoticiaService.obterAutoNoticiaModel(id);
         FormularioAutoNoticiaDTO form = new FormularioAutoNoticiaDTO();
@@ -84,15 +85,21 @@ public class AutoNoticiaController {
     }
 
     @PostMapping("/ocorrencias/auto-noticia/cadastrar")
-    public String processarFormulario(@ModelAttribute("formulario") FormularioAutoNoticiaDTO formulario) {
+    public String processarFormulario(@ModelAttribute("formulario") FormularioAutoNoticiaDTO formulario, RedirectAttributes redirectAttributes) {
         FuncionarioModel funcionario;
         if (formulario.getIdFuncionario() == null)
+        {
+            redirectAttributes.addFlashAttribute("mensagemErro", "Este funcionario não existe");
             return "redirect:/";
+        }
         else {
             Optional<FuncionarioModel> funcionarioOptional = funcionarioService
                     .obterFuncionarioModel(formulario.getIdFuncionario());
             if (!funcionarioOptional.isPresent())
+            {
+                redirectAttributes.addFlashAttribute("mensagemErro", "Este funcionario não existe");
                 return "redirect:/";
+            }
             funcionario = funcionarioOptional.get();
         }
 
@@ -110,14 +117,19 @@ public class AutoNoticiaController {
 
         //funcionarioService.editar(funcionario);
         autoNoticiaService.criar(autoNoticia);
+        redirectAttributes.addFlashAttribute("mensagemSucesso", "Auto de Noticia registrada com sucesso");
+
         return "redirect:/ocorrencias/listar";
     }
 
     @PostMapping("/ocorrencias/auto-noticia/editar")
-    public String editarDenuncia(@ModelAttribute("formAutoNoticia") FormularioAutoNoticiaDTO formAutoNoticia) {
+    public String editarDenuncia(@ModelAttribute("formAutoNoticia") FormularioAutoNoticiaDTO formAutoNoticia, RedirectAttributes redirectAttributes) {
         Optional<AutoNoticiaModel> autoNoticiaOptional = autoNoticiaService.obterAutoNoticiaModel(formAutoNoticia.getId());
         if (!autoNoticiaOptional.isPresent())
+        {
+            redirectAttributes.addFlashAttribute("mensagemErro", "Auto de Noticia não encontrada");
             return "redirect:/";
+        }
 
         AutoNoticiaModel autoNoticia = autoNoticiaOptional.get();
         autoNoticia.setDataReporte(Date.valueOf(formAutoNoticia.getDataReporte()));
@@ -126,17 +138,24 @@ public class AutoNoticiaController {
         autoNoticia.setLocal(formAutoNoticia.getLocal());
         autoNoticia.setDescricao(formAutoNoticia.getDescricao());
         autoNoticiaService.editar(autoNoticia);
+        redirectAttributes.addFlashAttribute("mensagemSucesso", "Auto de Noticia editada com sucesso");
+
         return "redirect:/ocorrencias/listar";
     }
 
 
     @GetMapping("/ocorrencias/auto-noticia/eliminar/{id}")
-    public String eliminarAutoNoticia(@PathVariable("id") UUID id, Model model) {
+    public String eliminarAutoNoticia(@PathVariable("id") UUID id, Model model, RedirectAttributes redirectAttributes) {
         Optional<AutoNoticiaModel> autoNoticiaOptional = autoNoticiaService.obterAutoNoticiaModel(id);
-        if (autoNoticiaOptional.isPresent()) 
+        if (autoNoticiaOptional.isPresent())
+        {
             autoNoticiaService.eliminar(id);
-        else
+            redirectAttributes.addFlashAttribute("mensagemSucesso", "Auto de Noticia registrada com sucesso");
+        } 
+        else{
+            redirectAttributes.addFlashAttribute("mensagemErro", "Auto de Noticia não existe");
             return "redirect:/";
+        }
         return "redirect:/ocorrencias/listar";
     }
 }
