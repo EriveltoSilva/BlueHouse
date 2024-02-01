@@ -193,7 +193,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-white border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">Trocar imagem de perfil</a>
-                            <a href="#" class="dropdown-item">Editar Perfil</a>
+                            <a th:href="@{'/editarUsuario/' + ${#authentication.getPrincipal().getId()}}" class="dropdown-item">Editar Perfil</a>
                             <a th:href="@{/logout}" class="dropdown-item">Logout</a>
                         </div>
                     </div>

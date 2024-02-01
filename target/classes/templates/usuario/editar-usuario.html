@@ -1,0 +1,71 @@
+<div th:replace="fragmentos/_top"></div>
+
+<main>
+    <div class="container-fluid pt-4 px-4">
+        <h1 class="text-bg-secondary">Editar Usuário</h1>
+        <div class="shadow p-3 mb-5 bg-white rounded text-center">
+            <div class="d-flex align-items-center justify-content-between mb-4 border-bottom">
+                <h3 class="mb-0 text-bg-secondary">Dados do Usuário</h3>
+            </div>
+
+            <div>
+                <form th:action="@{'/editarUsuario/' + ${#authentication.getPrincipal().getId()}}" method="post" th:object="${funcionario}">
+                    <div class="row justify-content-end text-start">
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="nomeCompleto">Nome Completo:</label>
+                            <input type="text" name="nomeCompleto" id="nomeCompleto" class="form-control" th:value="${#authentication.getPrincipal().getNomeCompleto()}">
+                        </div>
+                        
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="dataNascimento">Data de Nascimento</label>
+                            <input type="date" name="dataNascimento" id="dataNascimento" class="form-control" th:value="${#dates.format(#authentication.getPrincipal().getDataNascimento(), 'yyyy-MM-dd')}">
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="bi">Nº do BI:</label>
+                            <input type="text" name="bi" id="bi" class="form-control" th:value="${#authentication.getPrincipal().getBi()}">
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="endereco">Endereço:</label>
+                            <input type="text" name="endereco" id="endereco" class="form-control" th:value="${#authentication.getPrincipal().getEndereco()}">
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="contacto">Contacto:</label>
+                            <input type="tel" name="contacto" id="contacto" class="form-control" th:value="${#authentication.getPrincipal().getContacto()}">
+                        </div>
+                        
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="genero">Gênero:</label>
+                            <select name="genero" id="genero" class="form-select">
+                                <option value="M" th:selected="${#authentication.getPrincipal().getGenero() == 'M'}">Masculino</option>
+                                <option value="F" th:selected="${#authentication.getPrincipal().getGenero() == 'F'}">Feminino</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" id="email" class="form-control" th:value="${#authentication.getPrincipal().getEmail()}">
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                            <label for="senha">Senha:</label>
+                            <input type="password" name="senha" id="senha" class="form-control" th:value="${#authentication.getPrincipal().getSenha()}">
+                        </div>
+                        <div class="col-12 mt-lg-4 mb-lg-4 text-center">
+                            <button type="submit" class="btn btn-primary w-50"> 
+                                <i class="bi bi-floppy-fill"></i>
+                                Guardar alterações
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+<div th:replace="fragmentos/_bottom"></div>

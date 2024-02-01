@@ -38,7 +38,20 @@ public class FuncionarioService implements UserDetailsService{
     }
 
     public FuncionarioModel editar(FuncionarioModel novoFuncionario) {
-        return funcionarioRepository.save(novoFuncionario);
+        if (novoFuncionario.getPassword() != null && !novoFuncionario.getPassword().isEmpty()) {
+            novoFuncionario.setPassword(new BCryptPasswordEncoder().encode(novoFuncionario.getPassword()));
+        }
+
+        FuncionarioModel updatedFuncionario = funcionarioRepository.save(novoFuncionario);
+        UserDetails updatedUserDetails = funcionarioRepository.findByEmail(updatedFuncionario.getEmail());
+        authenticateUserAndSetContext(updatedUserDetails);
+
+        return updatedFuncionario;
+    }
+    
+    private void authenticateUserAndSetContext(UserDetails userDetails) {
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
     }
 
     public Optional<FuncionarioModel> obterFuncionarioModel(UUID id)

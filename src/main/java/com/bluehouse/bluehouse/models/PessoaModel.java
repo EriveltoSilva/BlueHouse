@@ -40,7 +40,7 @@ public class PessoaModel implements Serializable {
     private Date dataNascimento;
 
     @NotBlank(message = "O BI não pode estar em branco")
-    @Pattern(regexp = "\\d{14}", message = "O BI deve conter 14 dígitos")
+    @Pattern(regexp = "[a-zA-Z0-9]{14}", message = "O BI deve conter 14 dígitos, incluindo duas letras.")
     private String bi;
 
     @Size(min=4, max=30)
