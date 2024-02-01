@@ -97,6 +97,4 @@ public class FuncionarioModel extends PessoaModel implements UserDetails{
     public String toString() {
         return getNomeCompleto();
     }
-
-
 }
