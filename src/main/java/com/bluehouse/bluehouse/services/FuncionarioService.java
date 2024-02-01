@@ -1,6 +1,9 @@
 package com.bluehouse.bluehouse.services;
 
+import com.bluehouse.bluehouse.DTO.FuncionarioDTO;
+import com.bluehouse.bluehouse.DTO.ReportanteDTO;
 import com.bluehouse.bluehouse.models.FuncionarioModel;
+import com.bluehouse.bluehouse.models.ReportanteModel;
 import com.bluehouse.bluehouse.repositories.FuncionarioRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -16,6 +19,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -55,6 +59,13 @@ public class FuncionarioService implements UserDetailsService{
         }
         SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities()));
         return user;
+    }
+
+    public List<FuncionarioDTO> buscarPorNome(String nomeCompleto) {
+        List<FuncionarioModel> funcionarios = funcionarioRepository.findByNomeCompletoContainingIgnoreCase(nomeCompleto);
+        return funcionarios.stream()
+                .map(FuncionarioDTO::fromFuncionario)
+                .collect(Collectors.toList());
     }
 
     /*public List<FuncionarioModel> obterTodosFuncionariosExcetoAdmin() {

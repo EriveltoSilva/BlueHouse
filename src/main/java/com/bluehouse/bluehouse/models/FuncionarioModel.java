@@ -1,18 +1,19 @@
 package com.bluehouse.bluehouse.models;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
+import com.bluehouse.bluehouse.models.ocorrencias.AutoNoticiaModel;
+import com.bluehouse.bluehouse.models.ocorrencias.QueixaModel;
+import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.bluehouse.bluehouse.models.Converter.RoleConverter;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Convert;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -45,6 +46,9 @@ public class FuncionarioModel extends PessoaModel implements UserDetails{
     @Column(nullable = false)
     @Convert(converter = RoleConverter.class)
     private Role role;
+
+    @OneToMany(mappedBy = "funcionario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<AutoNoticiaModel> autoNoticias = new ArrayList<AutoNoticiaModel>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -93,5 +97,6 @@ public class FuncionarioModel extends PessoaModel implements UserDetails{
     public String toString() {
         return getNomeCompleto();
     }
+
 
 }
