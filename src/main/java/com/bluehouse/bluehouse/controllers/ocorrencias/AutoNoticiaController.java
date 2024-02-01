@@ -108,7 +108,7 @@ public class AutoNoticiaController {
         autoNoticia.setFuncionario(funcionario);
         funcionario.getAutoNoticias().add(autoNoticia);
 
-        funcionarioService.editar(funcionario);
+        //funcionarioService.editar(funcionario);
         autoNoticiaService.criar(autoNoticia);
         return "redirect:/ocorrencias/listar";
     }
