@@ -118,7 +118,8 @@ public class HorarioController {
     }
 
     @PostMapping("/horarios/cadastrar")
-    public String processarCadastroHorario(@ModelAttribute("formulario") FormularioHorarioDTO formulario, BindingResult bResult, Model model) {
+    public String processarCadastroHorario(@ModelAttribute("formulario") FormularioHorarioDTO formulario, BindingResult bResult, Model model) 
+    {
         if (bResult.hasErrors()) {
             model.addAttribute("formulario", formulario);
             return "horarios/cadastrar-horario";
@@ -146,14 +147,11 @@ public class HorarioController {
             turno.setHoraInicio(formulario.getHoraInicio());
             turno.setHoraFim(formulario.getHoraFim());
 
-            turno.setHorario(horario);
-            horario.getTurnos().add(turno);
-
             horarioService.criar(horario);
             turnoService.criar(turno);
-            // return "redirect:/horarios/editar/" + horario.getId();
-            return "redirect:/horarios/listar-horarios";
         }
+        // return "redirect:/horarios/editar/" + horario.getId();
+        return "redirect:/horarios/listar";
     }
 
     @GetMapping("/horarios/listar")
