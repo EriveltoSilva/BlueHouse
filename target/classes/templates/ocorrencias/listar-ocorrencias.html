@@ -94,23 +94,76 @@
                             <td><span th:text="${queixa.dataQueixa}"></span></td>
                             <td class="d-lg-inline-flex">
                                 <a title="Detalhes" th:href="@{'/ocorrencias/queixa/detalhes/' + ${queixa.id}}"
-                                class="btn btn-primary m-1"><i class="bi bi-eye-fill"></i></a>
+                                    class="btn btn-primary m-1"><i class="bi bi-eye-fill"></i></a>
                                 <a title="Editar" th:href="@{'/ocorrencias/queixa/editar/' + ${queixa.id}}"
-                                class="btn btn-primary m-1"><i class="bi bi-pencil-square"></i></a>
+                                    class="btn btn-primary m-1"><i class="bi bi-pencil-square"></i></a>
                                 <a title="Eliminar" th:href="@{'/ocorrencias/queixa/eliminar/' + ${queixa.id}}"
-                                class="btn btn-primary m-1"
-                                onclick="return confirm('Tem certeza de que deseja excluir a queixa?');">
-                                <i class="bi bi-trash"></i>
-                            </a>
-                        </td>
+                                    class="btn btn-primary m-1"
+                                    onclick="return confirm('Tem certeza de que deseja excluir a queixa?');">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
                         </tr>
 
-                    </tbody> 
+                    </tbody>
                 </table>
             </div>
         </div>
     </div>
 
+
+    <div class="container-fluid pt-4 px-4">
+        <div class="bg-secondary text-center rounded p-4">
+            <div class="d-flex align-items-center justify-content-between mb-4 ">
+                <h3 class="mb-0  text-primary">Auto de Noticias Feitas</h3>
+                <a th:href="@{/ocorrencias/auto-noticia/cadastrar}" class="btn btn-primary">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    Adicionar Auto de Noticias
+                </a>
+            </div>
+            <div class="table-responsive">
+                <table class="table text-start align-middle table-bordered table-hover mb-0">
+                    <thead>
+                        <tr class="text-white">
+                            <th scope="col">#</th>
+                            <th scope="col">Código</th>
+                            <th scope="col">Nome do Funcionário</th>
+                            <th scope="col">Nº BI</th>
+                            <th scope="col">Data da Ocorrência</th>
+                            <th scope="col">Data do Reportante</th>
+                            <th scope="col">Acções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:if="${autoNoticias.empty}">
+                            <td colspan="3">Não existem Auto de Noticias no sistema.</td>
+                        </tr>
+                        <tr th:each="autoNoticia : ${autoNoticias}">
+                            <td scope="row">#</span></td>
+                            <td scope="row">COD</span></td>
+                            <td><span th:text="${autoNoticia.funcionario.nomeCompleto}"></span></td>
+                            <td><span th:text="${autoNoticia.funcionario.bi}"></span></td>
+                            <td><span th:text="${autoNoticia.dataOcorrido}"></span></td>
+                            <td><span th:text="${autoNoticia.dataReporte}"></span></td>
+                            <td class="d-lg-inline-flex">
+                                <a title="Detalhes"
+                                    th:href="@{'/ocorrencias/auto-noticia/detalhes/' + ${autoNoticia.id}}"
+                                    class="btn btn-primary m-1"><i class="bi bi-eye-fill"></i></a>
+                                <a title="Editar" th:href="@{'/ocorrencias/auto-noticia/editar/' + ${autoNoticia.id}}"
+                                    class="btn btn-primary m-1"><i class="bi bi-pencil-square"></i></a>
+                                <a title="Eliminar"
+                                    th:href="@{'/ocorrencias/auto-noticia/eliminar/' + ${autoNoticia.id}}"
+                                    class="btn btn-primary m-1"
+                                    onclick="return confirm('Tem certeza de que deseja excluir a auto-noticia?');">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </main>
 
 <div th:replace="fragmentos/_bottom"></div>

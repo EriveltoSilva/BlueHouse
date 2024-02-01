@@ -1,5 +1,6 @@
 package com.bluehouse.bluehouse.controllers;
 
+import com.bluehouse.bluehouse.services.ocorrencias.AutoNoticiaService;
 import com.bluehouse.bluehouse.services.ocorrencias.DenunciaService;
 import com.bluehouse.bluehouse.services.ocorrencias.QueixaService;
 
@@ -14,14 +15,16 @@ public class OcorrenciaController {
 
     @Autowired
     private DenunciaService denunciaService;
-    
     @Autowired
     private QueixaService queixaService;
+    @Autowired
+    private AutoNoticiaService autoNoticiaService;
 
     @GetMapping("/ocorrencias/listar")
     public String listarOcorrencias(Model model) {
         model.addAttribute("denuncias", denunciaService.listar());
         model.addAttribute("queixas", queixaService.listar());
+        model.addAttribute("autoNoticias", autoNoticiaService.listar());
         return "ocorrencias/listar-ocorrencias";
     }
 }
