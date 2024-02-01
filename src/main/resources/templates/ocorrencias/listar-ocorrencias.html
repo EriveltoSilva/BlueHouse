@@ -4,12 +4,12 @@
 
 
     <div class="container-fluid pt-4 px-4">
-        <h1>Lista de Ocorrências</h1>
+        <h1 class="text-bg-secondary">Lista de Ocorrências</h1>
     </div>
     <div class="container-fluid pt-4 px-4">
-        <div class="bg-secondary text-center rounded p-4">
-            <div class="d-flex align-items-center justify-content-between mb-4 ">
-                <h3 class="mb-0  text-primary">Denúncias Feitas</h3>
+        <div class="shadow p-3 mb-5 bg-white rounded text-center">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <h3 class="mb-0 text-bg-secondary">Denúncias Feitas</h3>
                 <a th:href="@{/ocorrencias/denuncia/cadastrar}" class="btn btn-primary">
                     <i class="bi bi-plus-circle-fill"></i>
                     Adicionar Denúncia
@@ -18,7 +18,7 @@
             <div class="table-responsive">
                 <table class="table text-start align-middle table-bordered table-hover mb-0">
                     <thead>
-                        <tr class="text-white">
+                        <tr class="text-bg-secondary">
                             <th scope="col">#</th>
                             <th scope="col">Código</th>
                             <th scope="col">Nome do Reportante</th>
@@ -30,7 +30,7 @@
                     </thead>
                     <tbody>
                         <tr th:if="${denuncias.empty}">
-                            <td colspan="3">Não existem denuncias no sistema.</td>
+                            <td colspan="7">Não existem denuncias no sistema.</td>
                         </tr>
                         <tr th:each="denuncia : ${denuncias}">
                             <td scope="row">#</span></td>
@@ -39,7 +39,7 @@
                             <td><span th:text="${denuncia.reportante.bi}"></span></td>
                             <td><span th:text="${denuncia.dataOcorrido}"></span></td>
                             <td><span th:text="${denuncia.dataDenuncia}"></span></td>
-                            <td class="d-lg-inline-flex">
+                            <td>
                                 <a title="Detalhes" th:href="@{'/ocorrencias/denuncia/detalhes/' + ${denuncia.id}}"
                                     class="btn btn-primary m-1"><i class="bi bi-eye-fill"></i></a>
                                 <a title="Editar" th:href="@{'/ocorrencias/denuncia/editar/' + ${denuncia.id}}"
@@ -60,9 +60,9 @@
 
 
     <div class="container-fluid pt-4 px-4">
-        <div class="bg-secondary text-center rounded p-4">
+        <div class="shadow p-3 mb-5 bg-white rounded text-center">
             <div class="d-flex align-items-center justify-content-between mb-4 ">
-                <h3 class="mb-0  text-primary">Queixas Feitas</h3>
+                <h3 class="mb-0 text-bg-secondary">Queixas Feitas</h3>
                 <a th:href="@{/ocorrencias/queixa/cadastrar}" class="btn btn-primary">
                     <i class="bi bi-plus-circle-fill"></i>
                     Adicionar Queixa
@@ -71,7 +71,7 @@
             <div class="table-responsive">
                 <table class="table text-start align-middle table-bordered table-hover mb-0">
                     <thead>
-                        <tr class="text-white">
+                        <tr class="text-bg-secondary">
                             <th scope="col">#</th>
                             <th scope="col">Código</th>
                             <th scope="col">Nome do Reportante</th>
@@ -83,7 +83,7 @@
                     </thead>
                     <tbody>
                         <tr th:if="${queixas.empty}">
-                            <td colspan="3">Não existem queixas no sistema.</td>
+                            <td colspan="7">Não existem queixas no sistema.</td>
                         </tr>
                         <tr th:each="queixa : ${queixas}">
                             <td scope="row">#</span></td>
@@ -92,7 +92,7 @@
                             <td><span th:text="${queixa.reportante.bi}"></span></td>
                             <td><span th:text="${queixa.dataOcorrido}"></span></td>
                             <td><span th:text="${queixa.dataQueixa}"></span></td>
-                            <td class="d-lg-inline-flex">
+                            <td>
                                 <a title="Detalhes" th:href="@{'/ocorrencias/queixa/detalhes/' + ${queixa.id}}"
                                     class="btn btn-primary m-1"><i class="bi bi-eye-fill"></i></a>
                                 <a title="Editar" th:href="@{'/ocorrencias/queixa/editar/' + ${queixa.id}}"
@@ -113,9 +113,9 @@
 
 
     <div class="container-fluid pt-4 px-4">
-        <div class="bg-secondary text-center rounded p-4">
+        <div class="shadow p-3 mb-5 bg-white rounded text-center">
             <div class="d-flex align-items-center justify-content-between mb-4 ">
-                <h3 class="mb-0  text-primary">Auto de Noticias Feitas</h3>
+                <h3 class="mb-0 text-bg-secondary">Auto de Noticias Feitas</h3>
                 <a th:href="@{/ocorrencias/auto-noticia/cadastrar}" class="btn btn-primary">
                     <i class="bi bi-plus-circle-fill"></i>
                     Adicionar Auto de Noticias
@@ -124,7 +124,7 @@
             <div class="table-responsive">
                 <table class="table text-start align-middle table-bordered table-hover mb-0">
                     <thead>
-                        <tr class="text-white">
+                        <tr class="text-bg-secondary">
                             <th scope="col">#</th>
                             <th scope="col">Código</th>
                             <th scope="col">Nome do Funcionário</th>
@@ -136,7 +136,7 @@
                     </thead>
                     <tbody>
                         <tr th:if="${autoNoticias.empty}">
-                            <td colspan="3">Não existem Auto de Noticias no sistema.</td>
+                            <td colspan="7">Não existem Auto de Noticias no sistema.</td>
                         </tr>
                         <tr th:each="autoNoticia : ${autoNoticias}">
                             <td scope="row">#</span></td>
@@ -145,7 +145,7 @@
                             <td><span th:text="${autoNoticia.funcionario.bi}"></span></td>
                             <td><span th:text="${autoNoticia.dataOcorrido}"></span></td>
                             <td><span th:text="${autoNoticia.dataReporte}"></span></td>
-                            <td class="d-lg-inline-flex">
+                            <td>
                                 <a title="Detalhes"
                                     th:href="@{'/ocorrencias/auto-noticia/detalhes/' + ${autoNoticia.id}}"
                                     class="btn btn-primary m-1"><i class="bi bi-eye-fill"></i></a>

@@ -2,83 +2,78 @@
 
 <main>
     <div class="container-fluid pt-4 px-4">
-        <h1>Detalhes da Auto de Notícia </h1>
-        <div class="row g-4">
-            <div class="col-12">
-                <div class="bg-secondary rounded h-100 p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-4 border-bottom">
-                        <h3 class="mb-4 text-primary">Ficha de Auto de Notícia</h3>
-                    </div>
-                    <nav>
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button class="nav-link active" id="nav-dados-reportante-tab" data-bs-toggle="tab"
-                                data-bs-target="#nav-dados-reportante" type="button" role="tab"
-                                aria-controls="nav-dados-reportante" aria-selected="true">
-                                Dados do Reportante
-                            </button>
-                        </div>
-                    </nav>
-                    <form method="get">
-                        <div class="tab-content pt-3" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="nav-dados-reportante" role="tabpanel"
-                                aria-labelledby="nav-dados-reportante-tab">
-                                <div class="row text-start">
-                                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
-                                        <label for="nomeCompleto">Nome Completo:</label>
-                                        <input type="text" th:value="${formAutoNoticia.funcionario.nomeCompleto}" id="nomeCompleto"
-                                            class="form-control" readonly>
-                                    </div>
-
-                                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
-                                        <label for="dataReporte">Data do Reporte</label>
-                                        <input type="date" th:value="${formAutoNoticia.dataReporte}" id="dataReporte"
-                                        class="form-control" readonly>
-                                    </div>
-                                    
-                                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
-                                        <label for="dataOcorrido">Data do Ocorrido</label>
-                                        <input type="date" th:value="${formAutoNoticia.dataOcorrido}" id="dataOcorrido"
-                                        class="form-control" readonly>
-                                    </div>
-                                    
-                                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
-                                        <label for="horaOcorrido">Hora do Ocorrido</label>
-                                        <input type="time" th:value="${formAutoNoticia.horaOcorrido}" id="horaOcorrido"
-                                        class="form-control" readonly>
-                                    </div>
-                                    
-                                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
-                                        <label for="tipoOcorrencia">Tipo de Ocorrência</label>
-                                        <input type="text" th:value="${formAutoNoticia.tipoOcorrencia}" id="tipoOcorrencia"
-                                        class="form-control" readonly>
-                                    </div>
-                                    
-                                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
-                                        <label for="local">Local</label>
-                                        <input type="text" th:value="${formAutoNoticia.local}" id="local"
-                                        class="form-control" readonly>
-                                    </div>
-                                    
-                                    <div class="col-12 mt-3">
-                                        <label for="descricao">Descrição</label>
-                                        <textarea th:field="*{formAutoNoticia.descricao}" class="form-control"
-                                        style="height: 150px;" placeholder="Descreva o ocorrido" id="descricao"
-                                        readonly></textarea>
-                                    </div> 
-
-                                    <div class="col-12 mt-3 text-center">
-                                        <a th:href="@{/ocorrencias/listar}" class="btn btn-primary w-25">
-                                            <i class="bi bi-arrow-left-circle"></i>
-                                            Voltar
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                    </form>
-                </div>
+        <h1 class="text-bg-secondary">Detalhes da Auto de Notícia </h1>
+        <div class="shadow p-3 mb-5 bg-white rounded text-center">
+            <div class="d-flex align-items-center justify-content-between mb-4 border-bottom">
+                <h3 class="mb-4 text-bg-secondary">Ficha de Auto de Notícia</h3>
             </div>
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-dados-reportante-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-dados-reportante" type="button" role="tab"
+                        aria-controls="nav-dados-reportante" aria-selected="true">
+                        Dados do Reportante
+                    </button>
+                </div>
+            </nav>
+            <form method="get">
+                <div class="tab-content pt-3" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-dados-reportante" role="tabpanel"
+                        aria-labelledby="nav-dados-reportante-tab">
+                        <div class="row text-start">
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                <label for="nomeCompleto">Nome Completo:</label>
+                                <input type="text" th:value="${formAutoNoticia.funcionario.nomeCompleto}" id="nomeCompleto"
+                                    class="form-control" readonly>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                <label for="dataReporte">Data do Reporte</label>
+                                <input type="date" th:value="${formAutoNoticia.dataReporte}" id="dataReporte"
+                                class="form-control" readonly>
+                            </div>
+                            
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                <label for="dataOcorrido">Data do Ocorrido</label>
+                                <input type="date" th:value="${formAutoNoticia.dataOcorrido}" id="dataOcorrido"
+                                class="form-control" readonly>
+                            </div>
+                            
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                <label for="horaOcorrido">Hora do Ocorrido</label>
+                                <input type="time" th:value="${formAutoNoticia.horaOcorrido}" id="horaOcorrido"
+                                class="form-control" readonly>
+                            </div>
+                            
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                <label for="tipoOcorrencia">Tipo de Ocorrência</label>
+                                <input type="text" th:value="${formAutoNoticia.tipoOcorrencia}" id="tipoOcorrencia"
+                                class="form-control" readonly>
+                            </div>
+                            
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                <label for="local">Local</label>
+                                <input type="text" th:value="${formAutoNoticia.local}" id="local"
+                                class="form-control" readonly>
+                            </div>
+                            
+                            <div class="col-12 mt-3">
+                                <label for="descricao">Descrição</label>
+                                <textarea th:field="*{formAutoNoticia.descricao}" class="form-control"
+                                style="height: 150px;" placeholder="Descreva o ocorrido" id="descricao"
+                                readonly></textarea>
+                            </div> 
+
+                            <div class="col-12 mt-3 text-center">
+                                <a th:href="@{/ocorrencias/listar}" class="btn btn-primary w-25">
+                                    <i class="bi bi-arrow-left-circle"></i>
+                                    Voltar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+            </form>
         </div>
-    </div>
     </div>
 </main>
 

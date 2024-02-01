@@ -37,4 +37,8 @@ public class DetentoService{
     {
         detentoRepository.deleteById(id);;
     }
+
+    public long getTotal() {
+        return detentoRepository.count(); // Isso conta o número total 
+    }
 }

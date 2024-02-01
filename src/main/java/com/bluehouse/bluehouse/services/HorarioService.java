@@ -40,4 +40,8 @@ public class HorarioService {
         horarioRepository.deleteById(id);
     }
 
+    public long getTotal() {
+        return horarioRepository.count(); // Isso conta o número total 
+    }
+
 }
