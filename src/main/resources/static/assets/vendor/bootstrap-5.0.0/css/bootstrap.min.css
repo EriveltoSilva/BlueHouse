@@ -56,9 +56,10 @@ body {
     /* color: #6C7293; */
     /* background-color: #000; */
     color: #6C7293;
-    background-image: url(../../../img/bg-desktop-light.jpg);
+    background: linear-gradient(to right, #112D5E, #0056b3);
+    /* background-image: url(../../../img/bg-desktop-light.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
 }
 
 hr {
