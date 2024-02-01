@@ -90,6 +90,13 @@
     <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
             <div class="col-sm-12 col-xl-6">
+                <div class="bg-secondary rounded h-100 p-4">
+                    <h6 class="mb-4">Medidas Disciplinares Aplicada</h6>
+                    <canvas id="line-chart-md"></canvas>
+                </div>
+            </div>
+
+            <!-- <div class="col-sm-12 col-xl-6">
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Worldwide Sales</h6>
@@ -97,8 +104,8 @@
                     </div>
                     <canvas id="worldwide-sales"></canvas>
                 </div>
-            </div>
-            <div class="col-sm-12 col-xl-6">
+            </div> -->
+            <!-- <div class="col-sm-12 col-xl-6">
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Salse & Revenue</h6>
@@ -106,211 +113,209 @@
                     </div>
                     <canvas id="salse-revenue"></canvas>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
-    <!-- Sales Chart End -->
 
 
-    <!-- Recent Sales Start -->
+
     <div class="container-fluid pt-4 px-4">
         <div class="bg-secondary text-center rounded p-4">
             <div class="d-flex align-items-center justify-content-between mb-4">
-                <h6 class="mb-0">Recent Salse</h6>
-                <a href="">Show All</a>
+                <h6 class="mb-0">Funcionários no Sistema</h6>
+                <a th:href="@{/funcionarios/cadastrar}" class="btn btn-primary">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    Adicionar Funcionário
+                </a>
             </div>
             <div class="table-responsive">
                 <table class="table text-start align-middle table-bordered table-hover mb-0">
                     <thead>
                         <tr class="text-white">
                             <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Invoice</th>
-                            <th scope="col">Customer</th>
-                            <th scope="col">Amount</th>
-                            <th scope="col">Status</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Nº BI</th>
+                            <th scope="col">Cargo</th>
+                            <th scope="col">Departamento</th>
+                            <th scope="col">Email</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
-                            <td>01 Jan 2045</td>
-                            <td>INV-0123</td>
-                            <td>Jhon Doe</td>
-                            <td>$123</td>
-                            <td>Paid</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                        <tr th:if="${funcionarios.empty}">
+                            <td colspan="3">Não existem pacientes.</td>
                         </tr>
-                        <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
-                            <td>01 Jan 2045</td>
-                            <td>INV-0123</td>
-                            <td>Jhon Doe</td>
-                            <td>$123</td>
-                            <td>Paid</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                        <tr th:each="funcionario : ${funcionarios}">
+                            <td scope="row">#</span></td>
+                            <td><span th:text="${funcionario.nomeCompleto}"></span></td>
+                            <td><span th:text="${funcionario.bi}"></span></td>
+                            <td><span th:text="${funcionario.cargo}"></span></td>
+                            <td><span th:text="${funcionario.departamento}"></span></td>
+                            <td><span th:text="${funcionario.email}"></span></td>
+                            <td>
+                                <a title="Detalhes"  th:href="@{'/funcionarios/detalhes/' + ${funcionario.id}}" class="btn btn-primary m-1"><i class="bi bi-eye-fill"></i></a>
+                                <a title="Editar" th:href="@{'/funcionarios/editar/' + ${funcionario.id}}" class="btn btn-primary m-1" ><i class="bi bi-pencil-square"></i></a>
+                            </td>
                         </tr>
-                        <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
-                            <td>01 Jan 2045</td>
-                            <td>INV-0123</td>
-                            <td>Jhon Doe</td>
-                            <td>$123</td>
-                            <td>Paid</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
-                            <td>01 Jan 2045</td>
-                            <td>INV-0123</td>
-                            <td>Jhon Doe</td>
-                            <td>$123</td>
-                            <td>Paid</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
-                            <td>01 Jan 2045</td>
-                            <td>INV-0123</td>
-                            <td>Jhon Doe</td>
-                            <td>$123</td>
-                            <td>Paid</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
+
+                        
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-    <!-- Recent Sales End -->
-
-
-    <!-- Widgets Start -->
-    <div class="container-fluid pt-4 px-4">
-        <div class="row g-4">
-            <div class="col-sm-12 col-md-6 col-xl-4">
-                <div class="h-100 bg-secondary rounded p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-2">
-                        <h6 class="mb-0">Messages</h6>
-                        <a href="">Show All</a>
-                    </div>
-                    <div class="d-flex align-items-center border-bottom py-3">
-                        <img class="rounded-circle flex-shrink-0" src="assets/img/user.jpg" alt=""
-                            style="width: 40px; height: 40px;">
-                        <div class="w-100 ms-3">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-0">Jhon Doe</h6>
-                                <small>15 minutes ago</small>
-                            </div>
-                            <span>Short message goes here...</span>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center border-bottom py-3">
-                        <img class="rounded-circle flex-shrink-0" src="assets/img/user.jpg" alt=""
-                            style="width: 40px; height: 40px;">
-                        <div class="w-100 ms-3">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-0">Jhon Doe</h6>
-                                <small>15 minutes ago</small>
-                            </div>
-                            <span>Short message goes here...</span>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center border-bottom py-3">
-                        <img class="rounded-circle flex-shrink-0" src="assets/img/user.jpg" alt=""
-                            style="width: 40px; height: 40px;">
-                        <div class="w-100 ms-3">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-0">Jhon Doe</h6>
-                                <small>15 minutes ago</small>
-                            </div>
-                            <span>Short message goes here...</span>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center pt-3">
-                        <img class="rounded-circle flex-shrink-0" src="assets/img/user.jpg" alt=""
-                            style="width: 40px; height: 40px;">
-                        <div class="w-100 ms-3">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-0">Jhon Doe</h6>
-                                <small>15 minutes ago</small>
-                            </div>
-                            <span>Short message goes here...</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-xl-4">
-                <div class="h-100 bg-secondary rounded p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Calender</h6>
-                        <a href="">Show All</a>
-                    </div>
-                    <div id="calender"></div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-xl-4">
-                <div class="h-100 bg-secondary rounded p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">To Do List</h6>
-                        <a href="">Show All</a>
-                    </div>
-                    <div class="d-flex mb-2">
-                        <input class="form-control bg-dark border-0" type="text" placeholder="Enter task">
-                        <button type="button" class="btn btn-primary ms-2">Add</button>
-                    </div>
-                    <div class="d-flex align-items-center border-bottom py-2">
-                        <input class="form-check-input m-0" type="checkbox">
-                        <div class="w-100 ms-3">
-                            <div class="d-flex w-100 align-items-center justify-content-between">
-                                <span>Short task goes here...</span>
-                                <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center border-bottom py-2">
-                        <input class="form-check-input m-0" type="checkbox">
-                        <div class="w-100 ms-3">
-                            <div class="d-flex w-100 align-items-center justify-content-between">
-                                <span>Short task goes here...</span>
-                                <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center border-bottom py-2">
-                        <input class="form-check-input m-0" type="checkbox" checked>
-                        <div class="w-100 ms-3">
-                            <div class="d-flex w-100 align-items-center justify-content-between">
-                                <span><del>Short task goes here...</del></span>
-                                <button class="btn btn-sm text-primary"><i class="fa fa-times"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center border-bottom py-2">
-                        <input class="form-check-input m-0" type="checkbox">
-                        <div class="w-100 ms-3">
-                            <div class="d-flex w-100 align-items-center justify-content-between">
-                                <span>Short task goes here...</span>
-                                <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center pt-2">
-                        <input class="form-check-input m-0" type="checkbox">
-                        <div class="w-100 ms-3">
-                            <div class="d-flex w-100 align-items-center justify-content-between">
-                                <span>Short task goes here...</span>
-                                <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Widgets End -->
 </main>
 
+<script>
+    window.addEventListener("load", ()=>{
+        
+    // Chart Global Color
+    Chart.defaults.color = "#ffff";
+    Chart.defaults.borderColor = "#ffff";
+
+    // Single Line Chart
+    var ctx3 = $("#line-chart-md").get(0).getContext("2d");
+    var myChart3 = new Chart(ctx3, {
+        type: "line",
+        data: {
+            labels: [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150],
+            datasets: [{
+                label: "Salse",
+                fill: false,
+                backgroundColor: "rgba(27, 123, 233, .7)",
+                data: [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15]
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+
+    
+    // var ctx1 = $("#worldwide-sales").get(0).getContext("2d");
+    // var myChart1 = new Chart(ctx1, {
+    //     type: "bar",
+    //     data: {
+    //         labels: ["2016", "2017", "2018", "2019", "2020", "2021", "2022"],
+    //         datasets: [{
+    //                 label: "USA",
+    //                 data: [15, 30, 55, 65, 60, 80, 95],
+    //                 backgroundColor: "rgba(27, 123, 233, .7)"
+    //             },
+    //             {
+    //                 label: "UK",
+    //                 data: [8, 35, 40, 60, 70, 55, 75],
+    //                 backgroundColor: "rgba(27, 123, 233, .5)"
+    //             },
+    //             {
+    //                 label: "AU",
+    //                 data: [12, 25, 45, 55, 65, 70, 60],
+    //                 backgroundColor: "rgba(27, 123, 233, .3)"
+    //             }
+    //         ]
+    //         },
+    //     options: {
+    //         responsive: true
+    //     }
+    // });
+
+
+    // var ctx2 = $("#salse-revenue").get(0).getContext("2d");
+    // var myChart2 = new Chart(ctx2, {
+    //     type: "line",
+    //     data: {
+    //         labels: ["2016", "2017", "2018", "2019", "2020", "2021", "2022"],
+    //         datasets: [{
+    //                 label: "Salse",
+    //                 data: [15, 30, 55, 45, 70, 65, 85],
+    //                 backgroundColor: "rgba(27, 123, 233, .7)",
+    //                 fill: true
+    //             },
+    //             {
+    //                 label: "Revenue",
+    //                 data: [99, 135, 170, 130, 190, 180, 270],
+    //                 backgroundColor: "rgba(27, 123, 233, .5)",
+    //                 fill: true
+    //             }
+    //         ]
+    //         },
+    //     options: {
+    //         responsive: true
+    //     }
+    // });
+    
+
+
+    
+
+
+    // var ctx4 = $("#bar-chart").get(0).getContext("2d");
+    // var myChart4 = new Chart(ctx4, {
+    //     type: "bar",
+    //     data: {
+    //         labels: ["Italy", "France", "Spain", "USA", "Argentina"],
+    //         datasets: [{
+    //             backgroundColor: [
+    //                 "rgba(27, 123, 233, .7)",
+    //                 "rgba(27, 123, 233, .6)",
+    //                 "rgba(27, 123, 233, .5)",
+    //                 "rgba(27, 123, 233, .4)",
+    //                 "rgba(27, 123, 233, .3)"
+    //             ],
+    //             data: [55, 49, 44, 24, 15]
+    //         }]
+    //     },
+    //     options: {
+    //         responsive: true
+    //     }
+    // });
+
+
+    // var ctx5 = $("#pie-chart").get(0).getContext("2d");
+    // var myChart5 = new Chart(ctx5, {
+    //     type: "pie",
+    //     data: {
+    //         labels: ["Italy", "France", "Spain", "USA", "Argentina"],
+    //         datasets: [{
+    //             backgroundColor: [
+    //                 "rgba(27, 123, 233, .7)",
+    //                 "rgba(27, 123, 233, .6)",
+    //                 "rgba(27, 123, 233, .5)",
+    //                 "rgba(27, 123, 233, .4)",
+    //                 "rgba(27, 123, 233, .3)"
+    //             ],
+    //             data: [55, 49, 44, 24, 15]
+    //         }]
+    //     },
+    //     options: {
+    //         responsive: true
+    //     }
+    // });
+
+
+    // var ctx6 = $("#doughnut-chart").get(0).getContext("2d");
+    // var myChart6 = new Chart(ctx6, {
+    //     type: "doughnut",
+    //     data: {
+    //         labels: ["Italy", "France", "Spain", "USA", "Argentina"],
+    //         datasets: [{
+    //             backgroundColor: [
+    //                 "rgba(27, 123, 233, .7)",
+    //                 "rgba(27, 123, 233, .6)",
+    //                 "rgba(27, 123, 233, .5)",
+    //                 "rgba(27, 123, 233, .4)",
+    //                 "rgba(27, 123, 233, .3)"
+    //             ],
+    //             data: [55, 49, 44, 24, 15]
+    //         }]
+    //     },
+    //     options: {
+    //         responsive: true
+    //     }
+    // });
+
+    });
+</script>
 
 <div th:replace="fragmentos/_bottom"></div>

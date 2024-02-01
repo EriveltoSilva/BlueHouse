@@ -60,6 +60,8 @@ public class RelatorioController {
         
         model.addAttribute("totalAutoNoticias",(long) autoNoticiaService.getTotal());
         model.addAttribute("totalHorarios",(long) horarioService.getTotal());
+
+        model.addAttribute("funcionarios", funcionarioService.listar());
         return "relatorios/dashboard";
     }
 
