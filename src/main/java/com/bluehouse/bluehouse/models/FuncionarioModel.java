@@ -40,7 +40,7 @@ public class FuncionarioModel extends PessoaModel implements UserDetails{
     private String email;
 
     @Size(min = 6, message = "A senha deve ter pelo menos 6 caracteres")
-    @Pattern(regexp = "^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?~\\/-]).*$", message = "A senha deve conter pelo menos uma letra maiúscula e um caracter especial.")
+    // @Pattern(regexp = "^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?~\\/-]).*$", message = "A senha deve conter pelo menos uma letra maiúscula e um caracter especial.")
     private String senha;
 
     @Column(nullable = false)
