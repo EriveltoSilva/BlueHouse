@@ -37,4 +37,7 @@ public class QueixaService {
     {
         queixaRepository.deleteById(id);
     }
+    public long getTotal() {
+        return queixaRepository.count(); // Isso conta o número total 
+    }
 }

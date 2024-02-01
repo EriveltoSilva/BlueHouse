@@ -37,4 +37,8 @@ public class AutoNoticiaService {
     {
         autoNoticiaRepository.deleteById(id);
     }
+
+    public long getTotal() {
+        return autoNoticiaRepository.count(); // Isso conta o número total 
+    }
 }

@@ -48,4 +48,8 @@ public class ReportanteService{
                 .collect(Collectors.toList());
     }
 
+    public long getTotal() {
+        return reportanteRepository.count(); // Isso conta o número total 
+    }
+
 }
