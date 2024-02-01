@@ -55,4 +55,8 @@ public class TurnoService {
         return turnoRepository.findByDataTurnoBetweenOrderByDataTurno(inicioMes, fimMes);
     }
 
+    public long getTotal() {
+        return turnoRepository.count(); // Isso conta o número total 
+    }
+
 }

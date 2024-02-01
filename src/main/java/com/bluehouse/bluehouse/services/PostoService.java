@@ -39,4 +39,8 @@ public class PostoService{
             postoRepository.deleteById(id);
         return eliminarPosto.get();
     }
+
+    public long getTotal() {
+        return postoRepository.count(); // Isso conta o número total 
+    }
 }

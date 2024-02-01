@@ -107,5 +107,9 @@ public class FuncionarioService implements UserDetailsService{
             return false;
         }
     }
+
+    public long getTotal() {
+        return funcionarioRepository.count(); // Isso conta o número total 
+    }
     
 }

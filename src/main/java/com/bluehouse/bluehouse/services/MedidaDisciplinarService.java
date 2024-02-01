@@ -39,4 +39,8 @@ public class MedidaDisciplinarService {
     {
         medidaDisciplinarRepository.deleteById(id);;
     }
+
+    public long getTotal() {
+        return medidaDisciplinarRepository.count(); // Isso conta o número total 
+    }
 }
