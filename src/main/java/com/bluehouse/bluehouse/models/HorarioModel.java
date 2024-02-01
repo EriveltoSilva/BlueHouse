@@ -2,6 +2,7 @@ package com.bluehouse.bluehouse.models;
 
 import com.bluehouse.bluehouse.models.ocorrencias.DenunciaModel;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -28,6 +29,7 @@ public class HorarioModel implements Serializable {
     @GeneratedValue
     private UUID id;
 
+    @FutureOrPresent(message = "Você colocou uma data do passado")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataTurno;
 
