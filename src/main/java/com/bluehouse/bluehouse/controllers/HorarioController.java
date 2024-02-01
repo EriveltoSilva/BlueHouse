@@ -26,6 +26,7 @@ import com.bluehouse.bluehouse.services.FuncionarioService;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class HorarioController {
@@ -78,7 +79,7 @@ public class HorarioController {
     }
 
     @PostMapping("/horarios/editar")
-    public String processarEdicaoDeHorario(@Valid @ModelAttribute("formulario") FormularioHorarioDTO formulario) {
+    public String processarEdicaoDeHorario(@Valid @ModelAttribute("formulario") FormularioHorarioDTO formulario, RedirectAttributes redirectAttributes) {
         Optional<FuncionarioModel> funcionariOptional = funcionarioService
                 .obterFuncionarioModel(formulario.getIdFuncionario());
         if (!funcionariOptional.isPresent())
@@ -114,12 +115,14 @@ public class HorarioController {
         horario.getTurnos().add(turno);
         horarioService.editar(horario);
         turnoService.editar(turno);
+        redirectAttributes.addFlashAttribute("mensagemSucesso", "Edição registrada com sucesso");
+        
         return "redirect:/horarios/listar";
     }
 
 
     @PostMapping("/horarios/cadastrar")
-    public String processarCadastroHorario(@ModelAttribute("formulario") FormularioHorarioDTO formulario, BindingResult bResult, Model model) 
+    public String processarCadastroHorario(@ModelAttribute("formulario") FormularioHorarioDTO formulario, BindingResult bResult, Model model, RedirectAttributes redirectAttributes) 
     {
         if (bResult.hasErrors()) {
             model.addAttribute("formulario", formulario);
@@ -152,6 +155,7 @@ public class HorarioController {
 
         horarioService.criar(horario);
         turnoService.criar(turno);
+        redirectAttributes.addFlashAttribute("mensagemSucesso", "Turno registrado com sucesso");
         return "redirect:/horarios/listar";
     }
     

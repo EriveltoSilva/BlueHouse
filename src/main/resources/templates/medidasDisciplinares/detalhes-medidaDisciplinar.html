@@ -4,6 +4,17 @@
     
     <div class="container-fluid pt-4 px-4">
         <h1>Detalhes da Medida Disciplinar</span> </h1>
+        <div th:if="${mensagemSucesso}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-circle-fill"></i>
+            <span th:text="${mensagemSucesso}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div th:if="${mensagemErro}" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-circle-fill"></i>
+            <span th:text="${mensagemErro}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
         <div class="bg-secondary text-center rounded p-4">
             <div class="d-flex align-items-center justify-content-between mb-4 border-bottom">
                 <h3 class="mb-0 text-primary">Dados da Medida</h3>
