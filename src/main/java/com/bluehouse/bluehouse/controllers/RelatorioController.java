@@ -15,6 +15,8 @@ import com.bluehouse.bluehouse.services.ocorrencias.AutoNoticiaService;
 import com.bluehouse.bluehouse.services.ocorrencias.DenunciaService;
 import com.bluehouse.bluehouse.services.ocorrencias.QueixaService;
 
+import java.util.Map;
+
 @Controller
 public class RelatorioController {
     @Autowired 
@@ -67,6 +69,10 @@ public class RelatorioController {
         model.addAttribute("totalTurnos",(long) turnoService.getTotal());
 
         model.addAttribute("funcionarios", funcionarioService.listar());
+
+        Map<String, Long> generoContagem = funcionarioService.obterContagemGenero();
+
+        model.addAttribute("generoContagem", generoContagem);
         return "relatorios/dashboard";
     }
 

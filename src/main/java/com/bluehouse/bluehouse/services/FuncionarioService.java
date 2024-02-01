@@ -1,14 +1,12 @@
 package com.bluehouse.bluehouse.services;
 
 import com.bluehouse.bluehouse.DTO.FuncionarioDTO;
-import com.bluehouse.bluehouse.DTO.ReportanteDTO;
-import com.bluehouse.bluehouse.controllers.MedidaDisciplinarController;
 import com.bluehouse.bluehouse.models.FuncionarioModel;
 import com.bluehouse.bluehouse.models.MedidaDisciplinarModel;
-import com.bluehouse.bluehouse.models.ReportanteModel;
 import com.bluehouse.bluehouse.repositories.FuncionarioRepository;
 import com.bluehouse.bluehouse.repositories.MedidaDisciplinarRepository;
 
+import com.bluehouse.bluehouse.repositories.PessoaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.DisabledException;
@@ -21,7 +19,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -32,6 +32,9 @@ public class FuncionarioService implements UserDetailsService{
     
     @Autowired
     private final FuncionarioRepository funcionarioRepository;
+
+    @Autowired
+    private final PessoaRepository pessoaRepository;
 
     @Autowired
     private final MedidaDisciplinarRepository medidaDisciplinarRepository;
@@ -111,5 +114,19 @@ public class FuncionarioService implements UserDetailsService{
     public long getTotal() {
         return funcionarioRepository.count(); // Isso conta o número total 
     }
-    
+
+
+    public Map<String, Long> obterContagemGenero() {
+        List<Object[]> generoContagemList = pessoaRepository.contarPorGenero();
+        Map<String, Long> generoContagem = new HashMap<>();
+
+        for (Object[] result : generoContagemList) {
+            String genero = (String) result[0];
+            Long contagem = (Long) result[1];
+            generoContagem.put(genero, contagem);
+        }
+
+        return generoContagem;
+    }
+
 }

@@ -18,7 +18,7 @@
                 <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                     <i class="fa fa-chart-bar fa-3x text-primary"></i>
                     <div class="ms-3">
-                        <p class="mb-2">Total de M.D</p>
+                        <p class="mb-2">Total de Medid.D</p>
                         <h6 class="mb-0"><span th:text="${totalMedidasDispiplinares}"></span></h6>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                 <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                     <i class="fa fa-chart-area fa-3x text-primary"></i>
                     <div class="ms-3">
-                        <p class="mb-2">Total Detentos</p>
+                        <p class="mb-2">Total de Detentos</p>
                         <h6 class="mb-0"><span th:text="${totalDetentos}"></span></h6>
                     </div>
                 </div>
@@ -97,8 +97,14 @@
 
 
     <!-- Sales Chart Start -->
-    <div class="container-fluid pt-4 px-4">
+    <!-- <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
+            <div class="col-sm-12 col-xl-6">
+                <div class="bg-secondary rounded h-100 p-4">
+                    <h6 class="mb-4">Distribuição de Usuários por Gênero</h6>
+                    <canvas id="pie-chart-genero"></canvas>
+                </div>
+            </div>
             <div class="col-sm-12 col-xl-6">
                 <div class="bg-secondary rounded h-100 p-4">
                     <h6 class="mb-4">Medidas Disciplinares Aplicada</h6>
@@ -106,7 +112,7 @@
                 </div>
             </div>
 
-            <!-- <div class="col-sm-12 col-xl-6">
+            <div class="col-sm-12 col-xl-6">
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Worldwide Sales</h6>
@@ -114,8 +120,8 @@
                     </div>
                     <canvas id="worldwide-sales"></canvas>
                 </div>
-            </div> -->
-            <!-- <div class="col-sm-12 col-xl-6">
+            </div>
+            <div class="col-sm-12 col-xl-6">
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Salse & Revenue</h6>
@@ -123,9 +129,9 @@
                     </div>
                     <canvas id="salse-revenue"></canvas>
                 </div>
-            </div> -->
+            </div>
         </div>
-    </div>
+    </div> -->
 
 
 
@@ -190,23 +196,48 @@
         Chart.defaults.color = "#ffff";
         Chart.defaults.borderColor = "#ffff";
 
-        // Single Line Chart
-        var ctx3 = $("#line-chart-md").get(0).getContext("2d");
-        var myChart3 = new Chart(ctx3, {
-            type: "line",
+        // Extrair os rótulos e dados do Map
+
+
+        console.log(generoRótulos)
+        var ctx5 = $("#pie-chart-genero").get(0).getContext("2d");
+        var myChart5 = new Chart(ctx5, {
+            type: "pie",
             data: {
-                labels: [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150],
+                labels: ["Italy", "France", "Spain", "USA", "Argentina"],
                 datasets: [{
-                    label: "Salse",
-                    fill: false,
-                    backgroundColor: "rgba(27, 123, 233, .7)",
-                    data: [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15]
+                    backgroundColor: [
+                        "rgba(27, 123, 233, .7)",
+                        "rgba(27, 123, 233, .6)",
+                        "rgba(27, 123, 233, .5)",
+                        "rgba(27, 123, 233, .4)",
+                        "rgba(27, 123, 233, .3)"
+                    ],
+                    data: [55, 49, 44, 24, 15]
                 }]
             },
             options: {
                 responsive: true
             }
         });
+
+        // Single Line Chart
+        // var ctx3 = $("#line-chart-md").get(0).getContext("2d");
+        // var myChart3 = new Chart(ctx3, {
+        //     type: "line",
+        //     data: {
+        //         labels: [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150],
+        //         datasets: [{
+        //             label: "Salse",
+        //             fill: false,
+        //             backgroundColor: "rgba(27, 123, 233, .7)",
+        //             data: [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15]
+        //         }]
+        //     },
+        //     options: {
+        //         responsive: true
+        //     }
+        // });
 
 
 
@@ -289,26 +320,7 @@
         // });
 
 
-        // var ctx5 = $("#pie-chart").get(0).getContext("2d");
-        // var myChart5 = new Chart(ctx5, {
-        //     type: "pie",
-        //     data: {
-        //         labels: ["Italy", "France", "Spain", "USA", "Argentina"],
-        //         datasets: [{
-        //             backgroundColor: [
-        //                 "rgba(27, 123, 233, .7)",
-        //                 "rgba(27, 123, 233, .6)",
-        //                 "rgba(27, 123, 233, .5)",
-        //                 "rgba(27, 123, 233, .4)",
-        //                 "rgba(27, 123, 233, .3)"
-        //             ],
-        //             data: [55, 49, 44, 24, 15]
-        //         }]
-        //     },
-        //     options: {
-        //         responsive: true
-        //     }
-        // });
+        
 
 
         // var ctx6 = $("#doughnut-chart").get(0).getContext("2d");

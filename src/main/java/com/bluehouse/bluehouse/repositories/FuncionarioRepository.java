@@ -12,5 +12,5 @@ public interface FuncionarioRepository extends JpaRepository<FuncionarioModel, U
 
     List<FuncionarioModel> findByNomeCompletoStartingWith(String nomeCompleto);
     List<FuncionarioModel> findByNomeCompletoContaining(String nomeCompleto);
-    List<FuncionarioModel> findByNomeCompletoContainingIgnoreCase(String nomeCompleto);
+    List<FuncionarioModel> findByNomeCompletoContainingIgnoreCase(String nomeCompleto);    
 }
