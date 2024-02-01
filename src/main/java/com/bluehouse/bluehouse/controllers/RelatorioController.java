@@ -10,6 +10,7 @@ import com.bluehouse.bluehouse.services.FuncionarioService;
 import com.bluehouse.bluehouse.services.HorarioService;
 import com.bluehouse.bluehouse.services.MedidaDisciplinarService;
 import com.bluehouse.bluehouse.services.PostoService;
+import com.bluehouse.bluehouse.services.TurnoService;
 import com.bluehouse.bluehouse.services.ocorrencias.AutoNoticiaService;
 import com.bluehouse.bluehouse.services.ocorrencias.DenunciaService;
 import com.bluehouse.bluehouse.services.ocorrencias.QueixaService;
@@ -40,6 +41,9 @@ public class RelatorioController {
     @Autowired 
     private HorarioService horarioService;
 
+    @Autowired 
+    private TurnoService turnoService;
+
     
     // private MedidaDisciplinarService medidasDisciplinaresService;
 
@@ -60,6 +64,7 @@ public class RelatorioController {
         
         model.addAttribute("totalAutoNoticias",(long) autoNoticiaService.getTotal());
         model.addAttribute("totalHorarios",(long) horarioService.getTotal());
+        model.addAttribute("totalTurnos",(long) turnoService.getTotal());
 
         model.addAttribute("funcionarios", funcionarioService.listar());
         return "relatorios/dashboard";
