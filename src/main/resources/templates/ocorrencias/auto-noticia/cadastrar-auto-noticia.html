@@ -2,93 +2,88 @@
 
 <main>
     <div class="container-fluid pt-4 px-4">
-        <h1>Registrar Nova Ocorrência* (Auto Notícia)</h1>
-        <div class="row g-4">
-            <div class="col-12">
-                <div class="bg-secondary rounded h-100 p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-4 border-bottom">
-                        <h3 class="mb-4 text-primary">Ficha de Ocorrência</h3>
-                    </div>
-                    <nav>
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button class="nav-link active" id="nav-dados-funcionario-tab" data-bs-toggle="tab"
-                                data-bs-target="#nav-dados-funcionario" type="button" role="tab"
-                                aria-controls="nav-dados-funcionario" aria-selected="true">
-                                Dados do Reporte
-                            </button>
-                        </div>
-                    </nav>
-                    <form method="POST" th:action="@{/ocorrencias/auto-noticia/cadastrar}" th:object="${formulario}">
-                        <div class="tab-content pt-3" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="nav-dados-funcionario" role="tabpanel"
-                                aria-labelledby="nav-dados-funcionario-tab">
-                                <div class="row text-start">
-                                    <input type="text" th:field="*{idFuncionario}" id="idFuncionario" class="d-none">
+        <h1 class="text-bg-secondary">Registrar Nova Ocorrência* (Auto Notícia)</h1>
+        <div class="shadow p-3 mb-5 bg-white rounded text-center">
+            <div class="d-flex align-items-center justify-content-between mb-4 border-bottom">
+                <h3 class="mb-4 text-bg-secondary">Ficha de Ocorrência</h3>
+            </div>
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-dados-funcionario-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-dados-funcionario" type="button" role="tab"
+                        aria-controls="nav-dados-funcionario" aria-selected="true">
+                        Dados do Reporte
+                    </button>
+                </div>
+            </nav>
+            <form method="POST" th:action="@{/ocorrencias/auto-noticia/cadastrar}" th:object="${formulario}">
+                <div class="tab-content pt-3" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-dados-funcionario" role="tabpanel"
+                        aria-labelledby="nav-dados-funcionario-tab">
+                        <div class="row text-start">
+                            <input type="text" th:field="*{idFuncionario}" id="idFuncionario" class="d-none">
 
-                                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
-                                        <label for="nomeCompleto">Nome Completo:</label>
-                                        <div class="dropdown my-search-box">
-                                            <input type="text" th:field="*{funcionario.nomeCompleto}"
-                                                class="form-control dropdown-toggle " id="nomeCompleto"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                            <div class="icon">
-                                                <i class="bi bi-chevron-down"></i>
-                                            </div>
-                                            <ul class="dropdown-menu my-content-box w-100"
-                                                aria-labelledby="nomeCompleto">
-                                            </ul>
-                                        </div>
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                <label for="nomeCompleto">Nome Completo:</label>
+                                <div class="dropdown my-search-box">
+                                    <input type="text" th:field="*{funcionario.nomeCompleto}"
+                                        class="form-control dropdown-toggle " id="nomeCompleto"
+                                        data-bs-toggle="dropdown" aria-expanded="false" placeholder="Digite o seu nome">
+                                    <div class="icon">
+                                        <i class="bi bi-chevron-down"></i>
                                     </div>
-
-                                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
-                                        <label for="dataReporte">Data da Reporte</label>
-                                        <input type="date" th:field="*{dataReporte}" id="dataReporte"
-                                            class="form-control">
-                                    </div>
-
-                                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
-                                        <label for="dataOcorrido">Data do Ocorrido</label>
-                                        <input type="date" th:field="*{dataOcorrido}" id="dataOcorrido"
-                                            class="form-control">
-                                    </div>
-
-                                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
-                                        <label for="horaOcorrido">Hora do Ocorrido</label>
-                                        <input type="time" th:field="*{horaOcorrido}" id="horaOcorrido"
-                                            class="form-control">
-                                    </div>
-
-                                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
-                                        <label for="tipoOcorrencia">Tipo de Ocorrência</label>
-                                        <input type="text" th:field="*{tipoOcorrencia}" id="tipoOcorrencia"
-                                            class="form-control" readonly>
-                                    </div>
-
-                                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
-                                        <label for="tipoOcorrencia">Local do Ocorrido</label>
-                                        <input type="text" th:field="*{local}" id="local" class="form-control">
-                                    </div>
-
-                                    <div class="col-12 mt-3">
-                                        <label for="descricao">Descrição</label>
-                                        <textarea th:field="*{descricao}" class="form-control" style="height: 150px;"
-                                            placeholder="Descreva o ocorrido" id="descricao"></textarea>
-                                    </div>
-
-                                    <div class="col-12 mt-3 text-center">
-                                        <button type="submit" class="btn btn-primary w-50">
-                                            <i class="bi bi-pencil-square"></i>
-                                            Salvar Auto de Notícia
-                                        </button>
-                                    </div>
-
+                                    <ul class="dropdown-menu my-content-box w-100"
+                                        aria-labelledby="nomeCompleto">
+                                    </ul>
                                 </div>
                             </div>
-                    </form>
-                </div>
-            </div>
+
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                <label for="dataReporte">Data da Reporte</label>
+                                <input type="date" th:field="*{dataReporte}" id="dataReporte"
+                                    class="form-control">
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                <label for="dataOcorrido">Data do Ocorrido</label>
+                                <input type="date" th:field="*{dataOcorrido}" id="dataOcorrido"
+                                    class="form-control">
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                <label for="horaOcorrido">Hora do Ocorrido</label>
+                                <input type="time" th:field="*{horaOcorrido}" id="horaOcorrido"
+                                    class="form-control">
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                <label for="tipoOcorrencia">Tipo de Ocorrência</label>
+                                <input type="text" th:field="*{tipoOcorrencia}" id="tipoOcorrencia"
+                                    class="form-control" readonly>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                <label for="tipoOcorrencia">Local do Ocorrido</label>
+                                <input type="text" th:field="*{local}" id="local" class="form-control" placeholder="Digite o local da ocorrencia">
+                            </div>
+
+                            <div class="col-12 mt-3">
+                                <label for="descricao">Descrição</label>
+                                <textarea th:field="*{descricao}" class="form-control" style="height: 150px;"
+                                    placeholder="Descreva o ocorrido" id="descricao"></textarea>
+                            </div>
+
+                            <div class="col-12 mt-3 text-center">
+                                <button type="submit" class="btn btn-primary w-50">
+                                    <i class="bi bi-pencil-square"></i>
+                                    Salvar Auto de Notícia
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+            </form>
         </div>
-    </div>
     </div>
 </main>
 
