@@ -1,0 +1,113 @@
+<div th:replace="fragmentos/_top"></div>
+
+<main>
+    <div class="container-fluid pt-4 px-4">
+        <h1>Edição de Queixa </h1>
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="bg-secondary rounded h-100 p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4 border-bottom">
+                        <h3 class="mb-4 text-primary">Ficha de Queixa</h3>
+                    </div>
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-dados-reportante-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-dados-reportante" type="button" role="tab"
+                                aria-controls="nav-dados-reportante" aria-selected="true">
+                                Dados do Reportante
+                            </button>
+                            <button class="nav-link" id="nav-queixa-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-queixa" type="button" role="tab" aria-controls="nav-queixa"
+                                aria-selected="false">Queixa</button>
+                        </div>
+                    </nav>
+                    <form method="POST" th:action="@{/ocorrencias/queixa/editar}" th:object="${formQueixa}">
+                        <div class="tab-content pt-3" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-dados-reportante" role="tabpanel"
+                            aria-labelledby="nav-dados-reportante-tab">
+                            <div class="row text-start">
+                                <input type="text"  th:field="*{id}" id="id" class="d-none">
+                                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                        <label for="nomeCompleto">Nome Completo:</label>
+                                        <input type="text" th:value="${formQueixa.nomeCompleto}" id="nomeCompleto" class="form-control" readonly>
+                                    </div>
+
+                                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                        <label for="bi">Nº do Bilhete:</label>
+                                        <input type="text" th:value="${formQueixa.bi}" id="bi" class="form-control" readonly>
+                                    </div>
+
+                                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                        <label for="endereco">Endereço:</label>
+                                        <input type="text" th:value="${formQueixa.endereco}" id="endereco" class="form-control" readonly>
+                                    </div>
+
+                                    <!-- <div class="col-12 col-sm-6 col-md-6 col-lg-6  mt-3">
+                                        <label for="email">Email:</label>
+                                        <input type="email" th:value="${formQueixa.email}" id="email" class="form-control" readonly>
+                                    </div> -->
+
+                                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                        <label for="contacto">Contacto:</label>
+                                        <input type="tel" th:value="${formQueixa.contacto}" id="contacto" class="form-control" readonly>
+                                    </div>
+                                    
+                                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                        <label for="dataNascimento">Data de Nascimento</label>
+                                        <input type="date" th:value="${formQueixa.dataNascimento}" id="dataNascimento" class="form-control" readonly>
+                                    </div>
+                                    
+                                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                        <label for="contacto">Gênero:</label>                   
+                                        <input class="form-control" type="text" th:value="${formQueixa.genero == 'M' ? 'MASCULINO' : 'FEMININO'}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="nav-queixa" role="tabpanel"
+                                aria-labelledby="nav-queixa-tab">
+                                <div class="row  text-start">
+                                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                        <label for="dataQueixa">Data da Queixa</label>
+                                        <input type="date" th:field="*{dataQueixa}"  id="dataQueixa" class="form-control">
+                                    </div>
+
+                                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                        <label for="dataOcorrido">Data do Ocorrido</label>
+                                        <input type="date" th:field="*{dataOcorrido}" id="dataOcorrido" class="form-control" >
+                                    </div>
+
+                                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                        <label for="horaOcorrido">Hora do Ocorrido</label>
+                                        <!-- <input type="text" th:field="*{horaOcorrido}" id="horaOcorrido" class="form-control" placeholder="HH:mm" pattern="[0-9]{2}:[0-9]{2}"> -->
+                                        <input type="time" th:field="*{horaOcorrido}"  id="horaOcorrido" class="form-control" >
+                                    </div>
+
+                                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
+                                        <label for="tipoOcorrencia">Tipo de Ocorrência</label>
+                                        <input type="text"   th:field="*{tipoOcorrencia}" id="tipoOcorrencia" class="form-control" >
+                                    </div>
+
+                                    <div class="col-12 mt-3">
+                                        <label for="descricao">Descrição</label>
+                                        <textarea th:field="*{descricao}" class="form-control" style="height: 150px;"
+                                            placeholder="Descreva o ocorrido" id="descricao" ></textarea>
+                                    </div> 
+
+                                    <div class="col-12 mt-3 text-center">
+                                        <button type="submit" class="btn btn-primary w-25">
+                                            <i class="bi bi-pencil-square"></i>
+                                            Salvar Edição
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+
+
+<div th:replace="fragmentos/_bottom"></div>

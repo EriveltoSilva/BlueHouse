@@ -1,6 +1,8 @@
 package com.bluehouse.bluehouse.models;
 
 import com.bluehouse.bluehouse.models.ocorrencias.DenunciaModel;
+import com.bluehouse.bluehouse.models.ocorrencias.QueixaModel;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -21,4 +23,7 @@ public class ReportanteModel  extends PessoaModel{
 
     @OneToMany(mappedBy = "reportante", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DenunciaModel> denuncias = new ArrayList<DenunciaModel>();
+
+    @OneToMany(mappedBy = "reportante", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<QueixaModel> queixas = new ArrayList<QueixaModel>();
 }
