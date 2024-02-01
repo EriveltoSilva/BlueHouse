@@ -128,4 +128,15 @@ public class AutoNoticiaController {
         autoNoticiaService.editar(autoNoticia);
         return "redirect:/ocorrencias/listar";
     }
+
+
+    @GetMapping("/ocorrencias/auto-noticia/eliminar/{id}")
+    public String eliminarAutoNoticia(@PathVariable("id") UUID id, Model model) {
+        Optional<AutoNoticiaModel> autoNoticiaOptional = autoNoticiaService.obterAutoNoticiaModel(id);
+        if (autoNoticiaOptional.isPresent()) 
+            autoNoticiaService.eliminar(id);
+        else
+            return "redirect:/";
+        return "redirect:/ocorrencias/listar";
+    }
 }
