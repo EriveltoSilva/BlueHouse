@@ -74,6 +74,14 @@
                             </select>
                         </div>
 
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-3">
+                            <label for="role">Tipo de Usuário:</label>
+                            <select name="role" id="role" class="form-select">
+                                    <option value="USER" selected>Usuário Normal</option>
+                                    <option value="ADMIN">Administrador</option>
+                            </select>
+                        </div>
+
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                             <label for="email">Email:</label>
                             <input type="email" name="email" id="email" class="form-control" th:value="${funcionario.email}">

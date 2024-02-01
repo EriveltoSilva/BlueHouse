@@ -11,6 +11,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 
@@ -31,7 +33,16 @@ public class PostoModel implements Serializable {
     @Id
     @GeneratedValue
     private UUID id;
+
+    @NotBlank(message = "O posto não pode estar em branco")
+    @NotNull
     private String nomePosto;
+
+    @NotBlank(message = "A localização não pode estar em branco")
+    @NotNull
     private String localizacao;
+
+    @NotBlank(message = "A descrição não pode estar em branco")
+    @NotNull
     private String descricao;
 }
