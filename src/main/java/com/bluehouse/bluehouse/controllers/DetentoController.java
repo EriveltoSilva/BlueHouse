@@ -3,13 +3,18 @@ package com.bluehouse.bluehouse.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bluehouse.bluehouse.models.DetentoModel;
+import com.bluehouse.bluehouse.models.FuncionarioModel;
 import com.bluehouse.bluehouse.services.DetentoService;
+
+import jakarta.validation.Valid;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,14 +29,22 @@ public class DetentoController {
 
     /* Rotas Simples - Retorno de Páginas */
     @GetMapping("/cadastrar")
-    public String formCadastrarDetento(){
+    public String formCadastrarDetento(Model model){
+        model.addAttribute("detento", new DetentoModel());
         return "detentos/cadastrar-detento";
     }
 
     @PostMapping("/cadastrar")
-    public String cadastrarDetento(DetentoModel detento) {
-        detentoService.criar(detento);
-        return "redirect:/detentos/listar";
+    public String cadastrarDetento(@Valid @ModelAttribute ("detento")DetentoModel detento, BindingResult bResult, Model model) {
+        if(bResult.hasErrors())
+        {
+            model.addAttribute("detento", detento);
+            return "detentos/cadastrar-detento";
+        }
+        else {
+            detentoService.criar(detento);
+            return "redirect:/detentos/listar";
+        }
     }
 
     @GetMapping("/listar")
