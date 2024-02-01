@@ -5,13 +5,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class RelatorioController {
-    @GetMapping("relatorios/escrever")
+    @GetMapping("/relatorios/dashboard")
     public String escreverRelatorio() {
-        return "relatorios/escrever-relatorio";
+        return "relatorios/dashboard";
     }
 
-    @GetMapping("relatorios/listar")
-    public String listarRelatorios() {
-        return "relatorios/listar-relatorios";
-    }
 }
