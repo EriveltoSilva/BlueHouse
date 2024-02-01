@@ -28,9 +28,7 @@ public class HorarioModel implements Serializable {
     @Id
     @GeneratedValue
     private UUID id;
-
-    @FutureOrPresent(message = "Você colocou uma data do passado")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    
     private Date dataTurno;
 
     @OneToMany(mappedBy = "horario", cascade = CascadeType.ALL, orphanRemoval = true)

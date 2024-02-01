@@ -26,24 +26,29 @@
                             <label for="dataTurno">Data de Inicio de turno</label>
                             <input type="date" th:field="*{dataTurno}" id="dataTurno" class="form-control"
                                 placeholder="">
+                                <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('dataTurno')}" th:errors="*{dataTurno}"></span>
                         </div>
                         
                         <div class="col-12 col-sm-6 col-md-6">
                             <label for="horaInicio">Hora de Inicio</label>
                             <input type="time" th:field="*{horaInicio}" id="horaInicio" class="form-control"
                                 placeholder="">
+                                <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('horaInicio')}" th:errors="*{horaInicio}"></span>
                         </div>
                         
                         <div class="col-12 col-sm-6 col-md-6">
                             <label for="horaFim">Hora de Fim</label>
                             <input type="time" th:field="*{horaFim}" id="horaFim" class="form-control"
                                 placeholder="">
+                            <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('horaFim')}" th:errors="*{horaFim}"></span>
                         </div>
                         
                         <div class="col-12 col-sm-6 col-md-6">
                             <label for="area">Posto</label>
                             <input type="text" th:field="*{area}" id="area" class="form-control"
                                 placeholder="Insira onde o funcionario vai trabalhar">
+                            
+                                <span style="color: red; font-style: italic;" th:if="${#fields.hasErrors('area')}" th:errors="*{area}"></span>
                         </div>
 
                         <div class="col-12 col-sm-6 col-md-6">

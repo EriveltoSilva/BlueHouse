@@ -28,27 +28,19 @@ public class TurnoModel implements Serializable {
     @GeneratedValue
     private UUID id;
 
-    
-    @FutureOrPresent(message = "Você colocou uma data do passado")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataTurno;
 
-    @NotNull(message = "A hora de início não pode ser nula")
     private LocalTime horaInicio;
 
-    @NotNull(message = "A hora de fim não pode ser nula")
     private LocalTime horaFim;
 
-    @NotBlank(message = "A área não pode estar em branco")
     private String area;
 
     @ManyToOne
     @JoinColumn(name = "funcionario_id")
-    @NotNull(message = "O funcionário não pode ser nulo")
     private FuncionarioModel funcionario;
 
     @ManyToOne
     @JoinColumn(name = "horario_id")
-    @NotNull(message = "O horário não pode ser nulo")
     private HorarioModel horario;
 }
