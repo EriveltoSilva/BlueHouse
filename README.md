@@ -16,8 +16,6 @@
             <li>Na tabela funcionário tem um atributo chamado role, este é do tipo enum e armazena "admin or user". Porem para vocês conseguirem ter acesso a todas urls devem se cadastrar como admin.</li>
             <li>A senha cadastrada na bd deve ser encriptada, acessem ao site "https://bcrypt-generator.com/" para encriptarem as vossas senhas. Esse ponto é muito importante para que vocês possam aceder ao sistema, caso contrário é pau</li>
 
-        </ul>
-    </li>
 </ul> 
 
 # Nota: 
