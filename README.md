@@ -18,20 +18,3 @@
         </ul>
     </li>
 </ul> 
-
-<ul>
-    <ol>Login - feito</ol>
-    <ol>Logout</ol>
-    <ol>Detalhes - Feito</ol>
-    <ol>Eliminar nos cruds - Feito</ol>
-    <ol>Refazer Forms de ocorrências</ol>
-    <ol>Implementrar CRUD de Ocorrências</ol>
-    <ol>Mensagens de aviso, erro, sucesso</ol>
-    <ol>Views Relatórios</ol>
-    <ol>CRUD Relatórios</ol>
-    <ol>Editar Perfil</ol>
-    <ol>Cadastrar somente por admin -  feito</ol>
-    <ol>Validação dos campos dos forms</ol>
-    <ol>Implementar enviar relatórios para superiores</ol>
-    <ol>Alteração das Cores</ol>
-</ul>
