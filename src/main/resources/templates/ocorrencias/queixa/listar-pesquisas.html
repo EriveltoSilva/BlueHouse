@@ -1,0 +1,81 @@
+<div th:replace="fragmentos/_top"></div>
+
+<main>
+
+
+    <div class="container-fluid pt-4 px-4">
+        <h1 class="text-bg-secondary">Lista de Pesquisas</h1>
+        <div th:if="${mensagemSucesso}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-circle-fill"></i>
+            <span th:text="${mensagemSucesso}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div th:if="${mensagemErro}" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-circle-fill"></i>
+            <span th:text="${mensagemErro}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+
+    <div class="container-fluid pt-4 px-4">
+        <div class="shadow p-3 mb-5 bg-white rounded text-center">
+            <div class="d-flex align-items-center justify-content-between mb-4 ">
+                <h3 class="mb-0 text-bg-secondary">Queixas Feitas</h3>
+                <a th:href="@{/ocorrencias/queixa/relatorio}" class="btn btn-primary">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    Criar Relatório
+                </a>
+                <form class="d-none d-md-flex ms-4" th:action="@{/ocorrencias/queixa/pesquisar}" method="get">
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-secondary border-0" placeholder="Pesquisar" name="keyword">
+                        <button class="btn btn-outline-primary" type="submit">Pesquisar</button>
+                    </div>
+                </form>
+                <a th:href="@{/ocorrencias/queixa/cadastrar}" class="btn btn-primary">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    Adicionar Queixa
+                </a>
+            </div>
+            <div class="table-responsive">
+                <table class="table text-start align-middle table-bordered table-hover mb-0">
+                    <thead>
+                        <tr class="text-bg-secondary">
+                            <th scope="col">#</th>
+                            <th scope="col">Nome do Reportante</th>
+                            <th scope="col">Nº BI</th>
+                            <th scope="col">Data da Ocorrência</th>
+                            <th scope="col">Data da Denúncia</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Acções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:if="${resultadosQueixas.empty}">
+                            <td colspan="7">Não existem queixas no sistema.</td>
+                        </tr>
+                        <tr th:each="queixa : ${resultadosQueixas}">
+                            <td scope="row">#</span></td>
+                            <td><span th:text="${queixa.reportante.nomeCompleto}"></span></td>
+                            <td><span th:text="${queixa.reportante.bi}"></span></td>
+                            <td><span th:text="${#dates.format(queixa.dataOcorrido, 'yyyy-MM-dd')}"></span></td>
+                            <td><span th:text="${#dates.format(queixa.dataQueixa, 'yyyy-MM-dd')}"></span></td>
+                            <td><span th:text="${queixa.estado}"></span></td>
+
+                            <td>
+                                <a title="Detalhes" th:href="@{'/ocorrencias/queixa/detalhes/' + ${queixa.id}}"
+                                    class="btn btn-primary m-1"><i class="bi bi-eye-fill"></i></a>
+                                <a title="Editar" th:href="@{'/ocorrencias/queixa/editar/' + ${queixa.id}}"
+                                    class="btn btn-primary m-1"><i class="bi bi-pencil-square"></i></a>
+                                </a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div th:replace="fragmentos/_bottom"></div>

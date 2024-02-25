@@ -4,7 +4,6 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 import java.util.UUID;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -38,5 +37,6 @@ public class FormularioDenunciaDTO {
     private LocalTime horaOcorrido;
     private String tipoOcorrencia;
     private String descricao;
+    private String estado;
 }
 

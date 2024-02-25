@@ -21,6 +21,16 @@
         <div class="shadow p-3 mb-5 bg-white rounded text-center">
             <div class="d-flex align-items-center justify-content-between mb-4">
                 <h3 class="mb-0 text-bg-secondary">Denúncias Feitas</h3>
+                <a th:href="@{/ocorrencias/denuncia/relatorio}" class="btn btn-primary">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    Criar Relatório
+                </a>
+                <form class="d-none d-md-flex ms-4" th:action="@{/ocorrencias/denuncia/pesquisar}" method="get">
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-secondary border-0" placeholder="Pesquisar" name="keyword">
+                        <button class="btn btn-outline-primary" type="submit">Pesquisar</button>
+                    </div>
+                </form>
                 <a th:href="@{/ocorrencias/denuncia/cadastrar}" class="btn btn-primary">
                     <i class="bi bi-plus-circle-fill"></i>
                     Adicionar Denúncia
@@ -35,6 +45,7 @@
                             <th scope="col">Nº BI</th>
                             <th scope="col">Data da Ocorrência</th>
                             <th scope="col">Data da Denúncia</th>
+                            <th scope="col">Estado</th>
                             <th scope="col">Acções</th>
                         </tr>
                     </thead>
@@ -48,16 +59,13 @@
                             <td><span th:text="${denuncia.reportante.bi}"></span></td>
                             <td><span th:text="${#dates.format(denuncia.dataOcorrido, 'yyyy-MM-dd')}"></span></td>
                             <td><span th:text="${#dates.format(denuncia.dataDenuncia, 'yyyy-MM-dd')}"></span></td>
+                            <td><span th:text="${denuncia.estado}"></span></td>
                             <td>
                                 <a title="Detalhes" th:href="@{'/ocorrencias/denuncia/detalhes/' + ${denuncia.id}}"
                                     class="btn btn-primary m-1"><i class="bi bi-eye-fill"></i></a>
                                 <a title="Editar" th:href="@{'/ocorrencias/denuncia/editar/' + ${denuncia.id}}"
                                     class="btn btn-primary m-1"><i class="bi bi-pencil-square"></i></a>
                                 <!--<button title="Eliminar"  th:href="@{'/ocorrencia/denuncias/eliminar/' + ${denuncia.id}}"  type="submit" class="btn btn-primary m-1"><i class="bi bi-trash"></i></button>-->
-                                <a title="Eliminar" th:href="@{'/ocorrencias/denuncia/eliminar/' + ${denuncia.id}}"
-                                    class="btn btn-primary m-1"
-                                    onclick="return confirm('Tem certeza de que deseja excluir a denúncia?');"><i
-                                        class="bi bi-trash"></i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -71,6 +79,16 @@
         <div class="shadow p-3 mb-5 bg-white rounded text-center">
             <div class="d-flex align-items-center justify-content-between mb-4 ">
                 <h3 class="mb-0 text-bg-secondary">Queixas Feitas</h3>
+                <a th:href="@{/ocorrencias/queixa/relatorio}" class="btn btn-primary">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    Criar Relatório
+                </a>
+                <form class="d-none d-md-flex ms-4" th:action="@{/ocorrencias/queixa/pesquisar}" method="get">
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-secondary border-0" placeholder="Pesquisar" name="keyword">
+                        <button class="btn btn-outline-primary" type="submit">Pesquisar</button>
+                    </div>
+                </form>
                 <a th:href="@{/ocorrencias/queixa/cadastrar}" class="btn btn-primary">
                     <i class="bi bi-plus-circle-fill"></i>
                     Adicionar Queixa
@@ -85,6 +103,7 @@
                             <th scope="col">Nº BI</th>
                             <th scope="col">Data da Ocorrência</th>
                             <th scope="col">Data da Denúncia</th>
+                            <th scope="col">Estado</th>
                             <th scope="col">Acções</th>
                         </tr>
                     </thead>
@@ -97,18 +116,14 @@
                             <td><span th:text="${queixa.reportante.nomeCompleto}"></span></td>
                             <td><span th:text="${queixa.reportante.bi}"></span></td>
                             <td><span th:text="${#dates.format(queixa.dataOcorrido, 'yyyy-MM-dd')}"></span></td>
-
                             <td><span th:text="${#dates.format(queixa.dataQueixa, 'yyyy-MM-dd')}"></span></td>
+                            <td><span th:text="${queixa.estado}"></span></td>
 
                             <td>
                                 <a title="Detalhes" th:href="@{'/ocorrencias/queixa/detalhes/' + ${queixa.id}}"
                                     class="btn btn-primary m-1"><i class="bi bi-eye-fill"></i></a>
                                 <a title="Editar" th:href="@{'/ocorrencias/queixa/editar/' + ${queixa.id}}"
                                     class="btn btn-primary m-1"><i class="bi bi-pencil-square"></i></a>
-                                <a title="Eliminar" th:href="@{'/ocorrencias/queixa/eliminar/' + ${queixa.id}}"
-                                    class="btn btn-primary m-1"
-                                    onclick="return confirm('Tem certeza de que deseja excluir a queixa?');">
-                                    <i class="bi bi-trash"></i>
                                 </a>
                             </td>
                         </tr>
@@ -124,6 +139,16 @@
         <div class="shadow p-3 mb-5 bg-white rounded text-center">
             <div class="d-flex align-items-center justify-content-between mb-4 ">
                 <h3 class="mb-0 text-bg-secondary">Auto de Noticias Feitas</h3>
+                <a th:href="@{/ocorrencias/auto-noticia/relatorio}" class="btn btn-primary">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    Criar Relatório
+                </a>
+                <form class="d-none d-md-flex ms-4" th:action="@{/ocorrencias/auto-noticia/pesquisar}" method="get">
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-secondary border-0" placeholder="Pesquisar" name="keyword">
+                        <button class="btn btn-outline-primary" type="submit">Pesquisar</button>
+                    </div>
+                </form>
                 <a th:href="@{/ocorrencias/auto-noticia/cadastrar}" class="btn btn-primary">
                     <i class="bi bi-plus-circle-fill"></i>
                     Adicionar Auto de Noticias
@@ -138,6 +163,7 @@
                             <th scope="col">Nº BI</th>
                             <th scope="col">Data da Ocorrência</th>
                             <th scope="col">Data do Reportante</th>
+                            <th scope="col">Estado</th>
                             <th scope="col">Acções</th>
                         </tr>
                     </thead>
@@ -151,6 +177,7 @@
                             <td><span th:text="${autoNoticia.funcionario.bi}"></span></td>
                             <td><span th:text="${#dates.format(autoNoticia.dataOcorrido, 'yyyy-MM-dd')}"></span></td>
                             <td><span th:text="${#dates.format(autoNoticia.dataReporte, 'yyyy-MM-dd')}"></span></td>
+                            <td><span th:text="${autoNoticia.estado}"></span></td>
 
                             <td>
                                 <a title="Detalhes"
@@ -158,12 +185,12 @@
                                     class="btn btn-primary m-1"><i class="bi bi-eye-fill"></i></a>
                                 <a title="Editar" th:href="@{'/ocorrencias/auto-noticia/editar/' + ${autoNoticia.id}}"
                                     class="btn btn-primary m-1"><i class="bi bi-pencil-square"></i></a>
-                                <a title="Eliminar"
+                                <!--<a title="Eliminar"
                                     th:href="@{'/ocorrencias/auto-noticia/eliminar/' + ${autoNoticia.id}}"
                                     class="btn btn-primary m-1"
                                     onclick="return confirm('Tem certeza de que deseja excluir a auto-noticia?');">
                                     <i class="bi bi-trash"></i>
-                                </a>
+                                </a>-->
                             </td>
                         </tr>
                     </tbody>

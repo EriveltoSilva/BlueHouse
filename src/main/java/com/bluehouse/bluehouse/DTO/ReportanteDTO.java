@@ -1,9 +1,7 @@
 package com.bluehouse.bluehouse.DTO;
 
 import com.bluehouse.bluehouse.models.ReportanteModel;
-import jakarta.validation.constraints.*;
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.UUID;

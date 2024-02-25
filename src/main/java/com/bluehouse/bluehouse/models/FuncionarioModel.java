@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.List;
 
 import com.bluehouse.bluehouse.models.ocorrencias.AutoNoticiaModel;
-import com.bluehouse.bluehouse.models.ocorrencias.QueixaModel;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

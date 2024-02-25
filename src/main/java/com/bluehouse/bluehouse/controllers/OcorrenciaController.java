@@ -4,6 +4,7 @@ import com.bluehouse.bluehouse.services.ocorrencias.AutoNoticiaService;
 import com.bluehouse.bluehouse.services.ocorrencias.DenunciaService;
 import com.bluehouse.bluehouse.services.ocorrencias.QueixaService;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

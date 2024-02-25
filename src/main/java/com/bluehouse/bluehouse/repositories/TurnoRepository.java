@@ -13,6 +13,5 @@ public interface TurnoRepository extends JpaRepository<TurnoModel, UUID> {
 
     @Query("SELECT t FROM TurnoModel t WHERE t.dataTurno BETWEEN :dataInicio AND :dataFim ORDER BY t.dataTurno")
     List<TurnoModel> findByDataTurnoBetweenOrderByDataTurno(Date dataInicio, Date dataFim);
-
-    //List<TurnoModel> findByHorarioId(UUID horarioId);
-}
+    List<TurnoModel> findByFuncionario_NomeCompletoContainingIgnoreCase(String nomeCompleto);
+ }

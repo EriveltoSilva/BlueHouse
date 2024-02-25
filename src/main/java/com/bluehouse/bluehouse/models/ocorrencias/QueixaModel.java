@@ -43,6 +43,9 @@ public class QueixaModel implements Serializable {
     @NotBlank(message = "O campo da descrição não pode estar em branco")
     private String descricao;
 
+    @NotBlank(message = "O estado não pode estar em branco")
+    private String estado;
+
     @ManyToOne
     @JoinColumn(name = "reportante_id")
     private ReportanteModel reportante;

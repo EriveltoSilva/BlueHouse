@@ -45,6 +45,9 @@ public class AutoNoticiaModel implements Serializable {
     @NotBlank(message = "O campo da descrição não pode estar em branco")
     private String descricao;
 
+    @NotBlank(message = "O estado não pode estar em branco")
+    private String estado;
+
     @ManyToOne
     @JoinColumn(name = "funcionario_id")
     private FuncionarioModel funcionario;

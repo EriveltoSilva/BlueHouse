@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -90,6 +92,19 @@ public class FuncionarioController {
         Optional<FuncionarioModel> funcionario = funcionarioService.obterFuncionarioModel(id);
         model.addAttribute("funcionario", funcionario.orElse(new FuncionarioModel())); // Usando orElse para evitar null
         return "funcionarios/detalhes-funcionario";
+    }
+
+    @GetMapping("/pesquisar")
+    public String pesquisarFuncionario(@RequestParam(value = "keyword", required = false) String keyword,
+                                        Model model) {
+        List<FuncionarioModel> resultadoFuncionario;
+        if (keyword != null) {
+            resultadoFuncionario = funcionarioService.pesquisarPorNome(keyword);
+        } else {
+            resultadoFuncionario = new ArrayList<>(); 
+        }
+        model.addAttribute("resultadoFuncionario", resultadoFuncionario);
+        return "funcionarios/listar-pesquisas";
     }
 
     @GetMapping("/eliminar/{id}")

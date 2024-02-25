@@ -55,6 +55,10 @@ public class TurnoService {
         return turnoRepository.findByDataTurnoBetweenOrderByDataTurno(inicioMes, fimMes);
     }
 
+    public List<TurnoModel> pesquisarPorNome(String funcionario) {
+        return turnoRepository.findByFuncionario_NomeCompletoContainingIgnoreCase(funcionario);
+    }
+
     public long getTotal() {
         return turnoRepository.count(); // Isso conta o número total 
     }

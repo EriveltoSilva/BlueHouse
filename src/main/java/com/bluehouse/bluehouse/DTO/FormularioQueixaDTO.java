@@ -35,5 +35,6 @@ public class FormularioQueixaDTO {
     private LocalTime horaOcorrido;
     private String tipoOcorrencia;
     private String descricao;
+    private String estado;
 }
 

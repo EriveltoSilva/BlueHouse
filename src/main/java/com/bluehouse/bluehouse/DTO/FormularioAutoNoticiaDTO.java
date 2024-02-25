@@ -27,5 +27,6 @@ public class FormularioAutoNoticiaDTO {
     private String tipoOcorrencia;
     private String local;
     private String descricao;
+    private String estado;
 }
 

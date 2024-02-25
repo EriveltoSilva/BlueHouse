@@ -9,14 +9,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bluehouse.bluehouse.models.DetentoModel;
-import com.bluehouse.bluehouse.models.FuncionarioModel;
 import com.bluehouse.bluehouse.services.DetentoService;
 
 import jakarta.validation.Valid;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -71,8 +72,11 @@ public class DetentoController {
     }
 
     @PostMapping("/editar/{id}")
-    public String editarDetentos(@PathVariable("id") UUID id, DetentoModel editDetentoModel ) {
+    public String editarDetentos(@PathVariable("id") UUID id, DetentoModel editDetentoModel, RedirectAttributes redirectAttributes ) {
+
+        
         detentoService.editar(editDetentoModel);
+        redirectAttributes.addFlashAttribute("mensagemSucesso", "Detento editado com sucesso");
         return "redirect:/detentos/listar";
     }
 
@@ -81,6 +85,19 @@ public class DetentoController {
         Optional<DetentoModel> detento = detentoService.obterDetentoModel(id);
         model.addAttribute("detento", detento.orElse(new DetentoModel()));
         return "detentos/detalhes-detento";
+    }
+
+     @GetMapping("/pesquisar")
+    public String pesquisarDetento(@RequestParam(value = "keyword", required = false) String keyword,
+                                        Model model) {
+        List<DetentoModel> resultadoDetento;
+        if (keyword != null) {
+            resultadoDetento = detentoService.pesquisarPorNomeOuBi(keyword);
+        } else {
+            resultadoDetento = new ArrayList<>(); 
+        }
+        model.addAttribute("resultadoDetento", resultadoDetento);
+        return "detentos/listar-pesquisas";
     }
 
     @GetMapping("/eliminar/{id}")

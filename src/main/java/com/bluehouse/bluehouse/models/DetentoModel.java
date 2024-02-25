@@ -30,6 +30,6 @@ public class DetentoModel  extends PessoaModel {
     @NotBlank
     private String email;
 
-    @NotBlank(message = "O email não pode estar em branco")
+    @NotBlank(message = "A observação não pode estar em branco")
     private String observacao;
 }

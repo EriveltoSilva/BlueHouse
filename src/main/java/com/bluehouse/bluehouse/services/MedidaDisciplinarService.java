@@ -1,6 +1,7 @@
 package com.bluehouse.bluehouse.services;
 
 import com.bluehouse.bluehouse.models.MedidaDisciplinarModel;
+import com.bluehouse.bluehouse.models.PostoModel;
 import com.bluehouse.bluehouse.repositories.MedidaDisciplinarRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -35,6 +36,10 @@ public class MedidaDisciplinarService {
         return medidaDisciplinarRepository.findById(id);
     }
 
+    public List<MedidaDisciplinarModel> pesquisarPorNome(String nomeFuncionario) {
+        return medidaDisciplinarRepository.findByFuncionario_NomeCompleto(nomeFuncionario);
+    }
+ 
     public void eliminar( UUID id ) 
     {
         medidaDisciplinarRepository.deleteById(id);;

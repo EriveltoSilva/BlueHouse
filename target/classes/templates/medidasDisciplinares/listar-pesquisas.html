@@ -1,0 +1,70 @@
+<div th:replace="fragmentos/_top"></div>
+
+<main>
+    <div class="container-fluid pt-4 px-4">
+        <h1 class="text-bg-secondary">Resultado da pesquisa de Funcionário com Medida(s) Disciplinar(es)</h1>
+        <div th:if="${mensagemSucesso}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-circle-fill"></i>
+            <span th:text="${mensagemSucesso}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div th:if="${mensagemErro}" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-circle-fill"></i>
+            <span th:text="${mensagemErro}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div class="shadow p-3 mb-5 bg-white rounded text-center">
+            <div class="d-flex align-items-center justify-content-between mb-4 ">
+                <h3 class="mb-0 text-bg-secondary">Medidas Disciplinares</h3>
+                <form class="d-none d-md-flex ms-4" th:action="@{/medidasDisciplinares/pesquisar}" method="get">
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-secondary border-0" placeholder="Pesquisar" name="keyword">
+                        <button class="btn btn-outline-primary" type="submit">Pesquisar</button>
+                    </div>
+                </form>
+                <a th:href="@{/medidasDisciplinares/registrar}" class="btn btn-primary">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    Adicionar Medidas Disciplinares
+                </a>
+            </div>
+            <div class="table-responsive">
+                <table class="table text-start align-middle table-bordered table-hover mb-0">
+                    <thead>
+                        <tr class="text-bg-secondary">
+                            <th scope="col">#</th>
+                            <th scope="col">Nome Completo</th>
+                            <th scope="col">Data de Inicio</th>
+                            <th scope="col">Data de Fim</th>
+                            <th scope="col">Motivo</th>
+                            <th scope="col">Quem Aplicou</th>
+                            <th scope="col">Acções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:if="${resultadosMedidaDisciplinares.empty}">
+                            <td colspan="7">Não existem Medidas Disciplinares.</td>
+                        </tr>
+                        <tr th:each="medidaDisciplinar : ${resultadosMedidaDisciplinares}">
+                            <td scope="row">#</span></td>
+                            <td><span th:text="${medidaDisciplinar.funcionario.nomeCompleto}"></span></td>
+                            <td><span th:text="${medidaDisciplinar.dataInicio}"></span></td>
+                            <td><span th:text="${medidaDisciplinar.dataTermino}"></span></td>
+                            <td><span th:text="${medidaDisciplinar.motivo}"></span></td>
+                            <td><span th:text="${medidaDisciplinar.adminAplicador}"></span></td>
+                            <td class="d-lg-inline-flex">
+                                <a title="Detalhes"  th:href="@{'/medidasDisciplinares/detalhes/' + ${medidaDisciplinar.id}}" class="btn btn-primary m-1"><i class="bi bi-eye-fill"></i></a>
+                                <a title="Editar" th:href="@{'/medidasDisciplinares/editar/' + ${medidaDisciplinar.id}}" class="btn btn-primary m-1" ><i class="bi bi-pencil-square"></i></a>
+                                <a title="Eliminar" th:href="@{'/medidasDisciplinares/eliminar/' + ${medidaDisciplinar.id}}" class="btn btn-primary m-1" onclick="return confirm('Tem certeza de que deseja excluir?');"><i class="bi bi-trash"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+<div th:replace="fragmentos/_bottom"></div>

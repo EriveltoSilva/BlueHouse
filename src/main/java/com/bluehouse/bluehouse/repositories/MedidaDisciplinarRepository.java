@@ -12,4 +12,5 @@ import com.bluehouse.bluehouse.models.MedidaDisciplinarModel;
 public interface MedidaDisciplinarRepository extends JpaRepository<MedidaDisciplinarModel, UUID>  {
     List<MedidaDisciplinarModel> findByFuncionarioAndDataInicioBeforeAndDataTerminoAfter(
         FuncionarioModel funcionario, Date dataInicio, Date dataTermino);
+    List<MedidaDisciplinarModel> findByFuncionario_NomeCompleto(String nomeCompleto);
 }

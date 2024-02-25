@@ -1,5 +1,6 @@
 package com.bluehouse.bluehouse.services.ocorrencias;
 
+import com.bluehouse.bluehouse.models.ocorrencias.AutoNoticiaModel;
 import com.bluehouse.bluehouse.models.ocorrencias.DenunciaModel;
 import com.bluehouse.bluehouse.repositories.ocorrencias.DenunciaRepository;
 
@@ -34,6 +35,18 @@ public class DenunciaService {
     {
         return denunciaRepository.findById(id);
     }
+
+    
+    public List<DenunciaModel> pesquisarPorNomeOuEstado(String keyword) {
+        if (keyword.equalsIgnoreCase("Activo") || keyword.equalsIgnoreCase("Finalizado")) {
+            // Pesquisa por estado
+            return denunciaRepository.findByEstado(keyword);
+        } else {
+            // Pesquisa por nome
+            return denunciaRepository.findByReportante_NomeCompletoContainingIgnoreCase(keyword);
+        }
+    }
+    
 
     public void eliminar( UUID id )
     {

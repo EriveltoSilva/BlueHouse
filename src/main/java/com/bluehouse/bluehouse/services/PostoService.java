@@ -7,6 +7,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.bluehouse.bluehouse.models.PostoModel;
+import com.bluehouse.bluehouse.models.ocorrencias.QueixaModel;
 import com.bluehouse.bluehouse.repositories.PostoRepository;
 
 @Service
@@ -29,6 +30,10 @@ public class PostoService{
     public Optional<PostoModel> obtePostoModel(UUID id)
     {
         return postoRepository.findById(id);
+    }
+
+    public List<PostoModel> pesquisarPorNome(String nome) {
+        return postoRepository.findByNomePosto(nome);
     }
 
     public PostoModel eliminar( UUID id ) 

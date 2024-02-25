@@ -3,6 +3,7 @@ package com.bluehouse.bluehouse.controllers;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -26,6 +27,7 @@ import com.bluehouse.bluehouse.services.FuncionarioService;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -183,5 +185,18 @@ public class HorarioController {
         List<TurnoModel> turnos = turnoService.obterTurnosOrdenadosPorMesEmCurso(hoje.getYear(), hoje.getMonthValue());
         model.addAttribute("turnos", turnos);
         return "horarios/listar-horarios";
+    }
+
+    @GetMapping("/horarios/pesquisar")
+    public String pesquisarTurnos(@RequestParam(value = "keyword", required = false) String keyword,
+                                        Model model) {
+        List<TurnoModel> resultadosTurnos;
+        if (keyword != null) {
+            resultadosTurnos = turnoService.pesquisarPorNome(keyword);
+        } else {
+            resultadosTurnos = new ArrayList<>(); 
+        }
+        model.addAttribute("resultadosTurnos", resultadosTurnos);
+        return "horarios/listar-pesquisas";
     }
 }

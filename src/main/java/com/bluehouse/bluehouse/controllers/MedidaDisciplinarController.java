@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -90,6 +92,19 @@ public class MedidaDisciplinarController {
         Optional<MedidaDisciplinarModel> medidaDisciplinar = medidaDisciplinarService.obterMedidaDisciplinarModel(id);
         model.addAttribute("medidaDisciplinar", medidaDisciplinar.orElse(new MedidaDisciplinarModel()));
         return "medidasDisciplinares/detalhes-medidaDisciplinar";
+    }
+
+    @GetMapping("/pesquisar")
+    public String pesquisarFuncionarioComMedida(@RequestParam(value = "keyword", required = false) String keyword,
+                                        Model model) {
+        List<MedidaDisciplinarModel> resultadosMedidaDisciplinares;
+        if (keyword != null) {
+            resultadosMedidaDisciplinares = medidaDisciplinarService.pesquisarPorNome(keyword);
+        } else {
+            resultadosMedidaDisciplinares = new ArrayList<>(); 
+        }
+        model.addAttribute("resultadosMedidaDisciplinares", resultadosMedidaDisciplinares);
+        return "medidasDisciplinares/listar-pesquisas";
     }
 
     @GetMapping("/eliminar/{id}")

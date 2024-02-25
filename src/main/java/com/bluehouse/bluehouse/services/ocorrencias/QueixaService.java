@@ -1,5 +1,6 @@
 package com.bluehouse.bluehouse.services.ocorrencias;
 
+import com.bluehouse.bluehouse.models.ocorrencias.DenunciaModel;
 import com.bluehouse.bluehouse.models.ocorrencias.QueixaModel;
 import com.bluehouse.bluehouse.repositories.ocorrencias.QueixaRepository;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +32,17 @@ public class QueixaService {
     public Optional<QueixaModel> obterQueixaModel(UUID id)
     {
         return queixaRepository.findById(id);
+    }
+
+     public List<QueixaModel> pesquisarPorNomeOuEstado(String keyword) {
+        // Verifica se o keyword é numérico (estado) ou alfabético (nome)
+        if (keyword.equalsIgnoreCase("Activo") || keyword.equalsIgnoreCase("Finalizado")) {
+            // Pesquisa por estado
+            return queixaRepository.findByEstado(keyword);
+        } else {
+            // Pesquisa por nome
+            return queixaRepository.findByReportante_NomeCompletoContainingIgnoreCase(keyword);
+        }
     }
 
     public void eliminar( UUID id )

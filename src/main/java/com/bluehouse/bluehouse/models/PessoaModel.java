@@ -31,7 +31,6 @@ public class PessoaModel implements Serializable {
     private UUID id;
     
     @Size(min=4, max=45)
-    @NotBlank(message = "O nome não pode estar em branco")
     private String nomeCompleto;
 
     @NotNull(message = "A data de nascimento não pode estar em branco")

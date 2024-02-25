@@ -111,6 +111,10 @@ public class FuncionarioService implements UserDetailsService{
         }
     }
 
+    public List<FuncionarioModel> pesquisarPorNome(String nomeFuncionario) {
+        return funcionarioRepository.findByNomeCompletoContainingIgnoreCase(nomeFuncionario);
+    }
+
     public long getTotal() {
         return funcionarioRepository.count(); // Isso conta o número total 
     }

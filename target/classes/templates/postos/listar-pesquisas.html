@@ -1,0 +1,71 @@
+<div th:replace="fragmentos/_top"></div>
+
+<main>
+
+    <!-- Table Start -->
+    <div class="container-fluid pt-4 px-4">
+        <h1 class="text-bg-secondary">Resultado da Pesquisa</h1>
+        <div th:if="${mensagemSucesso}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-circle-fill"></i>
+            <span th:text="${mensagemSucesso}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div th:if="${mensagemErro}" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-circle-fill"></i>
+            <span th:text="${mensagemErro}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div class="shadow p-3 mb-5 bg-white rounded text-center">
+            <div class="d-flex align-items-center justify-content-between mb-4 ">
+                <h3 class="mb-0 text-bg-secondary">Postos Policiais</h3>
+                <form class="d-none d-md-flex ms-4" th:action="@{/postos/pesquisar}" method="get">
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-secondary border-0" placeholder="Pesquisar" name="keyword">
+                        <button class="btn btn-outline-primary" type="submit">Pesquisar</button>
+                    </div>
+                </form>
+                <a th:href="@{/postos/cadastrar}" class="btn btn-primary">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    Adicionar Posto
+                </a>
+            </div>
+            <div class="table-responsive">
+                <table  class="table text-start align-middle table-bordered table-hover mb-0">
+                    <thead>
+                        <tr class="text-bg-secondary">
+                            <th scope="col">#</th>
+                                    <th scope="col">Nome do Posto</th>
+                                    <th scope="col">Localização</th>
+                                    <th scope="col">Descrição</th>
+                                </tr>
+                     </thead>
+                    
+                        <tbody>
+                            <tr th:if="${resultadosPostos.empty}">
+                                <td colspan="3">Não existem postos nesta esquadra.</td>
+                            </tr>
+                            
+                        
+                        <tr th:each="posto : ${resultadosPostos}">
+                            <th scope="row">1</th>
+                            <td><span th:text="${posto.nomePosto}"></span></td>
+                            <td><span th:text="${posto.localizacao}"></span></td>
+                            <td><span th:text="${posto.descricao}"></span></td>
+                        
+                        </tr>
+                        
+                    </tbody> 
+                
+                </table>       
+            </div>
+        </div>
+    </div>
+    <!-- Table End -->
+
+
+</main>
+
+
+<div th:replace="fragmentos/_bottom"></div>

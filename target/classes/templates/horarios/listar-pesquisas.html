@@ -1,0 +1,69 @@
+<div th:replace="fragmentos/_top"></div>
+
+<main>
+    <h1 class="text-bg-secondary">Horário do mês actual</h1>
+    <!-- Table Start -->
+    <div class="container-fluid pt-4 px-4">
+        <div th:if="${mensagemSucesso}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-circle-fill"></i>
+            <span th:text="${mensagemSucesso}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div th:if="${mensagemErro}" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-circle-fill"></i>
+            <span th:text="${mensagemErro}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        
+        <div class="shadow p-3 mb-5 bg-white rounded text-center">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <h3 class="mb-0 text-bg-secondary">Horarios</h3>
+                <form class="d-none d-md-flex ms-4" th:action="@{/horarios/pesquisar}" method="get">
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-secondary border-0" placeholder="Pesquisar" name="keyword">
+                        <button class="btn btn-outline-primary" type="submit">Pesquisar</button>
+                    </div>
+                </form>
+                <a th:href="@{/horarios/cadastrar}" class="btn btn-primary">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    Adicionar Horario
+                </a>
+            </div>
+            <div class="table-responsive">
+                <table class="table text-start align-middle table-bordered table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome Completo</th>
+                            <th scope="col">Data de Turno</th>
+                            <th scope="col">Hora Inicio</th>
+                            <th scope="col">Hora Fim</th>
+                            <th scope="col">Posto</th>
+                            <th scope="col">Acções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:if="${resultadosTurnos.empty}">
+                            <td colspan="6">Não existem horários no sistema.</td>
+                        </tr>
+                        <tr th:each="turno : ${resultadosTurnos}">
+                            <td><span th:text="${turno.funcionario.nomeCompleto}"></span></td>
+                            <td><span th:text="${#dates.format(turno.dataTurno, 'yyyy-MM-dd')}"></span></td>
+                            <td><span th:text="${turno.horaInicio}"></span></td>
+                            <td><span th:text="${turno.horaFim}"></span></td>
+                            <td><span th:text="${turno.area}"></span></td>
+                            <td>
+                                <a title="Editar" th:href="@{'/horarios/editar/' + ${turno.id}}" class="btn btn-primary m-1" ><i class="bi bi-pencil-square"></i></a>
+                                <a title="Eliminar" th:href="@{'/horarios/eliminar/' + ${turno.id}}" class="btn btn-primary m-1" onclick="return confirm('Tem certeza de que deseja excluir a denúncia?');"><i class="bi bi-trash"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Table End -->    
+</main>
+
+
+<div th:replace="fragmentos/_bottom"></div>

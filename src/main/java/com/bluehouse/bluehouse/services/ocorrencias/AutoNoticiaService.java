@@ -33,6 +33,25 @@ public class AutoNoticiaService {
         return autoNoticiaRepository.findById(id);
     }
 
+    public List<AutoNoticiaModel> pesquisarPorNome(String nome) {
+        return autoNoticiaRepository.findByFuncionario_NomeCompletoContainingIgnoreCase(nome);
+    }
+    
+    public List<AutoNoticiaModel> pesquisarPorEstado(String estado) {
+        return autoNoticiaRepository.findByEstado(estado);
+    }
+    
+    public List<AutoNoticiaModel> pesquisarPorNomeOuEstado(String keyword) {
+        // Verifica se o keyword é numérico (estado) ou alfabético (nome)
+        if (keyword.equalsIgnoreCase("Activo") || keyword.equalsIgnoreCase("Finalizado")) {
+            // Pesquisa por estado
+            return autoNoticiaRepository.findByEstado(keyword);
+        } else {
+            // Pesquisa por nome
+            return autoNoticiaRepository.findByFuncionario_NomeCompletoContainingIgnoreCase(keyword);
+        }
+    }
+
     public void eliminar( UUID id )
     {
         autoNoticiaRepository.deleteById(id);
