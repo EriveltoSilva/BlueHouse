@@ -15,23 +15,8 @@
             <li>Ao rodarem o projecto pela primeira vez, devem cadastrar no postgres um funcionario admin</li>
             <li>Na tabela funcionário tem um atributo chamado role, este é do tipo enum e armazena "admin or user". Porem para vocês conseguirem ter acesso a todas urls devem se cadastrar como admin.</li>
             <li>A senha cadastrada na bd deve ser encriptada, acessem ao site "https://bcrypt-generator.com/" para encriptarem as vossas senhas. Esse ponto é muito importante para que vocês possam aceder ao sistema, caso contrário é pau</li>
-        </ul>
-    </li>
+
 </ul> 
 
-<ul>
-    <ol>Login - feito</ol>
-    <ol>Logout</ol>
-    <ol>Detalhes - Feito</ol>
-    <ol>Eliminar nos cruds - Feito</ol>
-    <ol>Refazer Forms de ocorrências</ol>
-    <ol>Implementrar CRUD de Ocorrências</ol>
-    <ol>Mensagens de aviso, erro, sucesso</ol>
-    <ol>Views Relatórios</ol>
-    <ol>CRUD Relatórios</ol>
-    <ol>Editar Perfil</ol>
-    <ol>Cadastrar somente por admin -  feito</ol>
-    <ol>Validação dos campos dos forms</ol>
-    <ol>Implementar enviar relatórios para superiores</ol>
-    <ol>Alteração das Cores</ol>
-</ul>
+# Nota: 
+### Se estiver usando o  VS Code, e ele não estiver rodando a aplicação, pode ser pela ausência dos arquivos classes na pasta target, neste caso, recomendamos a tentar executar a aplicação numa IDE mais robusta como o IntelliJ, que cria todos os arquivos automaticamente nessas situações
